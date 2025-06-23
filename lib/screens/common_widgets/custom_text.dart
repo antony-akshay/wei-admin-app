@@ -8,7 +8,7 @@ class CustomText extends StatelessWidget {
     required this.text,
     this.fontFamily = 'Urbanist',
     this.fontSize = 14,
-    this.fontColor = null,
+    this.fontColor = AppColors.mainFontColor,
     this.decorationColor = AppColors.mainTheme,
     this.fontWeight = FontWeight.normal,
     this.textAlign = TextAlign.start,

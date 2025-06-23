@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainTheme),
           ),
           debugShowCheckedModeBanner: false,
-          home: const OnboardScreen1(),
+          home: LoginScreen(),
         );
       },
     );
