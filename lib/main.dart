@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
-import 'package:wei_admin/screens/authentication/login_screen.dart';
-import 'package:wei_admin/screens/onboard/onboard_screen1.dart';
+import 'package:wei_admin/screens/authentication/signup/signup1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainTheme),
           ),
           debugShowCheckedModeBanner: false,
-          home: const OnboardScreen1(),
+          home: const Signup1(),
         );
       },
     );
