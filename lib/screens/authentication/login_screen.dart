@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_button.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_textfield.dart';
 import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
@@ -84,8 +86,13 @@ class LoginScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 8.w),
                           CustomText(
-                            text:
-                                "I agree to the Terms of Services and Privacy Policy",
+                            text: "Remember me",
+                            fontSize: 12.sp,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Spacer(),
+                          CustomText(
+                            text: "Forgot password",
                             fontSize: 12.sp,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -103,13 +110,18 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomText(
-                            text: "Already have an account? ",
+                            text: "Don't have an account? ",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
                           ),
                           GestureDetector(
+                            onTap: () {
+                              GoRouter.of(
+                                context,
+                              ).pushNamed(AppRouteConstants.adminSignUp);
+                            },
                             child: CustomText(
-                              text: "Login",
+                              text: "Signup",
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w700,
                             ),
