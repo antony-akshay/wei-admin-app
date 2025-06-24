@@ -125,12 +125,12 @@ class LoginScreen extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                GoRouter.of(
-                                  context,
-                                ).pushNamed(AppRouteConstants.adminSignup);
-                                // GoRouter.of(context).pushNamed(
-                                //   AppRouteConstants.organizationSignup,
-                                // );
+                                // GoRouter.of(
+                                //   context,
+                                // ).pushNamed(AppRouteConstants.adminSignup);
+                                GoRouter.of(context).pushNamed(
+                                  AppRouteConstants.organizationSignup,
+                                );
                               },
                               child: CustomText(
                                 text: "Signup",

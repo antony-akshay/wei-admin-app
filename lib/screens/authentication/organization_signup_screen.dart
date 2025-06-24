@@ -7,17 +7,20 @@ import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_button.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_textfield.dart';
 import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
+import 'package:wei_admin/screens/authentication/widgets/organization_type_dropdown.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 
 class OrganizationSignupScreen extends StatelessWidget {
   OrganizationSignupScreen({super.key});
 
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _contacNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   ValueNotifier isAgreedNotifier = ValueNotifier(false);
+  ValueNotifier selectedOrganizationNotifier = ValueNotifier(null);
 
   @override
   Widget build(BuildContext context) {
@@ -47,33 +50,56 @@ class OrganizationSignupScreen extends StatelessWidget {
                     SizedBox(height: 200.h),
                     FormWidget(
                       formKey: _formKey,
-                      iconPath: "assets/icons/authentication/person.svg",
-                      title: "Lead the Way as an Admin",
+                      iconPath: "assets/icons/authentication/organization.svg",
+                      title: "Build Your Brand with Us",
                       description:
-                          "Set up your admin profile and start organizing with power, clarity, and control.",
+                          "Register your organization and unlock powerful tools to create, manage, and promote your events like a pro.",
                       children: [
                         AuthTextfield(
-                          controller: _usernameController,
-                          hintText: "Full name",
-                           suffixIconPath: "assets/icons/authentication/form_icons/username.svg",
+                          controller: _nameController,
+                          hintText: "Organization name",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/username.svg",
+                        ),
+                        SizedBox(height: 10.h),
+                        ValueListenableBuilder(
+                          valueListenable: selectedOrganizationNotifier,
+                          builder: (context, organization, _) {
+                            return OrganizationTypeDropdown(
+                              selectedValue: organization,
+                              onChanged: (value) {
+                                selectedOrganizationNotifier.value = value;
+                              },
+                            );
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        AuthTextfield(
+                          controller: _addressController,
+                          hintText: "Address of organization",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/location.svg",
                         ),
                         SizedBox(height: 10.h),
                         AuthTextfield(
                           controller: _emailController,
                           hintText: "Email ID",
-                           suffixIconPath: "assets/icons/authentication/form_icons/email.svg",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/email.svg",
                         ),
                         SizedBox(height: 10.h),
                         AuthTextfield(
                           controller: _contacNumberController,
                           hintText: "Contact number",
-                           suffixIconPath: "assets/icons/authentication/form_icons/phone.svg",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/phone.svg",
                         ),
                         SizedBox(height: 10.h),
                         AuthTextfield(
                           controller: _passwordController,
                           hintText: "Password",
-                           suffixIconPath: "assets/icons/authentication/form_icons/password.svg",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/password.svg",
                         ),
                         SizedBox(height: 10.h),
                         Row(
