@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/login_screen.dart';
+import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
@@ -16,10 +17,17 @@ class AppRouteConfiguration {
         },
       ),
       GoRoute(
-        name: AppRouteConstants.adminSignUp,
+        name: AppRouteConstants.adminSignup,
         path: "/admin_signup",
         pageBuilder: (context, state) {
           return MaterialPage(child: AdminSignupScreen());
+        },
+      ),
+      GoRoute(
+        name: AppRouteConstants.organizationSignup,
+        path: "/organization_signup",
+        pageBuilder: (context, state) {
+          return MaterialPage(child: OrganizationSignupScreen());
         },
       ),
     ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:wei_admin/core/app_colors.dart';
 
 class AuthTextfield extends StatelessWidget {
@@ -9,17 +10,17 @@ class AuthTextfield extends StatelessWidget {
   final bool? obscureText;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
-  final Widget? suffixIcon;
+  final String suffixIconPath;
 
   const AuthTextfield({
     super.key,
     required this.controller,
-    this.label,
     required this.hintText,
+    required this.suffixIconPath,
+    this.label,
     this.obscureText,
     this.keyboardType,
     this.validator,
-    this.suffixIcon,
   });
 
   @override
@@ -65,7 +66,18 @@ class AuthTextfield extends StatelessWidget {
                 vertical: 16.h,
               ),
 
-              suffixIcon: suffixIcon,
+              suffixIcon: Padding(
+                padding: EdgeInsets.only(right: 15.w),
+                child: SvgPicture.asset(
+                  suffixIconPath,
+                  height: 16.w,
+                  width: 16.w,
+                ),
+              ),
+              suffixIconConstraints: BoxConstraints(
+                maxHeight: 32.w,
+                maxWidth: 32.w,
+              ),
 
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),

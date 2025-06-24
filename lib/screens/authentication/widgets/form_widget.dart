@@ -23,20 +23,20 @@ class FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30.r),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
-        child: Container(
-          width: 350.w,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.white.withAlpha(0), Colors.white.withAlpha(51)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+    return RepaintBoundary(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.r),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
+          child: Container(
+            width: 350.w,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.white.withAlpha(0), Colors.white.withAlpha(51)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
               child: Form(

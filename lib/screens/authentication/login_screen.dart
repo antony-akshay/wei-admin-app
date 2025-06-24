@@ -31,106 +31,119 @@ class LoginScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            top: 226.h,
-            left: 0,
-            right: 0,
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Center(
-              child: Column(
-                children: [
-                  FormWidget(
-                    formKey: _formKey,
-                    iconPath: "assets/icons/authentication/person.svg",
-                    title: "Login",
-                    description:
-                        "Log in to continue managing your events, your team, and your success.",
-                    children: [
-                      AuthTextfield(
-                        controller: _usernameController,
-                        hintText: "Username, Email, or contact number",
-                      ),
-                      SizedBox(height: 10.h),
-                      AuthTextfield(
-                        controller: _passwordController,
-                        hintText: "Password",
-                      ),
-                      SizedBox(height: 10.h),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 18.w,
-                            width: 18.w,
-                            child: ValueListenableBuilder(
-                              valueListenable: isAgreedNotifier,
-                              builder: (context, isAgeed, _) {
-                                return Checkbox(
-                                  value: isAgeed,
-                                  onChanged: (value) {
-                                    isAgreedNotifier.value = value;
-                                  },
-                                  visualDensity: VisualDensity.compact,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  checkColor: AppColors.mainTheme,
-                                  fillColor: WidgetStateProperty.resolveWith((
-                                    states,
-                                  ) {
-                                    if (states.contains(WidgetState.selected)) {
-                                      return Colors.white;
-                                    }
-                                    return Colors.transparent;
-                                  }),
-                                );
-                              },
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 200.h),
+                    FormWidget(
+                      formKey: _formKey,
+                      iconPath: "assets/icons/authentication/person.svg",
+                      title: "Login",
+                      description:
+                          "Log in to continue managing your events, your team, and your success.",
+                      children: [
+                        AuthTextfield(
+                          controller: _usernameController,
+                          hintText: "Username, Email, or contact number",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/username.svg",
+                        ),
+                        SizedBox(height: 10.h),
+                        AuthTextfield(
+                          controller: _passwordController,
+                          hintText: "Password",
+                          suffixIconPath:
+                              "assets/icons/authentication/form_icons/password.svg",
+                        ),
+                        SizedBox(height: 10.h),
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 18.w,
+                              width: 18.w,
+                              child: ValueListenableBuilder(
+                                valueListenable: isAgreedNotifier,
+                                builder: (context, isAgeed, _) {
+                                  return Checkbox(
+                                    value: isAgeed,
+                                    onChanged: (value) {
+                                      isAgreedNotifier.value = value;
+                                    },
+                                    visualDensity: VisualDensity.compact,
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    checkColor: AppColors.mainTheme,
+                                    fillColor: WidgetStateProperty.resolveWith((
+                                      states,
+                                    ) {
+                                      if (states.contains(
+                                        WidgetState.selected,
+                                      )) {
+                                        return Colors.white;
+                                      }
+                                      return Colors.transparent;
+                                    }),
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 8.w),
-                          CustomText(
-                            text: "Remember me",
-                            fontSize: 12.sp,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Spacer(),
-                          CustomText(
-                            text: "Forgot password",
-                            fontSize: 12.sp,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 24.h),
-                      AuthButton(
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {}
-                        },
-                        label: "Login",
-                      ),
-                      SizedBox(height: 12.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomText(
-                            text: "Don't have an account? ",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteConstants.adminSignUp);
-                            },
-                            child: CustomText(
-                              text: "Signup",
+                            SizedBox(width: 8.w),
+                            CustomText(
+                              text: "Remember me",
+                              fontSize: 12.sp,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Spacer(),
+                            CustomText(
+                              text: "Forgot password",
+                              fontSize: 12.sp,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 24.h),
+                        AuthButton(
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {}
+                          },
+                          label: "Login",
+                        ),
+                        SizedBox(height: 12.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomText(
+                              text: "Don't have an account? ",
                               fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w400,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                            GestureDetector(
+                              onTap: () {
+                                GoRouter.of(
+                                  context,
+                                ).pushNamed(AppRouteConstants.adminSignup);
+                                // GoRouter.of(context).pushNamed(
+                                //   AppRouteConstants.organizationSignup,
+                                // );
+                              },
+                              child: CustomText(
+                                text: "Signup",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 class AppRouteConstants {
   static const String login = "login";
-  static const String adminSignUp = "admin_signup";
-  static const String organizationSignUp = "organization_signup";
+  static const String adminSignup = "admin_signup";
+  static const String organizationSignup = "organization_signup";
 }
