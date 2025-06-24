@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/routes/app_route_configuration.dart';
-import 'package:wei_admin/screens/authentication/signup/signup1.dart';
+import 'package:wei_admin/screens/onboard/onboard_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

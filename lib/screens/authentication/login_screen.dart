@@ -130,10 +130,7 @@ class LoginScreen extends StatelessWidget {
                               onTap: () {
                                 GoRouter.of(
                                   context,
-                                ).pushNamed(AppRouteConstants.adminSignup);
-                                // GoRouter.of(context).pushNamed(
-                                //   AppRouteConstants.organizationSignup,
-                                // );
+                                ).pushNamed(AppRouteNames.signupType);
                               },
                               child: CustomText(
                                 text: "Signup",

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
+import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
 
-class Signup2 extends StatelessWidget {
-  const Signup2({super.key});
+class SignupTypeSelectionScreen extends StatelessWidget {
+  const SignupTypeSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +38,7 @@ class Signup2 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 18),
-                      Center(
-                        child: Container(
-                          height: 74,
-                          width: 76.94,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 0.4),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              'assets/img/logo.svg',
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
+                      LogoWidget(),
 
                       const SizedBox(height: 24),
 
@@ -152,7 +139,7 @@ class Signup2 extends StatelessWidget {
                         style: GoogleFonts.urbanist(
                           color: Colors.white,
                           fontSize: 24,
-                          fontWeight: FontWeight.w400
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -161,10 +148,9 @@ class Signup2 extends StatelessWidget {
                         style: GoogleFonts.urbanist(
                           color: const Color.fromRGBO(192, 192, 192, 1),
                           fontSize: 14,
-                          fontWeight: FontWeight.w400
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
-
                     ],
                   ),
 
@@ -174,7 +160,11 @@ class Signup2 extends StatelessWidget {
                         height: 60,
                         width: double.infinity,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            GoRouter.of(
+                              context,
+                            ).pushNamed(AppRouteNames.adminSignup);
+                          },
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
@@ -204,7 +194,11 @@ class Signup2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            GoRouter.of(
+                              context,
+                            ).pushNamed(AppRouteNames.organizationSignup);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,

@@ -97,6 +97,7 @@ class OrganizationSignupScreen extends StatelessWidget {
                           hintText: "Contact number",
                           suffixIconPath:
                               "assets/icons/authentication/form_icons/phone.svg",
+                          keyboardType: TextInputType.phone,
                         ),
                         SizedBox(height: 10.h),
                         AuthTextfield(
@@ -181,7 +182,7 @@ class OrganizationSignupScreen extends StatelessWidget {
                               if (isAgreedNotifier.value == true) {
                                 GoRouter.of(
                                   context,
-                                ).pushNamed(AppRouteConstants.otpVerification);
+                                ).pushNamed(AppRouteNames.otpVerification);
                               } else {
                                 AppToast.warningToast(
                                   context,
@@ -205,7 +206,7 @@ class OrganizationSignupScreen extends StatelessWidget {
                               onTap: () {
                                 GoRouter.of(
                                   context,
-                                ).pushNamed(AppRouteConstants.login);
+                                ).pushNamed(AppRouteNames.login);
                               },
                               child: CustomText(
                                 text: "Login",

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wei_admin/routes/app_route_configuration.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
 
-class Signup1 extends StatelessWidget {
-  const Signup1({super.key});
+class OnboardScreen extends StatelessWidget {
+  const OnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +172,9 @@ class Signup1 extends StatelessWidget {
                         height: 60,
                         width: double.infinity,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            GoRouter.of(context).pushNamed(AppRouteNames.login);
+                          },
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
@@ -199,7 +204,11 @@ class Signup1 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            GoRouter.of(
+                              context,
+                            ).pushNamed(AppRouteNames.signupType);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
