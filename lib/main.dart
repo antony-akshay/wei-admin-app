@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
-import 'package:wei_admin/screens/authentication/login_screen.dart';
-import 'package:wei_admin/screens/onboard/onboard_screen1.dart';
+import 'package:wei_admin/routes/app_route_configuration.dart';
+import 'package:wei_admin/screens/onboard/onboard_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -19,15 +20,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, _) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'Wei Admin',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainTheme),
           ),
           debugShowCheckedModeBanner: false,
-          home: const OnboardScreen1(),
+          routerConfig: AppRouteConfiguration.router,
         );
-      },
+      },              
     );
   }
 }
