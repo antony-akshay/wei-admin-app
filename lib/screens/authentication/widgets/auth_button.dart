@@ -18,13 +18,13 @@ class AuthButton extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
-              Color(0xFF1E1242), // Dark purple
-              Color(0xFF65498B), // Light purple
+              Color(0xFF1E1242), 
+              Color(0xFF65498B), 
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           border: GradientBoxBorder(
             gradient: LinearGradient(
               colors: [

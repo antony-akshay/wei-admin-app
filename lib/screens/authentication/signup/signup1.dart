@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
 
 class Signup1 extends StatelessWidget {
   const Signup1({super.key});
@@ -35,23 +36,7 @@ class Signup1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 18),
-                      Center(
-                        child: Container(
-                          height: 74,
-                          width: 76.94,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 0.4),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              'assets/img/logo.svg',
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
+                      Center(child: LogoWidget()),
 
                       const SizedBox(height: 24),
 

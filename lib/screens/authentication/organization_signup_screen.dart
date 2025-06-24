@@ -9,6 +9,8 @@ import 'package:wei_admin/screens/authentication/widgets/auth_textfield.dart';
 import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
 import 'package:wei_admin/screens/authentication/widgets/organization_type_dropdown.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
+import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
+import 'package:wei_admin/screens/helpers/app_toast.dart';
 
 class OrganizationSignupScreen extends StatelessWidget {
   OrganizationSignupScreen({super.key});
@@ -47,7 +49,9 @@ class OrganizationSignupScreen extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: [
-                    SizedBox(height: 200.h),
+                    SizedBox(height: 45.h),
+                    LogoWidget(),
+                    SizedBox(height: 24.h),
                     FormWidget(
                       formKey: _formKey,
                       iconPath: "assets/icons/authentication/organization.svg",
@@ -149,11 +153,10 @@ class OrganizationSignupScreen extends StatelessWidget {
                                     style: const TextStyle(
                                       decoration: TextDecoration.underline,
                                     ),
-                                    recognizer:
-                                        TapGestureRecognizer()
-                                          ..onTap = () {
-                                            print('Terms of Services clicked');
-                                          },
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        print('Terms of Services clicked');
+                                      },
                                   ),
                                   const TextSpan(text: ' and '),
                                   TextSpan(
@@ -161,11 +164,10 @@ class OrganizationSignupScreen extends StatelessWidget {
                                     style: const TextStyle(
                                       decoration: TextDecoration.underline,
                                     ),
-                                    recognizer:
-                                        TapGestureRecognizer()
-                                          ..onTap = () {
-                                            print('Privacy Policy clicked');
-                                          },
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        print('Privacy Policy clicked');
+                                      },
                                   ),
                                 ],
                               ),
@@ -175,7 +177,18 @@ class OrganizationSignupScreen extends StatelessWidget {
                         SizedBox(height: 24.h),
                         AuthButton(
                           onTap: () {
-                            if (_formKey.currentState!.validate()) {}
+                            if (_formKey.currentState!.validate()) {
+                              if (isAgreedNotifier.value == true) {
+                                GoRouter.of(
+                                  context,
+                                ).pushNamed(AppRouteConstants.otpVerification);
+                              } else {
+                                AppToast.warningToast(
+                                  context,
+                                  "Please agree to Terms of Service and Privacy Policy",
+                                );
+                              }
+                            }
                           },
                           label: "Signup",
                         ),

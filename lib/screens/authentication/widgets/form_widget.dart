@@ -23,45 +23,43 @@ class FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30.r),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
-          child: Container(
-            width: 350.w,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.white.withAlpha(0), Colors.white.withAlpha(51)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30.r),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
+        child: Container(
+          width: 350.w,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white.withAlpha(0), Colors.white.withAlpha(51)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    SvgPicture.asset(iconPath),
-                    SizedBox(height: 8.h),
-                    CustomText(
-                      text: title,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    SizedBox(height: 8.h),
-                    CustomText(
-                      text: description,
-                      fontSize: 12.sp,
-                      textAlign: TextAlign.center,
-                      fontWeight: FontWeight.w400,
-                      fontColor: AppColors.authScreenTextGrey,
-                    ),
-                    SizedBox(height: 16.h),
-                    ...children,
-                  ],
-                ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  SvgPicture.asset(iconPath),
+                  SizedBox(height: 8.h),
+                  CustomText(
+                    text: title,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(height: 8.h),
+                  CustomText(
+                    text: description,
+                    fontSize: 12.sp,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w400,
+                    fontColor: AppColors.authScreenTextGrey,
+                  ),
+                  SizedBox(height: 16.h),
+                  ...children,
+                ],
               ),
             ),
           ),

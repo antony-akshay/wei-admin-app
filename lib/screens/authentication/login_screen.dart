@@ -7,6 +7,7 @@ import 'package:wei_admin/screens/authentication/widgets/auth_button.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_textfield.dart';
 import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
+import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -40,7 +41,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 200.h),
+                    SizedBox(height: 125.h),
+                    LogoWidget(),
+                    SizedBox(height: 24.h),
                     FormWidget(
                       formKey: _formKey,
                       iconPath: "assets/icons/authentication/person.svg",
@@ -125,12 +128,12 @@ class LoginScreen extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                // GoRouter.of(
-                                //   context,
-                                // ).pushNamed(AppRouteConstants.adminSignup);
-                                GoRouter.of(context).pushNamed(
-                                  AppRouteConstants.organizationSignup,
-                                );
+                                GoRouter.of(
+                                  context,
+                                ).pushNamed(AppRouteConstants.adminSignup);
+                                // GoRouter.of(context).pushNamed(
+                                //   AppRouteConstants.organizationSignup,
+                                // );
                               },
                               child: CustomText(
                                 text: "Signup",

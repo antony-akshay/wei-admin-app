@@ -5,6 +5,7 @@ import 'package:wei_admin/routes/app_route_configuration.dart';
 import 'package:wei_admin/screens/authentication/signup/signup1.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -25,9 +26,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainTheme),
           ),
           debugShowCheckedModeBanner: false,
-         routerConfig: AppRouteConfiguration.router,
+          routerConfig: AppRouteConfiguration.router,
         );
-      },
+      },              
     );
   }
 }
