@@ -24,11 +24,12 @@ class MyApp extends StatelessWidget {
           title: 'Wei Admin',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainTheme),
+            scaffoldBackgroundColor: AppColors.backgroundColor,
           ),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouteConfiguration.router,
         );
-      },              
+      },
     );
   }
 }

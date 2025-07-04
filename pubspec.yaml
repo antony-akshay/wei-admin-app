@@ -31,6 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_inner_shadow: ^0.0.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.0
   fluttertoast: ^8.2.12
@@ -60,6 +61,7 @@ flutter:
     - assets/icons/
     - assets/icons/authentication/
     - assets/icons/authentication/form_icons/
+    - assets/icons/navbar/
     - assets/images/
     - assets/img/
   # An image asset can refer to one or more resolution-specific "variants", see

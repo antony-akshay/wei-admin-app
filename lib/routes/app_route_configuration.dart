@@ -5,12 +5,14 @@ import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/login_screen.dart';
 import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/otp_verification_screen.dart';
+import 'package:wei_admin/screens/home/home_screen.dart';
+import 'package:wei_admin/screens/navbar/navbar_control_screen.dart';
 import 'package:wei_admin/screens/onboard/onboard_screen.dart';
 import 'package:wei_admin/screens/authentication/signup_type_selection_screen.dart';
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: '/onboard',
+    initialLocation: '/navbar_control',
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -52,6 +54,20 @@ class AppRouteConfiguration {
         path: "/otp_verification",
         pageBuilder: (context, state) {
           return MaterialPage(child: OtpVerificationScreen());
+        },
+      ),
+      GoRoute(
+        name: AppRouteNames.navbarControl,
+        path: "/navbar_control",
+        pageBuilder: (context, state) {
+          return MaterialPage(child: NavbarControlScreen());
+        },
+      ),
+      GoRoute(
+        name: AppRouteNames.home,
+        path: "/home",
+        pageBuilder: (context, state) {
+          return MaterialPage(child: HomeScreen());
         },
       ),
     ],
