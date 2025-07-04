@@ -169,7 +169,7 @@ class OnboardScreen extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height: 60,
+                        height: 50,
                         width: double.infinity,
                         child: OutlinedButton(
                           onPressed: () {
@@ -178,7 +178,7 @@ class OnboardScreen extends StatelessWidget {
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(41),
                             ),
                             padding: EdgeInsets.symmetric(vertical: 16),
                           ),
@@ -190,7 +190,7 @@ class OnboardScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Container(
-                        height: 60,
+                        height: 50,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -201,7 +201,7 @@ class OnboardScreen extends StatelessWidget {
                               const Color.fromRGBO(101, 73, 184, 1),
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(41),
                         ),
                         child: ElevatedButton(
                           onPressed: () {
@@ -213,7 +213,7 @@ class OnboardScreen extends StatelessWidget {
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(41),
                             ),
                             padding: EdgeInsets.symmetric(vertical: 16),
                           ),

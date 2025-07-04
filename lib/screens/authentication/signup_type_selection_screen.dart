@@ -157,7 +157,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height: 60,
+                        height: 50,
                         width: double.infinity,
                         child: OutlinedButton(
                           onPressed: () {
@@ -168,7 +168,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(41),
                             ),
                             padding: EdgeInsets.symmetric(vertical: 16),
                           ),
@@ -180,7 +180,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Container(
-                        height: 60,
+                        height: 50,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -191,7 +191,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                               const Color.fromRGBO(101, 73, 184, 1),
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(41),
                         ),
                         child: ElevatedButton(
                           onPressed: () {
@@ -203,12 +203,12 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(41),
                             ),
                             padding: EdgeInsets.symmetric(vertical: 16),
                           ),
                           child: Text(
-                            'Organization',
+                            'Send',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
