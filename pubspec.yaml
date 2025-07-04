@@ -40,6 +40,7 @@ dependencies:
   gradient_borders: ^1.0.1
   otp_pin_field: ^1.4.1
   pin_code_fields: ^8.0.1
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -62,6 +63,8 @@ flutter:
     - assets/icons/authentication/
     - assets/icons/authentication/form_icons/
     - assets/icons/navbar/
+    - assets/icons/home/
+    - assets/icons/common/
     - assets/images/
     - assets/img/
   # An image asset can refer to one or more resolution-specific "variants", see
