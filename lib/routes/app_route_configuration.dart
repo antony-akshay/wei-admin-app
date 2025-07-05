@@ -5,12 +5,13 @@ import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/login_screen.dart';
 import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/otp_verification_screen.dart';
+import 'package:wei_admin/screens/authentication/widgets/forgot_password.dart';
 import 'package:wei_admin/screens/onboard/onboard_screen.dart';
 import 'package:wei_admin/screens/authentication/signup_type_selection_screen.dart';
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: '/onboard',
+    initialLocation: '/forgot_password',
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -54,6 +55,13 @@ class AppRouteConfiguration {
           return MaterialPage(child: OtpVerificationScreen());
         },
       ),
+      GoRoute(
+        name: AppRouteNames.forgotPassword,
+        path: "/forgot_password",
+        pageBuilder:(context,state){
+          return MaterialPage(child: ForgotPassword());
+        }
+      )
     ],
   );
 }
