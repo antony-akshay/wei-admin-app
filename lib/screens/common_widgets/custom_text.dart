@@ -14,7 +14,7 @@ class CustomText extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.underline = false,
     this.strike = false,
-    this.height = 1.5,
+    this.height = 1,
     this.overflow = TextOverflow.visible,
     this.maxLines,
   });
@@ -40,12 +40,11 @@ class CustomText extends StatelessWidget {
         fontSize: fontSize,
         color: fontColor,
         fontWeight: fontWeight,
-        decoration:
-            underline
-                ? TextDecoration.underline
-                : strike
-                ? TextDecoration.lineThrough
-                : TextDecoration.none,
+        decoration: underline
+            ? TextDecoration.underline
+            : strike
+            ? TextDecoration.lineThrough
+            : TextDecoration.none,
         decorationColor: decorationColor,
         decorationThickness: 2.sp,
         height: height.sp,
