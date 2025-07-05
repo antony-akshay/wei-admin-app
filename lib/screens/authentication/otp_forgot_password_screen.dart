@@ -158,6 +158,9 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                               child: AuthButton(
                                 onTap: () {
                                   if (_formKey.currentState!.validate()) {}
+                                  GoRouter.of(
+                                    context,
+                                  ).pushNamed(AppRouteNames.resetPassword);
                                 },
                                 label: "Verify",
                               ),

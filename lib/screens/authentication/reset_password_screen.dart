@@ -9,11 +9,11 @@ import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
 
-class ForgotPassword extends StatelessWidget {
-  ForgotPassword({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  ResetPasswordScreen({super.key});
 
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmNewPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   ValueNotifier isAgreedNotifier = ValueNotifier(false);
 
@@ -46,48 +46,35 @@ class ForgotPassword extends StatelessWidget {
                     SizedBox(height: 24.h),
                     FormWidget(
                       formKey: _formKey,
-                      iconPath: "assets/icons/authentication/password.svg",
-                      title: "Forgot your password?",
+                      iconPath: "assets/icons/authentication/reset_password.svg",
+                      title: "Reset your password",
                       description:
-                          "Enter your registered email or phone number below to receive reset instruction.",
+                          "You can reset your password now and the password must contains 8 characters",
                       children: [
                         AuthTextfield(
-                          controller: _usernameController,
-                          hintText: "Email or contact number",
+                          controller: _newPasswordController,
+                          hintText: "New password",
                           suffixIconPath:
-                              "assets/icons/authentication/form_icons/username.svg",
-                        ),                        
-                        SizedBox(height: 90.h),
+                              "assets/icons/authentication/hide_passord.svg",
+                          obscureText: true,
+                        ),
+                        SizedBox(height: 10.h),
+                        AuthTextfield(
+                          controller: _confirmNewPasswordController,
+                          hintText: "Confirm password",
+                          suffixIconPath:
+                              "assets/icons/authentication/hide_passord.svg",
+                          obscureText: true,
+                        ),
+                        SizedBox(height: 44.h),
                         AuthButton(
                           onTap: () {
                             if (_formKey.currentState!.validate()) {}
+                            GoRouter.of(context).pushNamed(AppRouteNames.login);
                           },
-                          label: "Send",
+                          label: "Save",
                         ),
                         SizedBox(height: 12.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomText(
-                              text: "Remember password? ",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w200,
-                              fontFamily: 'urbanist',
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                GoRouter.of(
-                                  context,
-                                ).pushNamed(AppRouteNames.signupType);
-                              },
-                              child: CustomText(
-                                text: "Login",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ],

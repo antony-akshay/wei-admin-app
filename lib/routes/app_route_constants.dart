@@ -7,4 +7,5 @@ class AppRouteNames {
   static const String otpVerification = "otp_verification";
   static const String forgotPassword = "forgot_password";
   static const String otpForgotPassword = "otp_forgot_password";
+  static const String resetPassword = "reset_password";
 }
