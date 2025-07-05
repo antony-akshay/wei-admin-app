@@ -8,4 +8,8 @@ class AppRouteNames {
   static const String navbarControl = "navbar_control";
   static const String home = "home";
   static const String chat = "chat";
+  static const String forgotPassword = "forgot_password";
+  static const String otpForgotPassword = "otp_forgot_password";
+  static const String resetPassword = "reset_password";
+
 }

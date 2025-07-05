@@ -103,10 +103,15 @@ class LoginScreen extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                             Spacer(),
-                            CustomText(
-                              text: "Forgot password",
-                              fontSize: 12.sp,
-                              overflow: TextOverflow.ellipsis,
+                            GestureDetector(
+                              onTap: ()=>GoRouter.of(
+                                  context,
+                                ).pushNamed(AppRouteNames.forgotPassword),
+                              child: CustomText(
+                                text: "Forgot password",
+                                fontSize: 12.sp,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ],
                         ),

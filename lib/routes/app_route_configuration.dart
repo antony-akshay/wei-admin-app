@@ -4,10 +4,13 @@ import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/login_screen.dart';
 import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
+import 'package:wei_admin/screens/authentication/otp_forgot_password_screen.dart';
 import 'package:wei_admin/screens/authentication/otp_verification_screen.dart';
 import 'package:wei_admin/screens/chat/chat_screen.dart';
 import 'package:wei_admin/screens/home/home_screen.dart';
 import 'package:wei_admin/screens/navbar/navbar_control_screen.dart';
+import 'package:wei_admin/screens/authentication/forgot_password_screen.dart';
+import 'package:wei_admin/screens/authentication/reset_password_screen.dart';
 import 'package:wei_admin/screens/onboard/onboard_screen.dart';
 import 'package:wei_admin/screens/authentication/signup_type_selection_screen.dart';
 
@@ -78,6 +81,26 @@ class AppRouteConfiguration {
       //     return MaterialPage(child: ChatScreen());
       //   },
       // ),
+      GoRoute(
+        name: AppRouteNames.forgotPassword,
+        path: "/forgot_password",
+        pageBuilder: (context, state) {
+          return MaterialPage(child: ForgotPassword());
+        },
+      ),
+      GoRoute(
+        name: AppRouteNames.otpForgotPassword,
+        path: "/otp_forgot_password",
+        pageBuilder: (context, state) =>
+            MaterialPage(child: OtpForgotPasswordScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.resetPassword,
+        path: '/reset_password',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ResetPasswordScreen()),
+      ),
+
     ],
   );
 }
