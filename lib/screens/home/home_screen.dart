@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/screens/common_widgets/custom_inner_shadow_button.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
+import 'package:wei_admin/screens/common_widgets/search_textfield.dart';
 import 'package:wei_admin/screens/home/widgets/carousel_tile.dart';
 import 'package:wei_admin/screens/home/widgets/welcome_tile.dart';
 
@@ -65,54 +66,7 @@ class HomeScreen extends StatelessWidget {
                   iconPath: "assets/icons/common/filter.svg",
                 ),
                 Spacer(),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(50.r),
-                  child: SizedBox(
-                    width: 295.w,
-                    child: InnerShadow(
-                      shadows: [
-                        BoxShadow(
-                          color: Colors.black.withAlpha(46),
-                          offset: Offset(-6, -6),
-                          blurRadius: 12,
-                        ),
-                        BoxShadow(
-                          color: Colors.white.withAlpha(20),
-                          offset: Offset(6, 6),
-                          blurRadius: 12,
-                        ),
-                      ],
-                      child: Container(
-                        height: 45.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.backgroundColor,
-                          borderRadius: BorderRadius.circular(50.r),
-                        ),
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                        child: Row(
-                          children: [
-                            Icon(Icons.search, color: Colors.white),
-                            SizedBox(width: 8.w),
-                            Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  isCollapsed: true,
-                                  border: InputBorder.none,
-                                  hintText: 'Search...',
-                                  hintStyle: TextStyle(
-                                    color: Colors.white.withOpacity(0.5),
-                                  ),
-                                ),
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                SearchTextfield(width: 295.w),
               ],
             ),
           ),

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wei_admin/screens/chat/messages_screen.dart';
 import 'package:wei_admin/screens/home/home_screen.dart';
 import 'package:wei_admin/screens/navbar/widgets/custom_bottom_navbar.dart';
 
@@ -17,7 +18,7 @@ class NavbarControlScreen extends StatelessWidget {
         child: ValueListenableBuilder(
           valueListenable: selectedNavbarIndexNotifier,
           builder: (context, index, _) {
-            return HomeScreen();
+            return index == 4 ? MessagesScreen() : HomeScreen();
           },
         ),
       ),
