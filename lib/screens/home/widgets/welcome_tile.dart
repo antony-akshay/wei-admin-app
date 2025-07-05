@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/screens/common_widgets/custom_outer_shadow_container.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 
 class WelcomeTile extends StatelessWidget {
@@ -32,14 +33,12 @@ class WelcomeTile extends StatelessWidget {
           fontColor: AppColors.secondaryFontColor,
           textAlign: TextAlign.center,
         ),
-
-        Container(
-          height: 49.h,
+        SizedBox(height: 12.h),
+        CustomOuterShadowContainer(
+          height: 49.w,
           width: 174.w,
-          decoration: BoxDecoration(
-            color: AppColors.backgroundColor,
-            borderRadius: BorderRadius.circular(100.r),
-          ),
+          radius: 100.r,
+          child: CustomText(text: "Create event"),
         ),
       ],
     );

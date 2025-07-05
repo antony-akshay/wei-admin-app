@@ -5,7 +5,7 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/screens/chat/widgets/pageview_tile.dart';
-import 'package:wei_admin/screens/common_widgets/custom_inner_shadow_button.dart';
+import 'package:wei_admin/screens/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 import 'package:wei_admin/screens/common_widgets/search_textfield.dart';
 
@@ -27,7 +27,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
             children: [
               Row(
                 children: [
-                  CustomInnerShadowButton(
+                  CustomInnerShadowIconButton(
                     height: 36.w,
                     width: 36.w,
                     iconPath: "assets/icons/common/arrow_back.svg",

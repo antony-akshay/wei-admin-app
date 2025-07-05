@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
-import 'package:wei_admin/screens/common_widgets/custom_inner_shadow_button.dart';
+import 'package:wei_admin/screens/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 import 'package:wei_admin/screens/common_widgets/search_textfield.dart';
 import 'package:wei_admin/screens/home/widgets/carousel_tile.dart';
@@ -46,11 +46,13 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
-                CustomInnerShadowButton(
+                CustomInnerShadowIconButton(
                   iconPath: "assets/icons/home/chatbot.svg",
                 ),
                 SizedBox(width: 10.w),
-                CustomInnerShadowButton(iconPath: "assets/icons/home/bell.svg"),
+                CustomInnerShadowIconButton(
+                  iconPath: "assets/icons/home/bell.svg",
+                ),
               ],
             ),
           ),
@@ -62,7 +64,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
               children: [
-                CustomInnerShadowButton(
+                CustomInnerShadowIconButton(
                   iconPath: "assets/icons/common/filter.svg",
                 ),
                 Spacer(),

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wei_admin/core/app_colors.dart';
 
-class CustomInnerShadowButton extends StatelessWidget {
-  const CustomInnerShadowButton({
+class CustomInnerShadowIconButton extends StatelessWidget {
+  const CustomInnerShadowIconButton({
     super.key,
     required this.iconPath,
     this.height,
