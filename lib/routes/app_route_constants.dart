@@ -7,4 +7,5 @@ class AppRouteNames {
   static const String otpVerification = "otp_verification";
   static const String navbarControl = "navbar_control";
   static const String home = "home";
+  static const String chat = "chat";
 }

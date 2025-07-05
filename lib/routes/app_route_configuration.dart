@@ -5,6 +5,7 @@ import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/login_screen.dart';
 import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
 import 'package:wei_admin/screens/authentication/otp_verification_screen.dart';
+import 'package:wei_admin/screens/chat/chat_screen.dart';
 import 'package:wei_admin/screens/home/home_screen.dart';
 import 'package:wei_admin/screens/navbar/navbar_control_screen.dart';
 import 'package:wei_admin/screens/onboard/onboard_screen.dart';
@@ -70,6 +71,13 @@ class AppRouteConfiguration {
           return MaterialPage(child: HomeScreen());
         },
       ),
+      //  GoRoute(
+      //   name: AppRouteNames.chat,
+      //   path: "/chat",
+      //   pageBuilder: (context, state) {
+      //     return MaterialPage(child: ChatScreen());
+      //   },
+      // ),
     ],
   );
 }
