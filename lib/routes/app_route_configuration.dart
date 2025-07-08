@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -16,7 +17,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/onboard",
+    initialLocation: "/build_team_screen1",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -93,6 +94,18 @@ class AppRouteConfiguration {
         path: "/otp_forgot_password",
         pageBuilder: (context, state) =>
             MaterialPage(child: OtpForgotPasswordScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.resetPassword,
+        path: '/reset_password',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ResetPasswordScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.buildTeam1,
+        path: '/build_team_screen1',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BuildTeamScreen1()),
       ),
       GoRoute(
         name: AppRouteNames.resetPassword,
