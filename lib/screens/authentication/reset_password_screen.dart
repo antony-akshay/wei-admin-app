@@ -5,6 +5,7 @@ import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_button.dart';
 import 'package:wei_admin/screens/authentication/widgets/auth_textfield.dart';
+import 'package:wei_admin/screens/authentication/widgets/background_gradient.dart';
 import 'package:wei_admin/screens/authentication/widgets/form_widget.dart';
 import 'package:wei_admin/screens/common_widgets/custom_text.dart';
 import 'package:wei_admin/screens/common_widgets/logo_widget.dart';
@@ -32,6 +33,7 @@ class ResetPasswordScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
+          BackgroundGradient(),
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Center(

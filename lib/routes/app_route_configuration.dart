@@ -16,7 +16,7 @@ import 'package:wei_admin/screens/authentication/signup_type_selection_screen.da
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: '/navbar_control',
+    initialLocation: "/onboard",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -100,7 +100,6 @@ class AppRouteConfiguration {
         pageBuilder: (context, state) =>
             MaterialPage(child: ResetPasswordScreen()),
       ),
-
     ],
   );
 }

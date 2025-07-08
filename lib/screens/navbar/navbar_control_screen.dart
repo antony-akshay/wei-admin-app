@@ -15,11 +15,14 @@ class NavbarControlScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ValueListenableBuilder(
-          valueListenable: selectedNavbarIndexNotifier,
-          builder: (context, index, _) {
-            return index == 4 ? MessagesScreen() : HomeScreen();
-          },
+        child: Padding(
+          padding: EdgeInsets.only(top: 24.h),
+          child: ValueListenableBuilder(
+            valueListenable: selectedNavbarIndexNotifier,
+            builder: (context, index, _) {
+              return index == 4 ? MessagesScreen() : HomeScreen();
+            },
+          ),
         ),
       ),
 

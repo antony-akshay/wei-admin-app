@@ -33,7 +33,7 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
+        preferredSize: Size.fromHeight(30.h + 58.w),
         child: Column(
           children: [
             SizedBox(height: 45.h),
@@ -82,7 +82,7 @@ class ChatScreen extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             Container(
-              height: 1,
+              height: 1.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(

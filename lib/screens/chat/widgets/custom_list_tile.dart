@@ -24,6 +24,7 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print("Tapped");
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
