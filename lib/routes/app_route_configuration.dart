@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
-import 'package:wei_admin/screens/authentication/admin_signup_screen.dart';
-import 'package:wei_admin/screens/authentication/login_screen.dart';
-import 'package:wei_admin/screens/authentication/organization_signup_screen.dart';
-import 'package:wei_admin/screens/authentication/otp_forgot_password_screen.dart';
-import 'package:wei_admin/screens/authentication/otp_verification_screen.dart';
-import 'package:wei_admin/screens/chat/chat_screen.dart';
-import 'package:wei_admin/screens/home/home_screen.dart';
-import 'package:wei_admin/screens/navbar/navbar_control_screen.dart';
-import 'package:wei_admin/screens/authentication/forgot_password_screen.dart';
-import 'package:wei_admin/screens/authentication/reset_password_screen.dart';
-import 'package:wei_admin/screens/onboard/onboard_screen.dart';
-import 'package:wei_admin/screens/authentication/signup_type_selection_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/organization_signup_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/otp_forgot_password_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/otp_verification_screen.dart';
+import 'package:wei_admin/features/chat/presentation/screens/chat_screen.dart';
+import 'package:wei_admin/features/home/presentation/screens/home_screen.dart';
+import 'package:wei_admin/features/navbar/presentation/screens/navbar_control_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/reset_password_screen.dart';
+import 'package:wei_admin/features/onboard/presentation/screens/onboard_screen.dart';
+import 'package:wei_admin/features/auth/presentation/screens/signup_type_selection_screen.dart';
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
