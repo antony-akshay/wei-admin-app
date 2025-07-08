@@ -13,6 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<OrganizationSignupButtonClickedEvent>(
       organizationSignupButtonClickedEvent,
     );
+    on<VerifyOtpButtonClickedEvent>(verifyOtpButtonClickedEvent);
   }
 
   FutureOr<void> adminSignupButtonClickedEvent(
@@ -20,8 +21,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(AuthLoadingState());
-    await Future.delayed(Duration(seconds: 3), () {});
-  final bool? signupSuccess =  await AuthRepo.adminSignup(
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? signupSuccess = await AuthRepo.adminSignup(
       event.fullName,
       event.email,
       event.contactNumber,
@@ -39,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(AuthLoadingState());
-    await Future.delayed(Duration(seconds: 3), () {});
+    await Future.delayed(Duration(seconds: 2), () {});
     final bool? signupSuccess = await AuthRepo.organizationSignup(
       event.organizationName,
       event.email,
@@ -51,7 +52,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (signupSuccess == true) {
       emit(SignupSuccessState());
     } else {
-      emit(SignupFailureState(""));
+      emit(SignupFailureState("Signup failed!"));
+    }
+  }
+
+  FutureOr<void> verifyOtpButtonClickedEvent(
+    VerifyOtpButtonClickedEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? signupSuccess = await AuthRepo.verifyOtp(
+      event.email,
+      event.contactNumber,
+      event.otp,
+    );
+    if (signupSuccess == true) {
+      emit(OtpVerificationSuccessState());
+    } else {
+      emit(OtpVerificationFailureState("Verification failed!"));
     }
   }
 }

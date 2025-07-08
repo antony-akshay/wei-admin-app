@@ -185,6 +185,10 @@ class OrganizationSignupScreen extends StatelessWidget {
                             if (state is SignupSuccessState) {
                               GoRouter.of(context).pushReplacementNamed(
                                 AppRouteNames.otpVerification,
+                                extra: {
+                                  'email': _emailController.text,
+                                  'contactNumber': _contacNumberController.text,
+                                },
                               );
                             } else if (state is SignupFailureState) {
                               AppToast.errorToast(context, state.error);
@@ -208,6 +212,14 @@ class OrganizationSignupScreen extends StatelessWidget {
                                         password: _passwordController.text,
                                       ),
                                     );
+                                    // GoRouter.of(context).pushReplacementNamed(
+                                    //   AppRouteNames.otpVerification,
+                                    //   extra: {
+                                    //     'email': _emailController.text,
+                                    //     'contactNumber':
+                                    //         _contacNumberController.text,
+                                    //   },
+                                    // );
                                   } else {
                                     AppToast.warningToast(
                                       context,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
@@ -57,7 +59,16 @@ class AppRouteConfiguration {
         name: AppRouteNames.otpVerification,
         path: "/otp_verification",
         pageBuilder: (context, state) {
-          return MaterialPage(child: OtpVerificationScreen());
+          final data = state.extra as Map<String, String>;
+          final email = data['email']!;
+          final contactNumber = data['contactNumber']!;
+          log("$email --- $contactNumber");
+          return MaterialPage(
+            child: OtpVerificationScreen(
+              email: email,
+              contactNumber: contactNumber,
+            ),
+          );
         },
       ),
       GoRoute(

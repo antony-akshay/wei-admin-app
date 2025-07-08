@@ -163,6 +163,10 @@ class AdminSignupScreen extends StatelessWidget {
                             if (state is SignupSuccessState) {
                               GoRouter.of(context).pushReplacementNamed(
                                 AppRouteNames.otpVerification,
+                                extra: {
+                                  'email': _emailController.text,
+                                  'contactNumber': _contacNumberController.text,
+                                },
                               );
                             } else if (state is SignupFailureState) {
                               AppToast.errorToast(context, state.error);

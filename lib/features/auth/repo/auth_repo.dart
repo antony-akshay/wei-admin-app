@@ -45,8 +45,9 @@ class AuthRepo {
   ) async {
     try {
       log("Trying to signup");
+      log("organisation type :$organisationType");
       final response = await _dio.post(
-        "$baseUrl${ApiEndpoints.adminSignup}",
+        "$baseUrl${ApiEndpoints.organizationSignup}",
         data: {
           "name": organisationName,
           "email": email,
@@ -55,6 +56,24 @@ class AuthRepo {
           "organisation_type": organisationType,
           "address": address,
         },
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
+  static verifyOtp(String email, String contactNumber, String otp) async {
+    try {
+      log("Verifying otp");
+      final response = await _dio.post(
+        "$baseUrl${ApiEndpoints.verifyOtp}",
+        data: {"email": email, "contact_no": contactNumber, "otp": otp},
       );
       final data = response.data;
       log(data.toString());

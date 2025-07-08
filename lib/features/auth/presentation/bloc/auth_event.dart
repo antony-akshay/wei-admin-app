@@ -34,3 +34,15 @@ class OrganizationSignupButtonClickedEvent extends AuthEvent {
     required this.password,
   });
 }
+
+class VerifyOtpButtonClickedEvent extends AuthEvent {
+  final String email;
+  final String contactNumber;
+  final String otp;
+
+  VerifyOtpButtonClickedEvent({
+    required this.email,
+    required this.contactNumber,
+    required this.otp,
+  });
+}
