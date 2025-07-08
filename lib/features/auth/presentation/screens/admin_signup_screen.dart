@@ -1,10 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_textfield.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
@@ -156,22 +158,42 @@ class AdminSignupScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 24.h),
-                        AuthButton(
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              if (isAgreedNotifier.value == true) {
-                                GoRouter.of(
-                                  context,
-                                ).pushNamed(AppRouteNames.otpVerification);
-                              } else {
-                                AppToast.warningToast(
-                                  context,
-                                  "Please agree to Terms of Service and Privacy Policy",
-                                );
-                              }
+                        BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            if (state is SignupSuccessState) {
+                              GoRouter.of(context).pushReplacementNamed(
+                                AppRouteNames.otpVerification,
+                              );
+                            } else if (state is SignupFailureState) {
+                              AppToast.errorToast(context, state.error);
                             }
                           },
-                          label: "Signup",
+                          builder: (context, state) {
+                            return AuthButton(
+                              isLoading: state is AuthLoadingState,
+                              onTap: () {
+                                if (_formKey.currentState!.validate()) {
+                                  if (isAgreedNotifier.value == true) {
+                                    context.read<AuthBloc>().add(
+                                      AdminSignupButtonClickedEvent(
+                                        fullName: _usernameController.text,
+                                        email: _emailController.text,
+                                        contactNumber:
+                                            _contacNumberController.text,
+                                        password: _passwordController.text,
+                                      ),
+                                    );
+                                  } else {
+                                    AppToast.warningToast(
+                                      context,
+                                      "Please agree to Terms of Service and Privacy Policy",
+                                    );
+                                  }
+                                }
+                              },
+                              label: "Signup",
+                            );
+                          },
                         ),
                         SizedBox(height: 12.h),
                         Row(
