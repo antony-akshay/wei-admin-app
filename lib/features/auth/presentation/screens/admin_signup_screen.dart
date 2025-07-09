@@ -161,7 +161,7 @@ class AdminSignupScreen extends StatelessWidget {
                         BlocConsumer<AuthBloc, AuthState>(
                           listener: (context, state) {
                             if (state is SignupSuccessState) {
-                              GoRouter.of(context).pushReplacementNamed(
+                              GoRouter.of(context).pushNamed(
                                 AppRouteNames.otpVerification,
                                 extra: {
                                   'email': _emailController.text,

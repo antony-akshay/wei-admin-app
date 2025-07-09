@@ -12,6 +12,7 @@ class FormWidget extends StatelessWidget {
   final String title;
   final String description;
   final List<Widget> children;
+  final Widget? successWidget;
   const FormWidget({
     super.key,
     required this.formKey,
@@ -19,6 +20,7 @@ class FormWidget extends StatelessWidget {
     required this.title,
     required this.description,
     required this.children,
+    this.successWidget,
   });
 
   @override
@@ -42,6 +44,8 @@ class FormWidget extends StatelessWidget {
               key: formKey,
               child: Column(
                 children: [
+                  ?successWidget,
+                  if (successWidget != null) SizedBox(height: 24.h),
                   SvgPicture.asset(iconPath),
                   SizedBox(height: 8.h),
                   CustomText(
