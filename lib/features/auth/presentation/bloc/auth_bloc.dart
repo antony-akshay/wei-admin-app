@@ -13,6 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<OrganizationSignupButtonClickedEvent>(
       organizationSignupButtonClickedEvent,
     );
+    on<StartTimerEvent>(startTimer);
     on<VerifyOtpButtonClickedEvent>(verifyOtpButtonClickedEvent);
   }
 
@@ -53,6 +54,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(SignupSuccessState());
     } else {
       emit(SignupFailureState("Signup failed!"));
+    }
+  }
+
+  Future<void> startTimer(
+    StartTimerEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    int remainingTime = event.initialDuration;
+
+    // Emit the initial timer state
+    emit(TimerCountDownState(remainingTime));
+
+    // Loop to simulate a timer
+    while (remainingTime > 0) {
+      await Future.delayed(const Duration(seconds: 1));
+
+      remainingTime--;
+
+      if (!emit.isDone) {
+        emit(TimerCountDownState(remainingTime));
+      } else {
+        break;
+      }
     }
   }
 

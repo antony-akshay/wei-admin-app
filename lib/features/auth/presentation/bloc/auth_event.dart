@@ -35,6 +35,12 @@ class OrganizationSignupButtonClickedEvent extends AuthEvent {
   });
 }
 
+class StartTimerEvent extends AuthEvent {
+  final int initialDuration;
+
+  StartTimerEvent({required this.initialDuration});
+}
+
 class VerifyOtpButtonClickedEvent extends AuthEvent {
   final String email;
   final String contactNumber;
