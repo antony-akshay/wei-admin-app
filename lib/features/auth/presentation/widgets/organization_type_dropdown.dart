@@ -27,6 +27,7 @@ class OrganizationTypeDropdown extends StatelessWidget {
     'Consulting Firm',
     'Startup',
     'Other',
+    'NGO',
   ];
 
   const OrganizationTypeDropdown({
@@ -117,21 +118,20 @@ class OrganizationTypeDropdown extends StatelessWidget {
         ),
         icon:
             SizedBox.shrink(), // Hide default dropdown arrow since we're using custom suffix icon
-        items:
-            organizationTypes.map((String type) {
-              return DropdownMenuItem<String>(
-                value: type,
-                child: Text(
-                  type,
-                  style: TextStyle(
-                    fontFamily: 'Urbanist',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                    color: Colors.white,
-                  ),
-                ),
-              );
-            }).toList(),
+        items: organizationTypes.map((String type) {
+          return DropdownMenuItem<String>(
+            value: type,
+            child: Text(
+              type,
+              style: TextStyle(
+                fontFamily: 'Urbanist',
+                fontWeight: FontWeight.w400,
+                fontSize: 12.sp,
+                color: Colors.white,
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/core/helpers/app_toast.dart';
+import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_button.dart';
@@ -12,13 +15,18 @@ import 'package:wei_admin/features/auth/presentation/widgets/form_widget.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
-  OtpVerificationScreen({super.key});
+  final String email;
+  final String contactNumber;
+  OtpVerificationScreen({
+    super.key,
+    required this.email,
+    required this.contactNumber,
+  });
 
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _otpFormKey = GlobalKey<FormState>();
   ValueNotifier isAgreedNotifier = ValueNotifier(false);
+  String _otp = "";
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +71,15 @@ class OtpVerificationScreen extends StatelessWidget {
                           textInputAction: TextInputAction.done,
                           onSubmit: (text) {
                             debugPrint('Entered pin is $text');
+                            _otp = text;
                           },
                           onChange: (text) {
                             debugPrint('Changed: $text');
+                            _otp = text;
                           },
                           onCodeChanged: (code) {
                             debugPrint('Code changed: $code');
+                            _otp = code;
                           },
                           otpPinFieldStyle: OtpPinFieldStyle(
                             showHintText: true,
@@ -156,11 +167,33 @@ class OtpVerificationScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 153.w,
-                              child: AuthButton(
-                                onTap: () {
-                                  if (_formKey.currentState!.validate()) {}
+                              child: BlocConsumer<AuthBloc, AuthState>(
+                                listener: (context, state) {
+                                  if (state is OtpVerificationSuccessState) {
+                                    GoRouter.of(context).pushReplacementNamed(
+                                      AppRouteNames.navbarControl,
+                                    );
+                                  } else if (state
+                                      is OtpVerificationFailureState) {
+                                    AppToast.errorToast(context, state.error);
+                                  }
                                 },
-                                label: "Verify",
+                                builder: (context, state) {
+                                  return AuthButton(
+                                    onTap: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        context.read<AuthBloc>().add(
+                                          VerifyOtpButtonClickedEvent(
+                                            email: email,
+                                            contactNumber: contactNumber,
+                                            otp: _otp,
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    label: "Verify",
+                                  );
+                                },
                               ),
                             ),
                           ],
