@@ -3,13 +3,13 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
+import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/organization_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/otp_forgot_password_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/otp_verification_screen.dart';
-import 'package:wei_admin/features/chat/presentation/screens/chat_screen.dart';
 import 'package:wei_admin/features/home/presentation/screens/home_screen.dart';
 import 'package:wei_admin/features/navbar/presentation/screens/navbar_control_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/forgot_password_screen.dart';
@@ -19,7 +19,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/build_team_screen1",
+    initialLocation: "/build_team_screen2",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -119,10 +119,10 @@ class AppRouteConfiguration {
             MaterialPage(child: BuildTeamScreen1()),
       ),
       GoRoute(
-        name: AppRouteNames.resetPassword,
-        path: '/reset_password',
+        name: AppRouteNames.buildTeam2,
+        path: '/build_team_screen2',
         pageBuilder: (context, state) =>
-            MaterialPage(child: ResetPasswordScreen()),
+            MaterialPage(child: BuildTeamScreen2()),
       ),
     ],
   );

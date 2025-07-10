@@ -3,22 +3,32 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
+import 'package:wei_admin/features/buildteam/widgets/buildteam_customtext.dart';
+import 'package:wei_admin/features/buildteam/widgets/buildteam_dropdown.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_textfield.dart';
+import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
 
-class BuildTeamScreen1 extends StatefulWidget {
-  const BuildTeamScreen1({super.key});
+class BuildTeamScreen2 extends StatefulWidget {
+  const BuildTeamScreen2({super.key});
 
   @override
-  State<BuildTeamScreen1> createState() => _BuildTeamScreen1State();
+  State<BuildTeamScreen2> createState() => _BuildTeamScreen1State();
 }
 
-class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
-  String groupCreatedUnder = 'Admin';
-  String gstRegistered = 'Yes';
-  final _formKey = GlobalKey<FormState>();
-
+class _BuildTeamScreen1State extends State<BuildTeamScreen2> {
+  TextEditingController organisationController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController contactNoController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   TextEditingController gstNoController = TextEditingController();
   TextEditingController panNoController = TextEditingController();
+  final List<String> _organisationType = ['Private', 'Public', 'NGO'];
+  final ValueNotifier<String?> dropdownValue = ValueNotifier(null);
+  String gstRegistered = 'Yes';
+
+  String? selectedType;
+
+  final _formKey = GlobalKey<FormState>();
 
   String? emptyFieldValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -93,9 +103,9 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                     ),
                   ],
                 ),
-          
+
                 const SizedBox(height: 30),
-          
+
                 // Creator details
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -119,95 +129,77 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                           color: Colors.white70,
                         ),
                       ),
-          
+
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Text(
-                            'Group created under',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            ' *',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: const Color.fromARGB(255, 255, 0, 0),
-                            ),
-                          ),
-                        ],
+
+                      Requiredtext(
+                        text: 'Organization name',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
                       ),
-                      Row(
-                        children: [
-                          Theme(
-                            data: Theme.of(
-                              context,
-                            ).copyWith(unselectedWidgetColor: Colors.white),
-                            child: Radio(
-                              value: 'Admin',
-                              groupValue: groupCreatedUnder,
-                              activeColor: Colors.white,
-                              onChanged: (value) {
-                                setState(() {
-                                  groupCreatedUnder = value!;
-                                  print(groupCreatedUnder);
-                                });
-                              },
-                            ),
-                          ),
-                          Text(
-                            'Admin',
-                            style: GoogleFonts.urbanist(color: Colors.white),
-                          ),
-                          SizedBox(width: 18),
-                          Theme(
-                            data: Theme.of(
-                              context,
-                            ).copyWith(unselectedWidgetColor: Colors.white),
-                            child: Radio(
-                              value: 'Organisation',
-                              groupValue: groupCreatedUnder,
-                              activeColor: Colors.white,
-                              onChanged: (value) {
-                                setState(() {
-                                  groupCreatedUnder = value!;
-                                  print(groupCreatedUnder);
-                                });
-                              },
-                            ),
-                          ),
-                          Text(
-                            'Organisation',
-                            style: GoogleFonts.urbanist(color: Colors.white),
-                          ),
-                        ],
+                      SizedBox(height: 10),
+                      BuildteamTextfield(
+                        controller: organisationController,
+                        hintText: 'Enter your organization name',
+                        validator: emptyFieldValidator,
+                        formKey: _formKey,
                       ),
-          
+                      SizedBox(height: 10),
+                      Requiredtext(
+                        text: 'Type of organisation',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: 10),
+                      BuildteamDropdown(
+                        items: _organisationType,
+                        selectedValueNotifier: dropdownValue,
+                      ),
                       const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Text(
-                            'Do you have GST registration',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            ' *',
-                            style: GoogleFonts.urbanist(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: const Color.fromARGB(255, 255, 0, 0),
-                            ),
-                          ),
-                        ],
+                      Requiredtext(
+                        text: 'Organization email ID',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
                       ),
+                      SizedBox(height: 10),
+                      BuildteamTextfield(
+                        controller: emailController,
+                        hintText: 'Enter your organization email',
+                        validator: emptyFieldValidator,
+                        formKey: _formKey,
+                      ),
+                      SizedBox(height: 10),
+                      Requiredtext(
+                        text: 'Organization contact number',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: 10),
+                      BuildteamTextfield(
+                        controller: contactNoController,
+                        hintText: 'Enter your organization contact number',
+                        validator: emptyFieldValidator,
+                        formKey: _formKey,
+                      ),
+                      SizedBox(height: 10),
+                      Requiredtext(
+                        text: 'Organization address',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: 10),
+                      BuildteamTextfield(
+                        controller: addressController,
+                        hintText: 'Enter your organization address',
+                        validator: emptyFieldValidator,
+                        formKey: _formKey,
+                      ),
+                      SizedBox(height: 10),
+                      Requiredtext(
+                        text: 'Do you have GST registration',
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: 10),
                       Row(
                         children: [
                           Theme(
@@ -254,34 +246,13 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                           ),
                         ],
                       ),
-          
-                      const SizedBox(height: 10),
-          
+                      SizedBox(height: 10),
                       Form(
                         key: _formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'GST IN',
-                                  style: GoogleFonts.urbanist(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  ' *',
-                                  style: GoogleFonts.urbanist(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color.fromARGB(255, 255, 0, 0),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            Requiredtext(text: 'GST IN', fontSize: 16),
                             const SizedBox(height: 8),
                             BuildteamTextfield(
                               controller: gstNoController,
@@ -341,35 +312,16 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                                 horizontal: 12.0,
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'PAN number',
-                                            style: GoogleFonts.urbanist(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: GoogleFonts.urbanist(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color.fromARGB(
-                                                255,
-                                                255,
-                                                0,
-                                                0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      Requiredtext(
+                                        text: 'PAN number',
+                                        fontSize: 16,
                                       ),
                                       SizedBox(height: 10),
                                       SizedBox(
@@ -382,35 +334,74 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                                     ],
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Bank cheque',
-                                            style: GoogleFonts.urbanist(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: GoogleFonts.urbanist(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color.fromARGB(
-                                                255,
-                                                255,
-                                                0,
-                                                0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      Requiredtext(
+                                        text: 'Company logo',
+                                        fontSize: 16,
                                       ),
                                       SizedBox(height: 10),
-                                      Container(
+                                      SizedBox(
+                                        width: 168,
+                                        height: 134,
+                                        child: SvgPicture.asset(
+                                          'assets/images/upload_interface.svg',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          maxWidth:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.width *
+                                              0.5,
+                                        ),
+                                        child: Requiredtext(
+                                          text: 'MOA/AOA/Company certificate',
+                                          softWrap: true,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      SizedBox(
+                                        width: 168,
+                                        height: 134,
+                                        child: SvgPicture.asset(
+                                          'assets/images/upload_interface.svg',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Requiredtext(
+                                        text: 'Bank cheque',
+                                        fontSize: 16,
+                                      ),
+                                      SizedBox(height: 10),
+                                      SizedBox(
                                         width: 168,
                                         height: 134,
                                         child: SvgPicture.asset(
@@ -459,22 +450,8 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Container(
-                                  width: 168,
-                                  height: 42,
-                                  decoration: cancelButtonStyle,
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: const Text(
-                                      "Cancel",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                BuildteamButton(label: 'Create')
+                                CancelButton(label: 'Cancel'),
+                                BuildteamButton(label: 'Create'),
                               ],
                             ),
                           ],
