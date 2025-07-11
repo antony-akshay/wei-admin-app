@@ -38,7 +38,10 @@ class WelcomeTile extends StatelessWidget {
           height: 49.w,
           width: 174.w,
           radius: 100.r,
-          child: CustomText(text: "Create event"),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 12.w),
+            child: CustomText(text: "Create event"),
+          ),
         ),
       ],
     );

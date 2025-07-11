@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
-
 class SignupTypeSelectionScreen extends StatelessWidget {
   const SignupTypeSelectionScreen({super.key});
 
@@ -209,7 +208,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 16),
                           ),
                           child: Text(
-                            'Send',
+                            'Organization',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
