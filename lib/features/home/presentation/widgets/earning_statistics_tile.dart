@@ -20,80 +20,6 @@ class _EarningStatisticsTileState extends State<EarningStatisticsTile> {
 
   final List<String> tabs = ["Weeks", "Months", "Years"];
 
-  final List<Map<String, dynamic>> chats = [
-    {
-      'image':
-          'https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Emma",
-      'message': 'Hi Sangeeth',
-      'time': '12:00PM',
-      'count': 3,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Micheal",
-      'message': 'Hello! how are you',
-      'time': '10:24AM',
-      'count': 5,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Sachin",
-      'message': 'Hey 🙋‍♂️',
-      'time': '12:00PM',
-      'count': 0,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Emma",
-      'message': 'Hi Sangeeth',
-      'time': '12:00PM',
-      'count': 3,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Micheal",
-      'message': 'Hello! how are you',
-      'time': '10:24AM',
-      'count': 5,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Sachin",
-      'message': 'Hey 🙋‍♂️',
-      'time': '12:00PM',
-      'count': 0,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Emma",
-      'message': 'Hi Sangeeth',
-      'time': '12:00PM',
-      'count': 3,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Micheal",
-      'message': 'Hello! how are you',
-      'time': '10:24AM',
-      'count': 5,
-    },
-    {
-      'image':
-          'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'name': "Sachin",
-      'message': 'Hey 🙋‍♂️',
-      'time': '12:00PM',
-      'count': 0,
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -169,8 +95,7 @@ class _EarningStatisticsTileState extends State<EarningStatisticsTile> {
           ),
         ),
 
-        SizedBox(height: 24.h),
-
+        // SizedBox(height: 24.h),
         SizedBox(
           height: 275.h,
           child: PageView.builder(
@@ -183,16 +108,72 @@ class _EarningStatisticsTileState extends State<EarningStatisticsTile> {
             },
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 12.h),
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  right: 20.w,
+                  top: 12.h,
+                ), // this padding is for the container for showing shadow
                 child: CustomOuterShadowContainer(
-                  child: Column(
-                    children: [
-                      WeeklyBarChart(
-                        weeklyData: [20, 45, 30, 70, 85, 40, 25],
-
-                        maxY: 100,
-                      ),
-                    ],
+                  radius: 24.r,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 18.w,
+                      vertical: 24.h,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  text: "Bellie Ellish Concert",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                  fontColor: AppColors.secondaryFontColor,
+                                ),
+                                SizedBox(height: 4.h),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    CustomText(
+                                      text: "\$66,672.61",
+                                      fontSize: 24.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    CustomText(
+                                      text: "Total amount",
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w400,
+                                      fontColor: AppColors.secondaryFontColor,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            SvgPicture.asset(
+                              "assets/icons/home/positive_statistics.svg",
+                            ),
+                            SizedBox(width: 6.w),
+                            CustomText(
+                              text: "14%",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 21.h),
+                        Expanded(
+                          child: WeeklyBarChart(
+                            weeklyData: [20, 45, 30, 70, 85, 40, 25],
+                            maxY: 100,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wei_admin/common_widgets/custom_text.dart';
+import 'package:wei_admin/core/app_colors.dart';
 
 class WeeklyBarChart extends StatelessWidget {
   final List<double> weeklyData;
@@ -12,7 +14,7 @@ class WeeklyBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      // height: 144.h,
       child: Stack(
         children: [
           // Bar Chart
@@ -35,12 +37,12 @@ class WeeklyBarChart extends StatelessWidget {
                         'FRI',
                         'SAT',
                       ];
-                      return Text(
-                        days[value.toInt()],
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
+                      return Padding(
+                        padding: EdgeInsets.only(top: 8.h),
+                        child: CustomText(
+                          text: days[value.toInt()],
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
                         ),
                       );
                     },
@@ -110,12 +112,13 @@ class WeeklyBarChart extends StatelessWidget {
                             barHeight +
                             (barHeight / 2) -
                             10, // Center vertically in bar
-                        child: Text(
-                          value.toInt().toString(),
-                          style: const TextStyle(
-                            color: Colors.white,
+                        child: RotatedBox(
+                          quarterTurns: 3,
+                          child: CustomText(
+                            text: "${value.toInt()}k",
+                            fontColor: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 12.sp,
                           ),
                         ),
                       );

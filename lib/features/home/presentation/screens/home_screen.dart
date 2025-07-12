@@ -7,6 +7,7 @@ import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/search_textfield.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/home/presentation/widgets/carousel_tile.dart';
+import 'package:wei_admin/features/home/presentation/widgets/details_listing_carousal_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/earning_statistics_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/live_events_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/single_group_tile.dart';
@@ -80,7 +81,10 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 24.h),
 
           // Carousel
-          CarouselTile(),
+          // CarouselTile(),
+
+          // Carousal with details
+          DetailsListingCarousalTile(),
 
           // Welcome
           // SizedBox(height: 64.h),
@@ -111,6 +115,8 @@ class HomeScreen extends StatelessWidget {
           //Live events statistics
           SizedBox(height: 24.h),
           EarningStatisticsTile(),
+
+          SizedBox(height: 10.h),
         ],
       ),
     );
