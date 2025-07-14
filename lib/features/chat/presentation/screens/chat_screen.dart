@@ -9,6 +9,7 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:chatview/chatview.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class ChatScreen extends StatefulWidget {
   ChatScreen({super.key, required this.profilePicPath, required this.name});
@@ -146,7 +147,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(30.h + 58.w),
+        preferredSize: Size.fromHeight(62.h + 58.w),
         child: Column(
           children: [
             SizedBox(height: 45.h),
@@ -186,6 +187,77 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   Spacer(),
                   CustomInnerShadowIconButton(
+                    ontap: () {
+                      showMenu(
+                        context: context,
+                        color: Color(0xFF303030),
+                        position: RelativeRect.fromLTRB(
+                          double.infinity,
+                          36.w,
+                          0,
+                          double.infinity,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        items: [
+                          PopupMenuItem(
+                            value: 0,
+                            child: CustomText(
+                              text: "View contact",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 1,
+                            child: CustomText(
+                              text: "Search",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 2,
+                            child: CustomText(
+                              text: "Media, links and docs",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 3,
+                            child: CustomText(
+                              text: "Mute notification",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 4,
+                            child: CustomText(
+                              text: "Chat theme",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 5,
+                            child: CustomText(
+                              text: "More",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ).then((value) {
+                        if (value == 0) {
+                          GoRouter.of(
+                            context,
+                          ).pushNamed(AppRouteNames.viewContact);
+                        } else if (value == 1) {}
+                      });
+                    },
                     height: 36.w,
                     width: 36.w,
                     iconPath: "assets/icons/common/menu_dots.svg",
@@ -203,7 +275,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   end: Alignment.centerRight,
                   colors: [
                     Colors.white.withAlpha(0),
-                    Colors.white,
+                    Colors.white.withAlpha(70),
                     Colors.white.withAlpha(0),
                   ],
                 ),
@@ -259,6 +331,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
 
         sendMessageBuilder: (ReplyMessage? replyMessage) {
+          log(replyMessage.toString());
           final TextEditingController messageController =
               TextEditingController();
           return Builder(
@@ -281,65 +354,78 @@ class _ChatScreenState extends State<ChatScreen> {
                     if (replyMessage?.message.isNotEmpty == true)
                       Container(
                         width: double.infinity,
-                        padding: EdgeInsets.all(12.w),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 9.h,
+                        ),
                         margin: EdgeInsets.only(bottom: 8.h),
                         decoration: BoxDecoration(
                           color: AppColors.backgroundColor.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(12.r),
+                          borderRadius: BorderRadius.circular(24.r),
                           border: Border.all(
                             color: Colors.white.withOpacity(0.2),
+                            width: 0.4.w,
                           ),
                         ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 3.w,
-                              height: 40.h,
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.6),
-                                borderRadius: BorderRadius.circular(2.r),
+                        child: IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 3.w,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.6),
+                                  borderRadius: BorderRadius.circular(2.r),
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Replying to',
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
-                                      color: Colors.white.withOpacity(0.7),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  SizedBox(height: 2.h),
-                                  Text(
-                                    replyMessage!.message,
-                                    style: TextStyle(
+                              SizedBox(width: 8.w),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                      text: replyMessage!.replyTo != "1"
+                                          ? widget.name
+                                          : "Me",
                                       fontSize: 14.sp,
-                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontColor: AppColors.mainFontColor,
+                                      height: 20.sp / 12.sp,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                                    SizedBox(height: 1.h),
+                                    CustomText(
+                                      text: replyMessage.message,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400,
+                                      fontColor: AppColors.secondaryFontColor,
+                                      height: 20.sp / 12.sp,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      ChatView.closeReplyMessageView(context),
+                                  child: CircleAvatar(
+                                    radius: 8.r,
+                                    backgroundColor: AppColors.deleteColor,
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.close,
+                                        size: 14.r,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                // Close reply message - you'll need to implement this
-                                // based on your state management solution
-                                // For example: context.read<ChatBloc>().add(CloseReplyEvent());
-                                // Or if using GetX: Get.find<ChatController>().closeReply();
-                              },
-                              child: Icon(
-                                Icons.close,
-                                size: 18.sp,
-                                color: Colors.white.withOpacity(0.7),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
 

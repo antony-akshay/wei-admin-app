@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
+import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -19,7 +20,8 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/navbar_control",
+    // initialLocation: "/navbar_control",
+    initialLocation: "/view_contact",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -123,6 +125,12 @@ class AppRouteConfiguration {
         path: '/build_team_screen2',
         pageBuilder: (context, state) =>
             MaterialPage(child: BuildTeamScreen2()),
+      ),
+      GoRoute(
+        name: AppRouteNames.viewContact,
+        path: '/view_contact',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ViewContactScreen()),
       ),
     ],
   );
