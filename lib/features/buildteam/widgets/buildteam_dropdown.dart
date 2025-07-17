@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildteamDropdown extends StatefulWidget {
   final List<String> items;
@@ -25,35 +26,32 @@ class _BuildteamDropdownState extends State<BuildteamDropdown> {
           value: selectedValue,
           isExpanded: true,
           dropdownColor: const Color(0xFF1A1A1A),
-          icon: const Icon(Icons.keyboard_arrow_down, color: Colors.white),
-
+          icon: Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 24.sp),
           hint: Text(
             'Select the type',
             style: GoogleFonts.urbanist(
               color: Colors.white.withOpacity(0.6),
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
-
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
             filled: true,
-            fillColor: Color.fromRGBO(33, 36, 38, 1),
+            fillColor: const Color.fromRGBO(33, 36, 38, 1),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255),width: 0.6),
+              borderRadius: BorderRadius.circular(12.r),
+              borderSide: const BorderSide(color: Colors.white, width: 0.6),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255),width: 0.6),
+              borderRadius: BorderRadius.circular(12.r),
+              borderSide: const BorderSide(color: Colors.white, width: 0.6),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.white,width:0.6),
+              borderRadius: BorderRadius.circular(12.r),
+              borderSide: const BorderSide(color: Colors.white, width: 0.6),
             ),
           ),
-
           items: widget.items.map((item) {
             return DropdownMenuItem<String>(
               value: item,
@@ -61,20 +59,18 @@ class _BuildteamDropdownState extends State<BuildteamDropdown> {
                 item,
                 style: GoogleFonts.urbanist(
                   color: Colors.white,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             );
           }).toList(),
-
           onChanged: (value) {
             widget.selectedValueNotifier.value = value;
           },
-
           style: GoogleFonts.urbanist(
             color: Colors.white,
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w500,
           ),
         );

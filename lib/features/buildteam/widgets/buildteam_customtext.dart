@@ -16,8 +16,8 @@ class Requiredtext extends StatelessWidget {
     this.strike = false,
     this.height = 1,
     this.overflow = TextOverflow.visible,
-    this.maxLines, 
-    this.softWrap=false,
+    this.maxLines,
+    this.softWrap = false,
   });
 
   final String text;
@@ -33,43 +33,48 @@ class Requiredtext extends StatelessWidget {
   final TextOverflow overflow;
   final int? maxLines;
   final bool softWrap;
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
-            color: fontColor,
-            fontWeight: fontWeight,
-            decoration: underline
-                ? TextDecoration.underline
-                : strike
-                ? TextDecoration.lineThrough
-                : TextDecoration.none,
-            decorationColor: decorationColor,
-            decorationThickness: 2.sp,
-            height: height.sp,
+        Flexible(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontFamily: fontFamily,
+              fontSize: fontSize.sp,
+              color: fontColor,
+              fontWeight: fontWeight,
+              decoration: underline
+                  ? TextDecoration.underline
+                  : strike
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+              decorationColor: decorationColor,
+              decorationThickness: 2.sp,
+              height: height.sp,
+            ),
+            overflow: overflow,
+            textAlign: textAlign,
+            maxLines: maxLines,
+            softWrap: softWrap,
           ),
-          overflow: overflow,
-          textAlign: textAlign,
-          maxLines: maxLines,
         ),
-        SizedBox(width: 2,),
+        SizedBox(width: 2.w), 
         Text(
           '*',
           style: TextStyle(
             fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontSize: (fontSize + 2).sp, 
             color: Colors.red,
             fontWeight: fontWeight,
             decoration: underline
                 ? TextDecoration.underline
                 : strike
-                ? TextDecoration.lineThrough
-                : TextDecoration.none,
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
             decorationColor: decorationColor,
             decorationThickness: 2.sp,
             height: height.sp,

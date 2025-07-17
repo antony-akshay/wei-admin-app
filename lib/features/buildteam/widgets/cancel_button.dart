@@ -8,7 +8,7 @@ class CancelButton extends StatelessWidget {
   final String label;
   final bool isLoading;
   final Function()? onTap;
-
+  
   const CancelButton({
     super.key,
     required this.label,
@@ -21,26 +21,23 @@ class CancelButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 180.w,
-        height: 56.h,
+        height: 42.w,
+        width: 167.w,
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
             colors: [
-              Color(0xFF3A3A50),
-              Color(0xFF2B2B3A),
+              Color.fromARGB(255, 118, 117, 117), // Dark gray
+              Color.fromARGB(157, 46, 46, 46), // Darker gray
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          borderRadius: BorderRadius.circular(50.r),
+          borderRadius: BorderRadius.circular(33.r),
           border: GradientBoxBorder(
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFF686A8C),
-                Color(0xFF3E3F59),
-              ],
+            gradient: LinearGradient(
+              colors: [Color(0xFF3E3E3E), Color(0xFF262626)],
             ),
-            width: 1.2,
+            width: 1,
           ),
           boxShadow: [
             BoxShadow(
@@ -49,7 +46,7 @@ class CancelButton extends StatelessWidget {
               blurRadius: 12,
             ),
             BoxShadow(
-              color: const Color.fromARGB(255, 173, 172, 172).withAlpha(10), // 4% opacity
+              color: Colors.white.withAlpha(10), // 4% opacity
               offset: const Offset(-6, -6),
               blurRadius: 12,
             ),
@@ -63,7 +60,7 @@ class CancelButton extends StatelessWidget {
                 )
               : CustomText(
                   text: label,
-                  fontSize: 14.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),
         ),
