@@ -7,13 +7,27 @@ import 'package:wei_admin/common_widgets/custom_text.dart';
 class BuildteamButton extends StatelessWidget {
   final String label;
   final bool isLoading;
-  final Function()? onTap;  
+  final Function()? onTap;
+
+  // Optional custom styling and sizing
+  final double? height;
+  final double? width;
+  final double? textSize;
+  final Color? textColor;
+  final FontWeight? textWeight;
+  final String? textFamily;
 
   const BuildteamButton({
     super.key,
     required this.label,
     this.onTap,
     this.isLoading = false,
+    this.height,
+    this.width,
+    this.textSize,
+    this.textColor,
+    this.textWeight,
+    this.textFamily,
   });
 
   @override
@@ -21,8 +35,8 @@ class BuildteamButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 42.w,
-        width: 167.w,
+        height: height ?? 42.w,
+        width: width ?? 167.w,
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
@@ -34,25 +48,24 @@ class BuildteamButton extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(33.r),
           border: GradientBoxBorder(
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color.fromARGB(228, 92, 80, 254), Color(0xFF8B6EF2)],
             ),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withAlpha(100), // 16% opacity
+              color: Colors.black.withAlpha(100),
               offset: const Offset(6, 6),
               blurRadius: 12,
             ),
             BoxShadow(
-              color: Colors.white.withAlpha(10), // 4% opacity
+              color: Colors.white.withAlpha(10),
               offset: const Offset(-6, -6),
               blurRadius: 12,
             ),
           ],
         ),
-
         child: Center(
           child: isLoading
               ? LoadingAnimationWidget.staggeredDotsWave(
@@ -61,8 +74,10 @@ class BuildteamButton extends StatelessWidget {
                 )
               : CustomText(
                   text: label,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
+                  fontSize: textSize ?? 12.sp,
+                  fontColor: textColor ?? Colors.white,
+                  fontWeight: textWeight ?? FontWeight.w500,
+                  fontFamily: textFamily ?? 'Urbanist',
                 ),
         ),
       ),

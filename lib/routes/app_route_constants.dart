@@ -12,5 +12,6 @@ class AppRouteNames {
   static const String otpForgotPassword = "otp_forgot_password";
   static const String resetPassword = "reset_password";
   static const String buildTeam1 = "build_team_1";
-  static const String buildTeam2 = "build_team_2";
+  static const String addmembers = "add_members";
+
 }
