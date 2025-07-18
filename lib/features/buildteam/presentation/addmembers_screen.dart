@@ -78,6 +78,7 @@ class _AddMembersScreenState extends State<AddmembersScreen> {
                 children: [
                   CustomInnerShadowIconButton(
                     iconPath: "assets/icons/common/arrow_back.svg",
+                    ontap: ()=>GoBackModal(context),
                   ),
                   const SizedBox(width: 10),
                   Column(
@@ -299,7 +300,7 @@ class _AddMembersScreenState extends State<AddmembersScreen> {
                 height: 100,
                 child: Row(
                   children: [
-                    Expanded(child: CancelButton(label: 'Go back')),
+                    Expanded(child: CancelButton(label: 'Go back',onTap: ()=>GoBackModal(context))),
                     const SizedBox(width: 12),
                     Expanded(
                       child: BuildteamButton(label: 'Save and continue'),
@@ -360,6 +361,70 @@ void showCenteredModal(BuildContext context) {
                         Expanded(
                           child: BuildteamButton(
                             label: 'Add members',
+                            onTap: () {
+                              Navigator.pop(context); // Close modal
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void GoBackModal(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: Colors.transparent, // No dark overlay; we blur manually
+    builder: (context) {
+      return Stack(
+        children: [
+          // Blur Background
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.2, sigmaY: 2.2),
+            child: Container(
+              color: Colors.black.withOpacity(0.3), // Optional dark tint
+            ),
+          ),
+          // Centered Modal
+          Center(
+            child: Container(
+              width: 350,
+              height: 250,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(56, 56, 56, 1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Material(
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(text: 'Do you want to save until you done!',fontWeight: FontWeight.w600,fontSize: 18,),
+                    const SizedBox(height: 12),
+                    CustomText(text: 'Save all the data you entered safe and you can use future',fontWeight: FontWeight.w400,fontSize: 12,textAlign: TextAlign.center,),
+                    const SizedBox(height: 32),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CancelButton(
+                            label: 'No',
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: BuildteamButton(
+                            label: 'Yes',
                             onTap: () {
                               Navigator.pop(context); // Close modal
                             },
