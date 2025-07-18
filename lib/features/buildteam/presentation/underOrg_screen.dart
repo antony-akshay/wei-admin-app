@@ -36,7 +36,18 @@ class _CreateUnderOrganistionScreenState
   ];
 
   String gstRegistered = 'No';
-  final List<String> _organisationType = ['Private', 'Public', 'NGO'];
+  List<String> _organisationType = [
+  "Government (Govt)",
+  "Private Limited (Pvt Ltd)",
+  "Non-Profit Organization (NPO / NGO)",
+  "Public Limited",
+  "Trust",
+  "Society",
+  "Individual / Sole Proprietor",
+  "Partnership Firm",
+  "Educational Institution (College/University-run)",
+  "Co-operative Society"
+];
   final ValueNotifier<String?> dropdownValue = ValueNotifier<String?>(null);
 
   String? emptyFieldValidator(String? value) {
@@ -48,189 +59,211 @@ class _CreateUnderOrganistionScreenState
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: Column(
-          children: [
-            Requiredtext(
-              text: 'Organization name',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            BuildteamTextfield(
-              controller: organisationController,
-              hintText: 'Enter your organization name',
-              validator: emptyFieldValidator,
-              formKey: _formKey,
-            ),
-            SizedBox(height: 10.h),
-            Requiredtext(
-              text: 'Type of organisation',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            BuildteamDropdown(
-              items: _organisationType,
-              selectedValueNotifier: dropdownValue,
-            ),
-            SizedBox(height: 10.h),
-            Requiredtext(
-              text: 'Organization email ID',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            BuildteamTextfield(
-              controller: emailController,
-              hintText: 'Enter your organization email',
-              validator: emptyFieldValidator,
-              formKey: _formKey,
-            ),
-            SizedBox(height: 10.h),
-            Requiredtext(
-              text: 'Organization contact number',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            BuildteamTextfield(
-              controller: contactNoController,
-              hintText: 'Enter your organization contact number',
-              validator: emptyFieldValidator,
-              formKey: _formKey,
-            ),
-            SizedBox(height: 10.h),
-            Requiredtext(
-              text: 'Organization address',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            Requiredtext(
-              text: 'Do you have GST registration',
-              fontSize: 16.sp,
-            ),
-            SizedBox(height: 10.h),
-            Row(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 20.h),
+      child: Column(
+        children: [
+          Requiredtext(
+            text: 'Organization name',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+          ),
+          SizedBox(height: 10.h),
+          BuildteamTextfield(
+            controller: organisationController,
+            hintText: 'Enter your organization name',
+            validator: emptyFieldValidator,
+            formKey: _formKey,
+          ),
+          SizedBox(height: 10.h),
+          Requiredtext(
+            text: 'Type of organisation',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+          ),
+          SizedBox(height: 10.h),
+          BuildteamDropdown(
+            items: _organisationType,
+            selectedValueNotifier: dropdownValue,
+          ),
+          SizedBox(height: 10.h),
+          Requiredtext(
+            text: 'Organization email ID',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+          ),
+          SizedBox(height: 10.h),
+          BuildteamTextfield(
+            controller: emailController,
+            hintText: 'Enter your organization email',
+            validator: emptyFieldValidator,
+            formKey: _formKey,
+          ),
+          SizedBox(height: 10.h),
+          Requiredtext(
+            text: 'Organization contact number',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+          ),
+          SizedBox(height: 10.h),
+          BuildteamTextfield(
+            controller: contactNoController,
+            hintText: 'Enter your organization contact number',
+            validator: emptyFieldValidator,
+            formKey: _formKey,
+          ),
+          SizedBox(height: 10.h),
+          Requiredtext(
+            text: 'Organization address',
+            fontWeight: FontWeight.w400,
+            fontSize: 16.sp,
+          ),
+          SizedBox(height: 10.h),
+          BuildteamTextfield(
+            controller: contactNoController,
+            hintText: 'Enter your organization address',
+            validator: emptyFieldValidator,
+            formKey: _formKey,
+          ),
+          SizedBox(height: 10.h),
+          Requiredtext(text: 'Do you have GST registration', fontSize: 16.sp),
+          SizedBox(height: 10.h),
+          Row(
+            children: [
+              Radio<String>(
+                value: 'Yes',
+                groupValue: gstRegistered,
+                activeColor: Colors.white,
+                onChanged: (value) {
+                  setState(() {
+                    gstRegistered = value!;
+                  });
+                },
+              ),
+              Text(
+                'Yes',
+                style: GoogleFonts.urbanist(
+                  color: Colors.white,
+                  fontSize: 14.sp,
+                ),
+              ),
+              SizedBox(width: 18.w),
+              Radio<String>(
+                value: 'No',
+                groupValue: gstRegistered,
+                activeColor: Colors.white,
+                onChanged: (value) {
+                  setState(() {
+                    gstRegistered = value!;
+                  });
+                },
+              ),
+              Text(
+                'No',
+                style: GoogleFonts.urbanist(
+                  color: Colors.white,
+                  fontSize: 14.sp,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.h),
+          Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Radio<String>(
-                  value: 'Yes',
-                  groupValue: gstRegistered,
-                  activeColor: Colors.white,
-                  onChanged: (value) {
-                    setState(() {
-                      gstRegistered = value!;
-                    });
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, animation) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(0.0, 0.1),
+                          end: Offset.zero,
+                        ).animate(animation),
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: gstRegistered == 'Yes'
+                      ? Column(
+                          key: const ValueKey('gst_field'),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Requiredtext(text: 'GST IN', fontSize: 16.sp),
+                            SizedBox(height: 8.h),
+                            BuildteamTextfield(
+                              controller: gstNoController,
+                              hintText: 'Enter your GST number',
+                              validator: emptyFieldValidator,
+                              formKey: _formKey,
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
+                        )
+                      : const SizedBox.shrink(key: ValueKey('empty_gst_field')),
+                ),
+                Requiredtext(text: 'PAN number', fontSize: 16.sp),
+                SizedBox(height: 8.h),
+                BuildteamTextfield(
+                  controller: panNoController,
+                  hintText: 'Enter your pan card number here..',
+                  validator: emptyFieldValidator,
+                  formKey: _formKey,
+                ),
+                SizedBox(height: 10.h),
+                Text(
+                  'Upload documents',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 4.h),
+                Text(
+                  'Need to share something important? Upload your files here.',
+                  style: TextStyle(fontSize: 12.sp, color: Colors.white70),
+                ),
+                SizedBox(height: 10.h),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    double maxWidth = constraints.maxWidth;
+                    double itemWidth =
+                        (maxWidth - 20.w) / 2; // space between two items
+
+                    return Wrap(
+                      spacing: 10.w,
+                      runSpacing: 10.h,
+                      children: List.generate(sections.length, (index) {
+                        return SizedBox(
+                          width: itemWidth,
+                          child: UploadSection(
+                            label: sections[index],
+                            height: sections[index] == "Bank cheque" ? 32.h : 5.h,
+                          ),
+                        );
+                      }),
+                    );
                   },
                 ),
-                Text('Yes', style: GoogleFonts.urbanist(color: Colors.white, fontSize: 14.sp)),
-                SizedBox(width: 18.w),
-                Radio<String>(
-                  value: 'No',
-                  groupValue: gstRegistered,
-                  activeColor: Colors.white,
-                  onChanged: (value) {
-                    setState(() {
-                      gstRegistered = value!;
-                    });
-                  },
+
+                SizedBox(height: 20.h),
+                SizedBox(height: 40.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CancelButton(label: 'Cancel'),
+                    const BuildteamButton(label: 'Create'),
+                  ],
                 ),
-                Text('No', style: GoogleFonts.urbanist(color: Colors.white, fontSize: 14.sp)),
               ],
             ),
-            SizedBox(height: 10.h),
-            Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    transitionBuilder: (child, animation) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0.0, 0.1),
-                            end: Offset.zero,
-                          ).animate(animation),
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: gstRegistered == 'Yes'
-                        ? Column(
-                            key: const ValueKey('gst_field'),
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Requiredtext(text: 'GST IN', fontSize: 16.sp),
-                              SizedBox(height: 8.h),
-                              BuildteamTextfield(
-                                controller: gstNoController,
-                                hintText: 'Enter your GST number',
-                                validator: emptyFieldValidator,
-                                formKey: _formKey,
-                              ),
-                              SizedBox(height: 10.h),
-                            ],
-                          )
-                        : const SizedBox.shrink(key: ValueKey('empty_gst_field')),
-                  ),
-                  Requiredtext(text: 'PAN number', fontSize: 16.sp),
-                  SizedBox(height: 8.h),
-                  BuildteamTextfield(
-                    controller: panNoController,
-                    hintText: 'Enter your pan card number here..',
-                    validator: emptyFieldValidator,
-                    formKey: _formKey,
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    'Upload documents',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    'Need to share something important? Upload your files here.',
-                    style: TextStyle(fontSize: 12.sp, color: Colors.white70),
-                  ),
-                  SizedBox(height: 10.h),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 20.w,
-                      runSpacing: 20.h,
-                      children: List.generate(sections.length, (index) {
-                        return sections[index] == "Bank cheque"
-                            ? UploadSection(label: sections[index], height: 32.h)
-                            : UploadSection(label: sections[index]);
-                      }),
-                    ),
-                  ),
-                  SizedBox(height: 20.h),
-                  SizedBox(height: 40.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CancelButton(label: 'Cancel'),
-                      const BuildteamButton(label: 'Create'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
-

@@ -122,7 +122,7 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                       ),
 
                       SizedBox(height: 20.h),
-                      Requiredtext(text: 'Group created under',fontSize: 16.h,),
+                      Requiredtext(text: 'Group created under',fontSize: 16.h,fontWeight: FontWeight.w400,),
                       Row(
                         children: [
                           Theme(
@@ -135,7 +135,7 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                                 setState(() {
                                   groupCreatedUnder = value!;
                                   print(groupCreatedUnder);
-                                });
+                                }); 
                               },
                             ),
                           ),
