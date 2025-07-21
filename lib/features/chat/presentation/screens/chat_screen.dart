@@ -9,6 +9,7 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:chatview/chatview.dart';
+import 'package:wei_admin/features/chat/presentation/widgets/gradient_divider.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -266,21 +267,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             SizedBox(height: 16.h),
-            Container(
-              height: 1.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Colors.white.withAlpha(0),
-                    Colors.white.withAlpha(70),
-                    Colors.white.withAlpha(0),
-                  ],
-                ),
-              ),
-            ),
+            GradientDivider(),
           ],
         ),
       ),

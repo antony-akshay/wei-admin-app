@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 
@@ -40,6 +41,14 @@ class CustomInnerShadowButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(borderRadius ?? 50.r),
+            border: GradientBoxBorder(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.white, Colors.white.withAlpha(0)],
+              ),
+              width: 0.5.w,
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withAlpha(36),
@@ -55,8 +64,9 @@ class CustomInnerShadowButton extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14.5.w, vertical: 11.w),
+            padding: EdgeInsets.symmetric(vertical: 11.h),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (iconPath != null) ...[
                   SvgPicture.asset(iconPath!),
