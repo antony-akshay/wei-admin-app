@@ -13,5 +13,5 @@ class AppRouteNames {
   static const String resetPassword = "reset_password";
   static const String buildTeam1 = "build_team_1";
   static const String addmembers = "add_members";
-
+  static const String admin_profile = "admin_profile";
 }
