@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/event_basics_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/event_creation_yes_or_no_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/pin_the_place_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -21,7 +24,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/view_contact",
+    initialLocation: "/event_creation_yes_or_no",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -131,6 +134,24 @@ class AppRouteConfiguration {
         path: '/view_contact',
         pageBuilder: (context, state) =>
             MaterialPage(child: ViewContactScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.eventCreationYesOrNo,
+        path: '/event_creation_yes_or_no',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventCreationYesOrNoScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.eventBasics,
+        path: '/event_basics',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventBasicsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.pinThePlace,
+        path: '/pin_the_place',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PinThePlaceScreen()),
       ),
     ],
   );

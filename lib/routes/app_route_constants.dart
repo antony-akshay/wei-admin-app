@@ -14,4 +14,7 @@ class AppRouteNames {
   static const String buildTeam1 = "build_team_1";
   static const String buildTeam2 = "build_team_2";
   static const String viewContact = "view_contact";
+  static const String eventCreationYesOrNo = "event_creation_yes_or_no";
+  static const String eventBasics = "event_basics";
+   static const String pinThePlace = "pin_the_place";
 }
