@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
@@ -8,6 +9,7 @@ import 'package:wei_admin/features/buildteam/widgets/buildteam_customtext.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_textfield.dart';
 import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/upload_section.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class CreatedUnderAdminScreen extends StatefulWidget {
   const CreatedUnderAdminScreen({super.key});
@@ -163,7 +165,12 @@ class _GstAndDocsSectionState extends State<CreatedUnderAdminScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CancelButton(label: 'Cancel'),
-                  const BuildteamButton(label: 'Create'),
+                  BuildteamButton(
+                    label: 'Create',
+                    onTap: () {
+                      GoRouter.of(context).pushNamed(AppRouteNames.addmembers);
+                    },
+                  ),
                 ],
               ),
             ],

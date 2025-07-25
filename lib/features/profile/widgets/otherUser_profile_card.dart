@@ -5,9 +5,10 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
+import 'package:wei_admin/features/profile/widgets/color_button.dart';
 import 'package:wei_admin/features/profile/widgets/grey_button.dart'; // Make sure this has `AppColors.backgroundColor`
 
-class ProfileCardTile extends StatelessWidget {
+class OtheruserProfileCard extends StatelessWidget {
   final String name;
   final String username;
   final String bio;
@@ -16,7 +17,7 @@ class ProfileCardTile extends StatelessWidget {
   final int following;
   final String profileImage;
 
-  const ProfileCardTile({
+  const OtheruserProfileCard({
     super.key,
     required this.name,
     required this.username,
@@ -109,8 +110,8 @@ class ProfileCardTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              GreyButton(label: 'Edit Profile', width: 100, height: 32),
-              GreyButton(label: 'Share profile', width: 100, height: 32),
+              ColorButton(label: 'Follow +', width: 100, height: 32),
+              GreyButton(label: 'Invite to group', width: 100, height: 32),
               GreyButton(label: 'Insight profile', width: 100, height: 32),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_customtext.dart';
@@ -9,6 +10,7 @@ import 'package:wei_admin/features/buildteam/widgets/buildteam_dropdown.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_textfield.dart';
 import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/upload_section.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class CreateUnderOrganistionScreen extends StatefulWidget {
   const CreateUnderOrganistionScreen({super.key});
@@ -37,17 +39,17 @@ class _CreateUnderOrganistionScreenState
 
   String gstRegistered = 'No';
   List<String> _organisationType = [
-  "Government (Govt)",
-  "Private Limited (Pvt Ltd)",
-  "Non-Profit Organization (NPO / NGO)",
-  "Public Limited",
-  "Trust",
-  "Society",
-  "Individual / Sole Proprietor",
-  "Partnership Firm",
-  "Educational Institution (College/University-run)",
-  "Co-operative Society"
-];
+    "Government (Govt)",
+    "Private Limited (Pvt Ltd)",
+    "Non-Profit Organization (NPO / NGO)",
+    "Public Limited",
+    "Trust",
+    "Society",
+    "Individual / Sole Proprietor",
+    "Partnership Firm",
+    "Educational Institution (College/University-run)",
+    "Co-operative Society",
+  ];
   final ValueNotifier<String?> dropdownValue = ValueNotifier<String?>(null);
 
   String? emptyFieldValidator(String? value) {
@@ -242,7 +244,9 @@ class _CreateUnderOrganistionScreenState
                           width: itemWidth,
                           child: UploadSection(
                             label: sections[index],
-                            height: sections[index] == "Bank cheque" ? 32.h : 5.h,
+                            height: sections[index] == "Bank cheque"
+                                ? 32.h
+                                : 5.h,
                           ),
                         );
                       }),
@@ -256,7 +260,14 @@ class _CreateUnderOrganistionScreenState
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CancelButton(label: 'Cancel'),
-                    const BuildteamButton(label: 'Create'),
+                    BuildteamButton(
+                      label: 'Create',
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.addmembers);
+                      },
+                    ),
                   ],
                 ),
               ],
