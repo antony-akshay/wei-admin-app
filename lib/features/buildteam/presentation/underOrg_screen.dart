@@ -87,6 +87,7 @@ class _CreateUnderOrganistionScreenState
           BuildteamDropdown(
             items: _organisationType,
             selectedValueNotifier: dropdownValue,
+            hint: 'Select the type',
           ),
           SizedBox(height: 10.h),
           Requiredtext(

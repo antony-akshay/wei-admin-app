@@ -5,11 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class BuildteamDropdown extends StatefulWidget {
   final List<String> items;
   final ValueNotifier<String?> selectedValueNotifier;
+  final String hint;
 
   const BuildteamDropdown({
     super.key,
     required this.items,
     required this.selectedValueNotifier,
+    required this.hint
   });
 
   @override
@@ -28,7 +30,7 @@ class _BuildteamDropdownState extends State<BuildteamDropdown> {
           dropdownColor: const Color(0xFF1A1A1A),
           icon: Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 24.sp),
           hint: Text(
-            'Select the type',
+            widget.hint,
             style: GoogleFonts.urbanist(
               color: Colors.white.withOpacity(0.6),
               fontSize: 14.sp,
@@ -45,7 +47,7 @@ class _BuildteamDropdownState extends State<BuildteamDropdown> {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.white, width: 0.6),
+              borderSide: const BorderSide(color: Colors.white, width: 0.2),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),

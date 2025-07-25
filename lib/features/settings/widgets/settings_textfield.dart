@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuildteamTextfield extends StatelessWidget {
+class SettingsTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final String? Function(String?)? validator;
-  final GlobalKey<FormState> formKey;
+  // final GlobalKey<FormState> formKey;
 
-  const BuildteamTextfield({
+  const SettingsTextfield({
     super.key,
     required this.controller,
     required this.hintText,
     required this.validator,
-    required this.formKey,
+    // required this.formKey,
   });
 
   @override
@@ -29,7 +29,7 @@ class BuildteamTextfield extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          color: const Color(0xFFD0D0D0),
+          color: const Color.fromARGB(161, 208, 208, 208),
           fontFamily: 'Urbanist',
           fontWeight: FontWeight.w400,
           fontSize: 14.sp,
