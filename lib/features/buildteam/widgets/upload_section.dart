@@ -47,8 +47,8 @@ class _UploadSectionState extends State<UploadSection> {
           GestureDetector(
             onTap: pickfile,
             child: SizedBox(
-              width: 168.w,
-              height: 134.h,
+              width: 200.w,
+              height: 170.h,
               child: SvgPicture.asset('assets/images/upload_interface.svg'),
             ),
           ),
