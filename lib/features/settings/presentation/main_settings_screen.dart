@@ -13,12 +13,10 @@ class MainSettingsScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          // Added scroll support
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,7 +68,7 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                
+
                     sectionHeader('How to use Wie centre'),
                     SettingsTile(
                       title: 'Edit profile',
@@ -78,11 +76,12 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     SettingsTile(
                       title: 'Notifications settings',
-                      leadingIconPath: 'assets/icons/settings/notifications.svg',
+                      leadingIconPath:
+                          'assets/icons/settings/notifications.svg',
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                
+
                     sectionHeader('For professional use'),
                     SettingsTile(
                       title: 'Third party account linking',
@@ -98,7 +97,7 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                
+
                     sectionHeader('What you see'),
                     SettingsTile(
                       title: 'Languages and region',
@@ -106,11 +105,12 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                
+
                     sectionHeader('Your activity'),
                     SettingsTile(
                       title: 'Events hosted',
-                      leadingIconPath: 'assets/icons/settings/events_hosted.svg',
+                      leadingIconPath:
+                          'assets/icons/settings/events_hosted.svg',
                     ),
                     SettingsTile(
                       title: 'Bank accounts',
@@ -122,7 +122,7 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                
+
                     sectionHeader('Who can see your content'),
                     SettingsTile(
                       title: 'Account privacy',
@@ -253,9 +253,9 @@ class GlowingDivider extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.white.withOpacity(0.05), // Start subtle
-            Colors.white.withOpacity(0.2), // Peak glow
-            Colors.white.withOpacity(0.05), // End subtle
+            Colors.white.withOpacity(0.05),
+            Colors.white.withOpacity(0.2),
+            Colors.white.withOpacity(0.05),
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
