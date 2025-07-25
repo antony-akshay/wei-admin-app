@@ -15,4 +15,5 @@ class AppRouteNames {
   static const String addmembers = "add_members";
   static const String admin_profile = "admin_profile";
   static const String othersProfileScreen = "others_Profile_Screen";
+  static const String mainSettings = "main_settings";
 }

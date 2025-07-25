@@ -74,6 +74,7 @@ flutter:
     - assets/icons/common/
     - assets/icons/chat/
     - assets/icons/profile/
+    - assets/icons/settings/
     - assets/images/
     - assets/img/
   # An image asset can refer to one or more resolution-specific "variants", see

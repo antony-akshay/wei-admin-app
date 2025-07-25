@@ -6,6 +6,7 @@ import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -21,7 +22,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/others_profile",
+    initialLocation: "/main_settings",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -137,6 +138,12 @@ class AppRouteConfiguration {
         path: '/others_profile',
         pageBuilder: (context, state) =>
             MaterialPage(child: OthersProfileScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.mainSettings,
+        path: '/main_settings',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: MainSettingsScreen()),
       ),
     ],
   );
