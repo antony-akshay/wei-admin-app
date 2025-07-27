@@ -43,8 +43,11 @@ class PersonalDetailsScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/arrow_back.svg",
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/arrow_back.svg",
+                      ),
                     ),
                     SizedBox(width: 10.w),
                     Expanded(

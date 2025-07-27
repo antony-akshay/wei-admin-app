@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
 import 'package:wei_admin/features/profile/widgets/grey_button.dart';
 import 'package:wei_admin/features/settings/widgets/settings_textfield.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
-class TwoFactorOtpScreen extends StatelessWidget {
-  TwoFactorOtpScreen({super.key});
+class TwoFactorCodeScreen extends StatelessWidget {
+  TwoFactorCodeScreen({super.key});
 
   final TextEditingController _idController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -20,12 +22,12 @@ class TwoFactorOtpScreen extends StatelessWidget {
     return null;
   }
 
-  void _handleSendTap(BuildContext context) {
+  bool _handleSendTap(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Sending OTP...")));
-    } else {}
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -42,8 +44,11 @@ class TwoFactorOtpScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/arrow_back.svg",
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/arrow_back.svg",
+                      ),
                     ),
                     SizedBox(width: 10.w),
                     Expanded(
@@ -89,12 +94,24 @@ class TwoFactorOtpScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GreyButton(label: 'Back', width: 167, height: 42),
+                    GreyButton(
+                      label: 'Back',
+                      width: 167,
+                      height: 42,
+                      onTap: () => Navigator.pop(context),
+                    ),
                     ColorButton(
                       label: 'Send',
                       width: 167,
                       height: 42,
-                      onTap: () => _handleSendTap(context),
+                      // onTap: () => _handleSendTap(context),
+                      onTap: () {
+                        if (_handleSendTap(context)) {
+                          GoRouter.of(
+                            context,
+                          ).pushNamed(AppRouteNames.twofactor);
+                        }
+                      },
                     ),
                   ],
                 ),

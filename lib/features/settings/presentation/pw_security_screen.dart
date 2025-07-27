@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class PwSecurityScreen extends StatelessWidget {
   const PwSecurityScreen({super.key});
@@ -20,8 +22,11 @@ class PwSecurityScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomInnerShadowIconButton(
-                    iconPath: "assets/icons/common/arrow_back.svg",
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: CustomInnerShadowIconButton(
+                      iconPath: "assets/icons/common/arrow_back.svg",
+                    ),
                   ),
                   SizedBox(width: 10.w),
                   Expanded(
@@ -59,10 +64,17 @@ class PwSecurityScreen extends StatelessWidget {
                   children: [
                     sectionHeader('Login & recovery'),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.changePw);
+                      },
                       title: 'Change password',
-                      leadingIconPath: 'assets/icons/settings/change_password.svg',
+                      leadingIconPath:
+                          'assets/icons/settings/change_password.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.twofactor);
+                      },
                       title: 'Two-factor authentication',
                       leadingIconPath: 'assets/icons/settings/2factor.svg',
                     ),
@@ -77,8 +89,7 @@ class PwSecurityScreen extends StatelessWidget {
 
                     SettingsTile(
                       title: 'Where you’re logged in',
-                      leadingIconPath:
-                          'assets/icons/settings/where.svg',
+                      leadingIconPath: 'assets/icons/settings/where.svg',
                     ),
                     SettingsTile(
                       title: 'Login alerts',
@@ -86,7 +97,8 @@ class PwSecurityScreen extends StatelessWidget {
                     ),
                     SettingsTile(
                       title: 'Security questions',
-                      leadingIconPath: 'assets/icons/settings/sec_questions.svg',
+                      leadingIconPath:
+                          'assets/icons/settings/sec_questions.svg',
                     ),
                     SettingsTile(
                       title: 'Recent emails',

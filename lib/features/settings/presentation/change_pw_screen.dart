@@ -64,8 +64,11 @@ class ChangePwScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/arrow_back.svg",
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/arrow_back.svg",
+                      ),
                     ),
                     SizedBox(width: 10.w),
                     Expanded(
@@ -161,7 +164,9 @@ class ChangePwScreen extends StatelessWidget {
                         height: 42,
                         width: 167,
                         onTap: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            
+                          }
                         },
                       ),
                     ],

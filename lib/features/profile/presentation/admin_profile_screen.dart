@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
@@ -11,6 +12,7 @@ import 'package:wei_admin/features/profile/widgets/event_card.dart';
 import 'package:wei_admin/features/profile/widgets/Admin_profile_card.dart';
 import 'package:wei_admin/features/profile/widgets/profile_groups.dart';
 import 'package:wei_admin/features/profile/widgets/user_card.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class AdminProfileScreen extends StatelessWidget {
   const AdminProfileScreen({super.key});
@@ -23,13 +25,15 @@ class AdminProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 12,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
-                      
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 3.0),
@@ -44,8 +48,13 @@ class AdminProfileScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/settings.svg",
+                    GestureDetector(
+                      onTap: () => {
+                        GoRouter.of(context).pushNamed(AppRouteNames.mainSettings),
+                      },
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/settings.svg",
+                      ),
                     ),
                   ],
                 ),
@@ -100,10 +109,9 @@ class AdminProfileScreen extends StatelessWidget {
                             padding: EdgeInsetsGeometry.all(8),
                             child: CustomText(
                               text: 'See all',
-                                fontColor: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                              
+                              fontColor: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
@@ -112,7 +120,7 @@ class AdminProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -136,7 +144,7 @@ class AdminProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               EventNavBar(),
               GridView.builder(
                 shrinkWrap: true,
@@ -180,31 +188,31 @@ class _EventNavBarState extends State<EventNavBar> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
         decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        borderRadius: BorderRadius.circular(12.r),
-        border: GradientBoxBorder(
-          gradient: const LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [Color(0xFF343434), Color(0xFF171717)],
+          color: AppColors.backgroundColor,
+          borderRadius: BorderRadius.circular(12.r),
+          border: GradientBoxBorder(
+            gradient: const LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [Color(0xFF343434), Color(0xFF171717)],
+            ),
+            width: 2.w,
           ),
-          width: 2.w,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(41),
+              offset: const Offset(8, 8),
+              blurRadius: 12.w,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.white.withAlpha(10),
+              offset: const Offset(-8, -8),
+              blurRadius: 12.w,
+              spreadRadius: 0,
+            ),
+          ],
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(41),
-            offset: const Offset(8, 8),
-            blurRadius: 12.w,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: Colors.white.withAlpha(10),
-            offset: const Offset(-8, -8),
-            blurRadius: 12.w,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(navItems.length, (index) {

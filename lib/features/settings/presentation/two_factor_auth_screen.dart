@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
 import 'package:wei_admin/features/profile/widgets/grey_button.dart';
 import 'package:wei_admin/features/settings/widgets/settings_textfield.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class TwoFactorAuthScreen extends StatelessWidget {
   TwoFactorAuthScreen({super.key});
@@ -38,8 +40,11 @@ class TwoFactorAuthScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/arrow_back.svg",
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/arrow_back.svg",
+                      ),
                     ),
                     SizedBox(width: 10.w),
                     Expanded(
@@ -101,13 +106,22 @@ class TwoFactorAuthScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    GreyButton(label: 'Back', width: 167, height: 42),
+                    GreyButton(
+                      label: 'Back',
+                      width: 167,
+                      height: 42,
+                      onTap: () => Navigator.pop(context),
+                    ),
                     ColorButton(
                       label: 'Next',
                       width: 167,
                       height: 42,
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                          GoRouter.of(
+                            context,
+                          ).pushNamed(AppRouteNames.twofactorcodesend);
+                        }
                       },
                     ),
                   ],
