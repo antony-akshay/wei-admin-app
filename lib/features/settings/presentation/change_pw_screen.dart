@@ -11,9 +11,11 @@ import 'package:wei_admin/features/settings/widgets/settings_textfield.dart';
 class ChangePwScreen extends StatelessWidget {
   ChangePwScreen({super.key});
 
-  TextEditingController _currentpwController = TextEditingController();
-  TextEditingController _newpwController = TextEditingController();
-  TextEditingController _renewpwController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _currentpwController = TextEditingController();
+  final TextEditingController _newpwController = TextEditingController();
+  final TextEditingController _renewpwController = TextEditingController();
 
   String? passwordValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -37,118 +39,136 @@ class ChangePwScreen extends StatelessWidget {
     return null;
   }
 
+  String? confirmPasswordValidator(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'This field is required';
+    }
+    if (value != _newpwController.text) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomInnerShadowIconButton(
-                    iconPath: "assets/icons/common/arrow_back.svg",
-                  ),
-                  SizedBox(width: 10.w),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Change password',
-                          style: GoogleFonts.urbanist(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 4.h),
-                        Text(
-                          'Choose a new password to enhance your account’s protection.',
-                          style: GoogleFonts.urbanist(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(129, 129, 129, 1),
-                          ),
-                        ),
-                      ],
+          child: Form(
+            key: _formKey, // 👈 Assign the form key
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomInnerShadowIconButton(
+                      iconPath: "assets/icons/common/arrow_back.svg",
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 30),
-              CustomText(
-                text: 'Current password',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              SizedBox(height: 15),
-              ObscureTextField(
-                controller: _currentpwController,
-                hintText: "Enter your password",
-                validator: passwordValidator,
-                visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-                hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-              ),
-              SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomText(
-                    text: 'Forgot password?',
-                    fontColor: Color.fromRGBO(129, 129, 129, 1),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
-              ),
-              SizedBox(height: 40),
-              CustomText(
-                text: 'New password',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              SizedBox(height: 15),
-              ObscureTextField(
-                controller: _newpwController,
-                hintText: "Enter new your password",
-                validator: passwordValidator,
-                visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-                hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-              ),
-              SizedBox(height: 25),
-              CustomText(
-                text: 'Confirm password',
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-              SizedBox(height: 15),
-              ObscureTextField(
-                controller: _renewpwController,
-                hintText: "Re-enter your password",
-                validator: passwordValidator,
-                visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-                hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
-              ),
-              SizedBox(height: 60),
-              Expanded(
-                child: Padding(
+                    SizedBox(width: 10.w),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Change password',
+                            style: GoogleFonts.urbanist(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 4.h),
+                          Text(
+                            'Choose a new password to enhance your account’s protection.',
+                            style: GoogleFonts.urbanist(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              color: const Color.fromRGBO(129, 129, 129, 1),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                CustomText(
+                  text: 'Current password',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+                SizedBox(height: 15),
+                ObscureTextField(
+                  controller: _currentpwController,
+                  hintText: "Enter your password",
+                  validator: passwordValidator,
+                  visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                  hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CustomText(
+                      text: 'Forgot password?',
+                      fontColor: const Color.fromRGBO(129, 129, 129, 1),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                CustomText(
+                  text: 'New password',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+                SizedBox(height: 15),
+                ObscureTextField(
+                  controller: _newpwController,
+                  hintText: "Enter your new password",
+                  validator: passwordValidator,
+                  visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                  hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                ),
+                SizedBox(height: 25),
+                CustomText(
+                  text: 'Confirm password',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+                SizedBox(height: 15),
+                ObscureTextField(
+                  controller: _renewpwController,
+                  hintText: "Re-enter your password",
+                  validator: confirmPasswordValidator,
+                  visibleIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                  hiddenIcon: SvgPicture.asset('assets/icons/settings/pw.svg'),
+                ),
+                const Spacer(),
+                Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       GreyButton(label: 'Cancel', width: 167, height: 42),
-                      ColorButton(label: 'Save', height: 42, width: 167),
+                      ColorButton(
+                        label: 'Save',
+                        height: 42,
+                        width: 167,
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {}
+                        },
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
