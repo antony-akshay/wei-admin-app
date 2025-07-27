@@ -45,12 +45,12 @@ class GreyButton extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withAlpha(100), // 16%
+              color: Colors.black.withAlpha(100),
               offset: const Offset(6, 6),
               blurRadius: 12,
             ),
             BoxShadow(
-              color: Colors.white.withAlpha(20), // 4%
+              color: Colors.white.withAlpha(20),
               offset: const Offset(-6, -6),
               blurRadius: 12,
             ),

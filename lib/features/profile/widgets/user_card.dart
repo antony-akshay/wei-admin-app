@@ -148,7 +148,7 @@ class UserCard extends StatelessWidget {
           //     ),
           //   ),
           // )
-          ColorButton(label: 'Follow +'),
+          ColorButton(label: 'Follow +',width: 100,height: 32,),
         ],
       ),
     );

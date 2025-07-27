@@ -6,6 +6,7 @@ import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
@@ -24,7 +25,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/personal_details",
+    initialLocation: "/change_pw",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -158,6 +159,12 @@ class AppRouteConfiguration {
         path: '/pw_security',
         pageBuilder: (context, state) =>
             MaterialPage(child: PwSecurityScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.changePw,
+        path: '/change_pw',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ChangePwScreen()),
       ),
     ],
   );

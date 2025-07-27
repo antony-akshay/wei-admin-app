@@ -9,9 +9,8 @@ class ColorButton extends StatelessWidget {
   final bool isLoading;
   final Function()? onTap;
 
-  // Optional size and text customization
-  final double? height;
-  final double? width;
+  final double width;
+  final double height;
   final double? textSize;
   final Color? textColor;
   final FontWeight? textWeight;
@@ -20,10 +19,10 @@ class ColorButton extends StatelessWidget {
   const ColorButton({
     super.key,
     required this.label,
+    required this.width,
+    required this.height,
     this.onTap,
     this.isLoading = false,
-    this.height,
-    this.width,
     this.textSize,
     this.textColor,
     this.textWeight,
@@ -35,8 +34,8 @@ class ColorButton extends StatelessWidget {
     return GestureDetector(
       onTap: isLoading ? null : onTap,
       child: Container(
-        height: height ?? 42.w,
-        width: width ?? 167.w,
+        width: width.w,
+        height: height.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(33.r),
           border: GradientBoxBorder(

@@ -18,4 +18,5 @@ class AppRouteNames {
   static const String mainSettings = "main_settings";
   static const String personlDetails = "personal_details";
   static const String pwSecurity = "pw_security";
+  static const String changePw = "change_pw";
 }

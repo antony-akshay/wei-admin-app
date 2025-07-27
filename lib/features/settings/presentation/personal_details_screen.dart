@@ -251,7 +251,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GreyButton(label: 'Cancel', width: 167, height: 42),
-                          ColorButton(label: 'Save', height: 42),
+                          ColorButton(label: 'Save', width: 167, height: 42),
                         ],
                       ),
                     ],
