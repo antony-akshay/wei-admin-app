@@ -10,6 +10,7 @@ import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -25,7 +26,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/change_pw",
+    initialLocation: "/two_factor",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -165,6 +166,12 @@ class AppRouteConfiguration {
         path: '/change_pw',
         pageBuilder: (context, state) =>
             MaterialPage(child: ChangePwScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.twofactor,
+        path: '/two_factor',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorAuthScreen()),
       ),
     ],
   );
