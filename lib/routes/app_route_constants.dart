@@ -25,4 +25,5 @@ class AppRouteNames {
   static const String SaveLoginInfo = "save_login_info";
   static const String LoginHistory = "login_history";
   static const String LoginAlert = "login_alert";
+  static const String secQuestions = "sec_questions";
 }

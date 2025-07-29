@@ -13,6 +13,7 @@ import 'package:wei_admin/features/settings/presentation/main_settings_screen.da
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
+import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_otp_screen.dart';
@@ -31,7 +32,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/login_alert",
+    initialLocation: "/sec_questions",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -207,6 +208,12 @@ class AppRouteConfiguration {
         path: '/login_alert',
         pageBuilder: (context, state) =>
             MaterialPage(child: LoginAlertsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.secQuestions,
+        path: '/sec_questions',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SecurityQuestionsScreen()),
       ),
     ],
   );
