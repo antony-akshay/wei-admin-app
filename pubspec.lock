@@ -121,7 +121,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-  cross_file:
+   cross_file:
     dependency: transitive
     description:
       name: cross_file
@@ -217,7 +217,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-  file:
+file:
     dependency: transitive
     description:
       name: file
@@ -1013,6 +1013,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      sha256: "66814138c3562338d05613a6e368ed8cfb237ad6d64a9e9334be3f309acfca03"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.14.0"
   xdg_directories:
     dependency: transitive
     description:

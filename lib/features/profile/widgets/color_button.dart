@@ -4,26 +4,25 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 
-class BuildteamButton extends StatelessWidget {
+class ColorButton extends StatelessWidget {
   final String label;
   final bool isLoading;
   final Function()? onTap;
 
-  // Optional custom styling and sizing
-  final double? height;
-  final double? width;
+  final double width;
+  final double height;
   final double? textSize;
   final Color? textColor;
   final FontWeight? textWeight;
   final String? textFamily;
 
-  const BuildteamButton({
+  const ColorButton({
     super.key,
     required this.label,
+    required this.width,
+    required this.height,
     this.onTap,
     this.isLoading = false,
-    this.height,
-    this.width,
     this.textSize,
     this.textColor,
     this.textWeight,
@@ -33,23 +32,18 @@ class BuildteamButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: isLoading ? null : onTap,
       child: Container(
-        height: height ?? 42.w,
-        width: width ?? 167.w,
+        width: width.w,
+        height: height.h,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromARGB(255, 162, 137, 254),
-              Color.fromARGB(228, 92, 80, 254),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
           borderRadius: BorderRadius.circular(33.r),
           border: GradientBoxBorder(
             gradient: const LinearGradient(
-              colors: [Color.fromARGB(228, 92, 80, 254), Color(0xFF8B6EF2)],
+              colors: [
+                Color.fromARGB(228, 92, 80, 254),
+                Color(0xFF8B6EF2),
+              ],
             ),
             width: 1,
           ),
@@ -66,19 +60,32 @@ class BuildteamButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Center(
-          child: isLoading
-              ? LoadingAnimationWidget.staggeredDotsWave(
-                  color: Colors.white,
-                  size: 30.h,
-                )
-              : CustomText(
-                  text: label,
-                  fontSize: textSize ?? 12.sp,
-                  fontColor: textColor ?? Colors.white,
-                  fontWeight: textWeight ?? FontWeight.w500,
-                  fontFamily: textFamily ?? 'Urbanist',
-                ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromARGB(255, 162, 137, 254),
+                Color.fromARGB(228, 92, 80, 254),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.circular(33.r),
+          ),
+          child: Center(
+            child: isLoading
+                ? LoadingAnimationWidget.staggeredDotsWave(
+                    color: Colors.white,
+                    size: 30.h,
+                  )
+                : CustomText(
+                    text: label,
+                    fontSize: textSize ?? 12.sp,
+                    fontColor: textColor ?? Colors.white,
+                    fontWeight: textWeight ?? FontWeight.w500,
+                    fontFamily: textFamily ?? 'Urbanist',
+                  ),
+          ),
         ),
       ),
     );

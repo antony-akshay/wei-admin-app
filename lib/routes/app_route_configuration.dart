@@ -2,8 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
-import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
+import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
+import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
+import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
+import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
+import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_visuals_to_your_event_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/describe_your_event_screen.dart';
@@ -130,10 +138,117 @@ class AppRouteConfiguration {
             MaterialPage(child: BuildTeamScreen1()),
       ),
       GoRoute(
-        name: AppRouteNames.buildTeam2,
-        path: '/build_team_screen2',
+        name: AppRouteNames.addmembers,
+        path: '/add_members',
         pageBuilder: (context, state) =>
-            MaterialPage(child: BuildTeamScreen2()),
+            MaterialPage(child: AddmembersScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.admin_profile,
+        path: '/admin_profile',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AdminProfileScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.othersProfileScreen,
+        path: '/others_profile',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: OthersProfileScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.mainSettings,
+        path: '/main_settings',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: MainSettingsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.personlDetails,
+        path: '/personal_details',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PersonalDetailsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.pwSecurity,
+        path: '/pw_security',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PwSecurityScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.changePw,
+        path: '/change_pw',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ChangePwScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.twofactor,
+        path: '/two_factor',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorAuthScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.twofactorcodesend,
+        path: '/two_factor_code_send',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorCodeScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.viewContact,
+        path: '/view_contact',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ViewContactScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.eventCreationYesOrNo,
+        path: '/event_creation_yes_or_no',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventCreationYesOrNoScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.eventBasics,
+        path: '/event_basics',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventBasicsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.pinThePlace,
+        path: '/pin_the_place',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PinThePlaceScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.guestYesOrNo,
+        path: '/guest_yes_or_no',
+        pageBuilder: (context, state) => MaterialPage(child: GuestYesOrNo()),
+      ),
+      GoRoute(
+        name: AppRouteNames.guestDetailsAdding,
+        path: '/guest_details_adding',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: GuestDetailsAddingScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.editGuest,
+        path: '/edit_guest',
+        pageBuilder: (context, state) => MaterialPage(child: EditGuestScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.whenItHappening,
+        path: '/when_it_happening',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: WhenItHappeningScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.describeYourEvent,
+        path: '/describe_your_event',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DescribeYourEventScreen()),
+      ),
+
+      GoRoute(
+        name: AppRouteNames.AddVisualsToYourEvent,
+        path: '/add_visuals_to_your_event',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AddVisualsToYourEventScreen()),
       ),
       GoRoute(
         name: AppRouteNames.viewContact,

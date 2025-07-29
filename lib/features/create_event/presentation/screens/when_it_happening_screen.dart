@@ -199,7 +199,7 @@ class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
                               );
                             },
                             child: SvgPicture.asset(
-                              "assets/icons/common/calendar.svg",
+                              "assets/icons/common/calendar2.svg",
                             ),
                           ),
                         ),
@@ -260,7 +260,7 @@ class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
                                                 await _pickDate(context);
                                           },
                                           child: SvgPicture.asset(
-                                            "assets/icons/common/calendar.svg",
+                                            "assets/icons/common/calendar2.svg",
                                           ),
                                         ),
                                       ),

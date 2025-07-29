@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
@@ -14,6 +15,7 @@ class OnboardScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // Background Image
           Positioned.fill(
             child: Image.asset(
               'assets/img/signup1_img_1.jpg',
@@ -21,53 +23,50 @@ class OnboardScreen extends StatelessWidget {
             ),
           ),
 
+          // Semi-transparent overlay
           Positioned.fill(
             child: Container(color: Color.fromARGB(102, 0, 0, 0)),
           ),
 
+          // Scrollable content
           SingleChildScrollView(
             child: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 48,
-              ),
+              height: 1.sh,
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 48.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 18),
+                      SizedBox(height: 18.h),
                       Center(child: LogoWidget()),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: 24.h),
 
                       SizedBox(
-                        height: 165,
+                        height: 165.h,
                         width: double.infinity,
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
                             Positioned(
-                              left: 30,
+                              left: 30.w,
                               child: Transform.rotate(
                                 angle: -0.2,
                                 child: Container(
-                                  width: 140,
-                                  height: 140,
+                                  width: 140.w,
+                                  height: 140.w,
                                   decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    borderRadius: BorderRadius.circular(23),
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(23.r),
                                     border: Border.all(
                                       color: Colors.white,
-                                      width: 1.5,
+                                      width: 1.5.w,
                                     ),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadiusGeometry.circular(
-                                      20,
-                                    ),
+                                    borderRadius: BorderRadius.circular(20.r),
                                     child: Image.asset(
                                       'assets/img/signup1_img_3.jpg',
                                       fit: BoxFit.cover,
@@ -77,24 +76,22 @@ class OnboardScreen extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              right: 30,
+                              right: 30.w,
                               child: Transform.rotate(
                                 angle: 0.2,
                                 child: Container(
-                                  width: 140,
-                                  height: 140,
+                                  width: 140.w,
+                                  height: 140.w,
                                   decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    borderRadius: BorderRadius.circular(23),
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(23.r),
                                     border: Border.all(
                                       color: Colors.white,
-                                      width: 1.5,
+                                      width: 1.5.w,
                                     ),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadiusGeometry.circular(
-                                      20,
-                                    ),
+                                    borderRadius: BorderRadius.circular(20.r),
                                     child: Image.asset(
                                       'assets/img/signup1_img_2.jpg',
                                       fit: BoxFit.cover,
@@ -105,22 +102,20 @@ class OnboardScreen extends StatelessWidget {
                             ),
                             Positioned(
                               child: Padding(
-                                padding: const EdgeInsets.only(bottom: 14.0),
+                                padding: EdgeInsets.only(bottom: 14.h),
                                 child: Container(
-                                  width: 150,
-                                  height: 150,
+                                  width: 150.w,
+                                  height: 150.w,
                                   decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    borderRadius: BorderRadius.circular(23),
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(23.r),
                                     border: Border.all(
                                       color: Colors.white,
-                                      width: 1.5,
+                                      width: 1.5.w,
                                     ),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadiusGeometry.circular(
-                                      20,
-                                    ),
+                                    borderRadius: BorderRadius.circular(20.r),
                                     child: Image.asset(
                                       'assets/img/signup1_img_1.jpg',
                                       fit: BoxFit.cover,
@@ -133,33 +128,33 @@ class OnboardScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 25),
+                      SizedBox(height: 25.h),
 
                       Text(
                         'We is ready for hosting your',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontStyle: FontStyle.italic,
                           fontFamily: 'playwrite',
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Text(
                         'extraordinary events and meetings',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontStyle: FontStyle.italic,
                           fontFamily: 'playwrite',
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      SizedBox(height: 15.h),
                       Text(
                         'Host your public and private events!',
                         style: GoogleFonts.urbanist(
                           color: const Color.fromARGB(255, 215, 214, 214),
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -169,7 +164,7 @@ class OnboardScreen extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height: 50,
+                        height: 50.h,
                         width: double.infinity,
                         child: OutlinedButton(
                           onPressed: () {
@@ -178,30 +173,33 @@ class OnboardScreen extends StatelessWidget {
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(41),
+                              borderRadius: BorderRadius.circular(41.r),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            padding: EdgeInsets.symmetric(vertical: 16.h),
                           ),
                           child: Text(
                             'Signin',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                            ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
                       Container(
-                        height: 50,
+                        height: 50.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              const Color.fromRGBO(30, 18, 66, 1),
-                              const Color.fromRGBO(101, 73, 184, 1),
+                              Color.fromRGBO(30, 18, 66, 1),
+                              Color.fromRGBO(101, 73, 184, 1),
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(41),
+                          borderRadius: BorderRadius.circular(41.r),
                         ),
                         child: ElevatedButton(
                           onPressed: () {
@@ -213,13 +211,16 @@ class OnboardScreen extends StatelessWidget {
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(41),
+                              borderRadius: BorderRadius.circular(41.r),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            padding: EdgeInsets.symmetric(vertical: 16.h),
                           ),
                           child: Text(
                             'Get start',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                            ),
                           ),
                         ),
                       ),

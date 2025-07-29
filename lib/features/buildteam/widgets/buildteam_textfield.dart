@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildteamTextfield extends StatelessWidget {
   final TextEditingController controller;
@@ -11,7 +12,7 @@ class BuildteamTextfield extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.validator,
-    required this.formKey
+    required this.formKey,
   });
 
   @override
@@ -19,49 +20,44 @@ class BuildteamTextfield extends StatelessWidget {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
-      style: const TextStyle(
+      style: TextStyle(
         color: Colors.white,
         fontFamily: 'Urbanist',
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.sp,
       ),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(
-          color: Color(0xFFD0D0D0),
+        hintStyle: TextStyle(
+          color: const Color(0xFFD0D0D0),
           fontFamily: 'Urbanist',
           fontWeight: FontWeight.w400,
-          fontSize: 14,
+          fontSize: 14.sp,
         ),
         filled: true,
-        fillColor: const Color.fromRGBO(33, 36, 38, 1), // dark background
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 18,
+        fillColor: const Color.fromRGBO(33, 36, 38, 1),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 18.h,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.white, width: 0.6),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: BorderSide(color: Colors.white, width: 0.2.w),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.white, width: 0.6),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: BorderSide(color: Colors.white, width: 0.6.w),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: BorderSide(color: Colors.red, width: 0.6.w),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.redAccent),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: BorderSide(color: Colors.redAccent, width: 0.6.w),
         ),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'GST number is required';
-        }
-        return null;
-      },
+      validator: validator,
     );
   }
 }
