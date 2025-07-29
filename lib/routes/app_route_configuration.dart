@@ -5,9 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/describe_your_event_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/edit_guest_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/event_basics_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/event_creation_yes_or_no_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/guest_details_adding_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/guest_yes_or_no.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/pin_the_place_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/when_it_happening_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -24,7 +29,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/event_creation_yes_or_no",
+    initialLocation: "/when_it_happening",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -152,6 +157,34 @@ class AppRouteConfiguration {
         path: '/pin_the_place',
         pageBuilder: (context, state) =>
             MaterialPage(child: PinThePlaceScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.guestYesOrNo,
+        path: '/guest_yes_or_no',
+        pageBuilder: (context, state) => MaterialPage(child: GuestYesOrNo()),
+      ),
+      GoRoute(
+        name: AppRouteNames.guestDetailsAdding,
+        path: '/guest_details_adding',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: GuestDetailsAddingScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.editGuest,
+        path: '/edit_guest',
+        pageBuilder: (context, state) => MaterialPage(child: EditGuestScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.whenItHappening,
+        path: '/when_it_happening',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: WhenItHappeningScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.describeYourEvent,
+        path: '/describe_your_event',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DescribeYourEventScreen()),
       ),
     ],
   );

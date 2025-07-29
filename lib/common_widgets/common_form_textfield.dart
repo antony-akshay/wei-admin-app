@@ -6,12 +6,15 @@ class CommonFormTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final String? Function(String?)? validator;
+  final Widget? suffix;
+  final int? maxLines;
 
   const CommonFormTextfield({
     super.key,
     required this.controller,
     required this.hint,
     this.validator,
+    this.suffix, this.maxLines,
   });
 
   @override
@@ -19,6 +22,7 @@ class CommonFormTextfield extends StatelessWidget {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
+      maxLines: maxLines,
       style: const TextStyle(
         color: Colors.white,
         fontFamily: 'Urbanist',
@@ -34,7 +38,7 @@ class CommonFormTextfield extends StatelessWidget {
           fontSize: 14.sp,
         ),
         filled: true,
-        fillColor: const Color.fromRGBO(33, 36, 38, 1), // dark background
+        fillColor: Colors.transparent,
         contentPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -52,14 +56,9 @@ class CommonFormTextfield extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.redAccent),
         ),
+        suffixIcon: suffix,
       ),
-      validator:
-          validator ??
-          (value) {
-            if (value == null || value.isEmpty) {
-              return '$hint is required';
-            }
-          },
+      validator: validator,
     );
   }
 }

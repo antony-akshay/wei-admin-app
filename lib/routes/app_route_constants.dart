@@ -16,5 +16,10 @@ class AppRouteNames {
   static const String viewContact = "view_contact";
   static const String eventCreationYesOrNo = "event_creation_yes_or_no";
   static const String eventBasics = "event_basics";
-   static const String pinThePlace = "pin_the_place";
+  static const String pinThePlace = "pin_the_place";
+  static const String guestYesOrNo = "guest_yes_or_no";
+  static const String guestDetailsAdding = "guest_details_adding";
+  static const String editGuest = "edit_guest";
+  static const String whenItHappening = "when_it_happening";
+  static const String describeYourEvent = "describe_your_event";
 }
