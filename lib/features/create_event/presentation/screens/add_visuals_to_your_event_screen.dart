@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wei_admin/common_widgets/browse_files_card.dart';
 import 'package:wei_admin/common_widgets/common_form_dropdown.dart';
 import 'package:wei_admin/common_widgets/common_form_textfield.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_button.dart';
@@ -11,8 +12,8 @@ import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/create_event/presentation/widgets/top_section_card.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
-class AddVisualsToYourEventsScreen extends StatelessWidget {
-  AddVisualsToYourEventsScreen({super.key});
+class AddVisualsToYourEventScreen extends StatelessWidget {
+  AddVisualsToYourEventScreen({super.key});
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -46,13 +47,20 @@ class AddVisualsToYourEventsScreen extends StatelessWidget {
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/add_visuals.svg",
                       progress: "Step 6/6",
-                      title: "Describe Your Event",
-                      description:
-                          "Give a brief overview of your event for attendees.",
+                      title: "Add Visuals to Your Event",
+                      description: "Upload photos, videos, or banners",
                     ),
                   ),
                   SizedBox(height: 32.h),
-
+                  Row(
+                    children: [
+                      BrowseFilesCard(title: "Event logo*"),
+                      SizedBox(width: 16.w),
+                      BrowseFilesCard(title: "Banner image*"),
+                    ],
+                  ),
+                  SizedBox(height: 32.h),
+                  BrowseFilesCard(title: "Images and videos*"),
                   SizedBox(height: 84.h),
                   Row(
                     children: [
@@ -78,6 +86,7 @@ class AddVisualsToYourEventsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 68.h),
                 ],
               ),
             ),

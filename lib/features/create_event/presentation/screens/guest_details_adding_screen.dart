@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wei_admin/common_widgets/browse_files_card.dart';
 import 'package:wei_admin/common_widgets/common_form_dropdown.dart';
 import 'package:wei_admin/common_widgets/common_form_textfield.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_button.dart';
@@ -163,87 +164,8 @@ class _GuestDetailsAddingScreenState extends State<GuestDetailsAddingScreen> {
                         hint: "Enter any social media links",
                       ),
                       SizedBox(height: 32.h),
-                      CustomText(
-                        text: "Guest image",
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      SizedBox(height: 8.h),
-                      Column(
-                        children: [
-                          DottedBorder(
-                            options: RoundedRectDottedBorderOptions(
-                              dashPattern: [10, 5],
-                              strokeWidth: 0.5.sp,
-                              radius: Radius.circular(12.r),
-                              color: AppColors.mainFontColor,
-                            ),
 
-                            child: Container(
-                              height: 134.h,
-                              // width: 169.w,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 24.w,
-                                  vertical: 16.h,
-                                ),
-                                child: Column(
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/icons/common/upload.svg",
-                                      height: 24.sp,
-                                      width: 24.sp,
-                                    ),
-                                    CustomText(
-                                      text: "Click to upload\nor\nbrowse",
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w400,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Spacer(),
-                                    CustomText(
-                                      text: "max size 1MB(.png,.jpg)",
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w400,
-                                      fontColor: AppColors.secondaryFontColor,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 16.h),
-                          Container(
-                            height: 42.h,
-                            decoration: BoxDecoration(
-                              color: AppColors.modalColor,
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  CustomText(
-                                    text: "Image.png",
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  SizedBox(
-                                    width: 73.w,
-                                  ), // this may change according to screen size
-                                  Icon(
-                                    Icons.close_rounded,
-                                    color: AppColors.mainFontColor,
-                                    size: 16.sp,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      BrowseFilesCard(title: "Guest image"),
                       SizedBox(height: 32.h),
                       GestureDetector(
                         onTap: () {

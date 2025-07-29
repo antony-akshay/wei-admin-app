@@ -112,7 +112,7 @@ class DescribeYourEventScreen extends StatelessWidget {
                             if (_formKey.currentState!.validate()) {
                               GoRouter.of(
                                 context,
-                              ).pushNamed(AppRouteNames.pinThePlace);
+                              ).pushNamed(AppRouteNames.AddVisualsToYourEvent);
                             }
                           },
                           label: "Save and continue",

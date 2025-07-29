@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen1.dart';
 import 'package:wei_admin/features/buildteam/presentation/build_team_screen2.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/add_visuals_to_your_event_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/describe_your_event_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/edit_guest_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/event_basics_screen.dart';
@@ -29,7 +30,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/when_it_happening",
+    initialLocation: "/describe_your_event",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -185,6 +186,13 @@ class AppRouteConfiguration {
         path: '/describe_your_event',
         pageBuilder: (context, state) =>
             MaterialPage(child: DescribeYourEventScreen()),
+      ),
+
+      GoRoute(
+        name: AppRouteNames.AddVisualsToYourEvent,
+        path: '/add_visuals_to_your_event',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AddVisualsToYourEventScreen()),
       ),
     ],
   );
