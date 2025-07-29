@@ -10,8 +10,10 @@ import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
+import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_otp_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -27,7 +29,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/admin_profile",
+    initialLocation: "/save_login_info",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -179,6 +181,18 @@ class AppRouteConfiguration {
         path: '/two_factor_code_send',
         pageBuilder: (context, state) =>
             MaterialPage(child: TwoFactorCodeScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.twofactorotp,
+        path: '/OTPInputScreen',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorOtpScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.SaveLoginInfo,
+        path: '/save_login_info',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SaveLoginInfoScreen()),
       ),
     ],
   );

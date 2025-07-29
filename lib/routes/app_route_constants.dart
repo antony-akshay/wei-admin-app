@@ -21,4 +21,6 @@ class AppRouteNames {
   static const String changePw = "change_pw";
   static const String twofactor = "twofactor";
   static const String twofactorcodesend = "twofactorcodesend";
+  static const String twofactorotp = "twofactorotp";
+  static const String SaveLoginInfo = "save_login_info";
 }
