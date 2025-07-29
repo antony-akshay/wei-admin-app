@@ -24,4 +24,5 @@ class AppRouteNames {
   static const String twofactorotp = "twofactorotp";
   static const String SaveLoginInfo = "save_login_info";
   static const String LoginHistory = "login_history";
+  static const String LoginAlert = "login_alert";
 }
