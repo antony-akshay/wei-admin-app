@@ -7,6 +7,7 @@ import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart'
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
+import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
@@ -29,7 +30,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/save_login_info",
+    initialLocation: "/login_history",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -193,6 +194,12 @@ class AppRouteConfiguration {
         path: '/save_login_info',
         pageBuilder: (context, state) =>
             MaterialPage(child: SaveLoginInfoScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.LoginHistory,
+        path: '/login_history',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LoginHistoryScreen()),
       ),
     ],
   );
