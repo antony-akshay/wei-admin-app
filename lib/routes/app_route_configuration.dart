@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
@@ -19,7 +21,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/edit_guest_
 import 'package:wei_admin/features/create_event/presentation/screens/event_basics_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/event_creation_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/guest_details_adding_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/guest_yes_or_no.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/guest_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/pin_the_place_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/when_it_happening_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
@@ -38,7 +40,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/describe_your_event",
+    initialLocation: "/add_on_events_yes_or_no",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -176,8 +178,7 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.changePw,
         path: '/change_pw',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: ChangePwScreen()),
+        pageBuilder: (context, state) => MaterialPage(child: ChangePwScreen()),
       ),
       GoRoute(
         name: AppRouteNames.twofactor,
@@ -218,7 +219,8 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.guestYesOrNo,
         path: '/guest_yes_or_no',
-        pageBuilder: (context, state) => MaterialPage(child: GuestYesOrNo()),
+        pageBuilder: (context, state) =>
+            MaterialPage(child: GuestYesOrNoScreen()),
       ),
       GoRoute(
         name: AppRouteNames.guestDetailsAdding,
@@ -245,69 +247,22 @@ class AppRouteConfiguration {
       ),
 
       GoRoute(
-        name: AppRouteNames.AddVisualsToYourEvent,
+        name: AppRouteNames.addVisualsToYourEvent,
         path: '/add_visuals_to_your_event',
         pageBuilder: (context, state) =>
             MaterialPage(child: AddVisualsToYourEventScreen()),
       ),
       GoRoute(
-        name: AppRouteNames.viewContact,
-        path: '/view_contact',
+        name: AppRouteNames.addOnEventsYesOrNo,
+        path: '/add_on_events_yes_or_no',
         pageBuilder: (context, state) =>
-            MaterialPage(child: ViewContactScreen()),
+            MaterialPage(child: AddOnEventsYesOrNoScreen()),
       ),
       GoRoute(
-        name: AppRouteNames.eventCreationYesOrNo,
-        path: '/event_creation_yes_or_no',
+        name: AppRouteNames.addOnEventsManaging,
+        path: '/add_on_events_managing',
         pageBuilder: (context, state) =>
-            MaterialPage(child: EventCreationYesOrNoScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.eventBasics,
-        path: '/event_basics',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: EventBasicsScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.pinThePlace,
-        path: '/pin_the_place',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: PinThePlaceScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.guestYesOrNo,
-        path: '/guest_yes_or_no',
-        pageBuilder: (context, state) => MaterialPage(child: GuestYesOrNo()),
-      ),
-      GoRoute(
-        name: AppRouteNames.guestDetailsAdding,
-        path: '/guest_details_adding',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: GuestDetailsAddingScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.editGuest,
-        path: '/edit_guest',
-        pageBuilder: (context, state) => MaterialPage(child: EditGuestScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.whenItHappening,
-        path: '/when_it_happening',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: WhenItHappeningScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.describeYourEvent,
-        path: '/describe_your_event',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: DescribeYourEventScreen()),
-      ),
-
-      GoRoute(
-        name: AppRouteNames.AddVisualsToYourEvent,
-        path: '/add_visuals_to_your_event',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: AddVisualsToYourEventScreen()),
+            MaterialPage(child: AddOnEventsManagingScreen()),
       ),
     ],
   );

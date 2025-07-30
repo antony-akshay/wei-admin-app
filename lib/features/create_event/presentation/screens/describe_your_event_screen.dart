@@ -8,6 +8,8 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_button.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/widgets/create_event_header.dart';
 import 'package:wei_admin/features/create_event/presentation/widgets/top_section_card.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
@@ -29,19 +31,7 @@ class DescribeYourEventScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                  Row(
-                    children: [
-                      CustomInnerShadowIconButton(
-                        iconPath: "assets/icons/common/arrow_back.svg",
-                      ),
-                      SizedBox(width: 8.w),
-                      CustomText(
-                        text: "Create event",
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  ),
+                    CreateEventHeader(),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
@@ -110,9 +100,9 @@ class DescribeYourEventScreen extends StatelessWidget {
                         child: CustomInnerShadowButton(
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteNames.AddVisualsToYourEvent);
+                                  GoRouter.of(
+                                    context,
+                                  ).pushNamed(AppRouteNames.addVisualsToYourEvent);
                             }
                           },
                           label: "Save and continue",

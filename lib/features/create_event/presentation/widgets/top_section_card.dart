@@ -8,11 +8,12 @@ class TopSectionCard extends StatelessWidget {
   const TopSectionCard({
     super.key,
     required this.iconPath,
-    required this.progress,
     required this.title,
     required this.description,
+    this.progress,
   });
-  final String iconPath, progress, title, description;
+  final String iconPath, title, description;
+  final String? progress;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,18 @@ class TopSectionCard extends StatelessWidget {
             child: SvgPicture.asset(iconPath, height: 24.w, width: 24.w),
           ),
         ),
-        SizedBox(height: 7.h),
-        CustomText(
-          text: progress,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          fontColor: AppColors.secondaryFontColor,
-        ),
+        if (progress != null)
+          Column(
+            children: [
+              SizedBox(height: 7.h),
+              CustomText(
+                text: progress!,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                fontColor: AppColors.secondaryFontColor,
+              ),
+            ],
+          ),
         SizedBox(height: 16.h),
         CustomText(text: title, fontSize: 18.sp, fontWeight: FontWeight.w600),
         SizedBox(height: 4.h),

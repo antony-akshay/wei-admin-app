@@ -30,5 +30,7 @@ class AppRouteNames {
   static const String editGuest = "edit_guest";
   static const String whenItHappening = "when_it_happening";
   static const String describeYourEvent = "describe_your_event";
-   static const String AddVisualsToYourEvent = "add_visuals_to_your_event";
+  static const String addVisualsToYourEvent = "add_visuals_to_your_event";
+  static const String addOnEventsYesOrNo = "add_on_events_yes_or_no";
+  static const String addOnEventsManaging = "add_on_events_managing";
 }

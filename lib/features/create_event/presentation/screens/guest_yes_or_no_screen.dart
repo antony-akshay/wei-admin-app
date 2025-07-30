@@ -6,8 +6,8 @@ import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
-class GuestYesOrNo extends StatelessWidget {
-  const GuestYesOrNo({super.key});
+class GuestYesOrNoScreen extends StatelessWidget {
+  const GuestYesOrNoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
