@@ -292,7 +292,7 @@ class AppRouteConfiguration {
             ),
           );
         },
-        
+      ),
       GoRoute(
         name: AppRouteNames.twofactorotp,
         path: '/OTPInputScreen',
