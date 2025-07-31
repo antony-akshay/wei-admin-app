@@ -14,11 +14,12 @@ import 'package:wei_admin/features/create_event/presentation/widgets/top_section
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class PinThePlaceScreen extends StatelessWidget {
-  PinThePlaceScreen({super.key});
+  PinThePlaceScreen({super.key, this.showProgress = true});
   final TextEditingController _eventNameController = TextEditingController();
   final List<String> _eventTypes = ["Type 1", "Type 2", "Type 3"];
   final _formKey = GlobalKey<FormState>();
   final ValueNotifier<String?> _eventTypeNotifier = ValueNotifier(null);
+  final bool showProgress;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +33,12 @@ class PinThePlaceScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                 CreateEventHeader(),
+                  CreateEventHeader(),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/pin_the_place.svg",
-                      progress: "Step 2/6",
+                      progress: showProgress ? "Step 2/6" : null,
                       title: "Pin the Place, Pick the Format!",
                       description: "Add the name, category, and subcategory.",
                     ),

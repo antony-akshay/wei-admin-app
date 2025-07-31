@@ -6,6 +6,7 @@ import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/ticket_details_adding_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
@@ -40,7 +41,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/add_on_events_yes_or_no",
+    initialLocation: "/add_on_events_managing",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -207,14 +208,22 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.eventBasics,
         path: '/event_basics',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: EventBasicsScreen()),
+        pageBuilder: (context, state) {
+          final bool showProgress = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: EventBasicsScreen(showProgress: showProgress),
+          );
+        },
       ),
       GoRoute(
         name: AppRouteNames.pinThePlace,
         path: '/pin_the_place',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: PinThePlaceScreen()),
+        pageBuilder: (context, state) {
+          final bool showProgress = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: PinThePlaceScreen(showProgress: showProgress),
+          );
+        },
       ),
       GoRoute(
         name: AppRouteNames.guestYesOrNo,
@@ -236,8 +245,12 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.whenItHappening,
         path: '/when_it_happening',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: WhenItHappeningScreen()),
+        pageBuilder: (context, state) {
+          final bool showProgress = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: WhenItHappeningScreen(showProgress: showProgress),
+          );
+        },
       ),
       GoRoute(
         name: AppRouteNames.describeYourEvent,
@@ -263,6 +276,18 @@ class AppRouteConfiguration {
         path: '/add_on_events_managing',
         pageBuilder: (context, state) =>
             MaterialPage(child: AddOnEventsManagingScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.ticketDetailsAdding,
+        path: '/ticket_details_adding',
+        pageBuilder: (context, state) {
+          final bool isAddingNextTicket = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: TicketDetailsAddingScreen(
+              isAddingNextTicket: isAddingNextTicket,
+            ),
+          );
+        },
       ),
     ],
   );

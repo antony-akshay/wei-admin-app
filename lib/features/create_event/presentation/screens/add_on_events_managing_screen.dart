@@ -35,13 +35,33 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 70.h),
-                AddOnEventsItemTile(label: "Add basic details"),
+                AddOnEventsItemTile(
+                  label: "Add basic details",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.eventBasics, extra: false),
+                ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add date and time"),
+                AddOnEventsItemTile(
+                  label: "Add date and time",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.whenItHappening, extra: false),
+                ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add location"),
+                AddOnEventsItemTile(
+                  label: "Add location",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.pinThePlace, extra: false),
+                ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add ticket details"),
+                AddOnEventsItemTile(
+                  label: "Add ticket details",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.ticketDetailsAdding, extra: false),
+                ),
                 SizedBox(height: 24.h),
                 AddOnEventsItemTile(label: "Add bank details"),
                 SizedBox(height: 24.h),
@@ -75,6 +95,7 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 68.h),
               ],
             ),
           ),

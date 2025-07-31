@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +16,7 @@ import 'package:wei_admin/features/create_event/presentation/widgets/top_section
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class EventBasicsScreen extends StatelessWidget {
-  EventBasicsScreen({super.key});
+  EventBasicsScreen({super.key, this.showProgress = true});
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _eventNameController = TextEditingController();
   final List<String> _categories = ["Category 1", "Category 2", "Category 3"];
@@ -25,6 +27,7 @@ class EventBasicsScreen extends StatelessWidget {
   ];
   final ValueNotifier<String?> _categoryNotifier = ValueNotifier(null);
   final ValueNotifier<String?> _subCategoryNotifier = ValueNotifier(null);
+  final bool showProgress;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +41,12 @@ class EventBasicsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                   CreateEventHeader(),
+                  CreateEventHeader(),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/event_basics.svg",
-                      progress: "Step 1/6",
+                      progress: showProgress ? "Step 1/6" : null,
                       title: "Event Basics",
                       description: "Add the name, category, and subcategory.",
                     ),

@@ -15,10 +15,11 @@ import 'package:wei_admin/features/create_event/presentation/widgets/top_section
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class WhenItHappeningScreen extends StatefulWidget {
-  WhenItHappeningScreen({super.key});
+  WhenItHappeningScreen({super.key, this.showProgress = true});
 
   @override
   State<WhenItHappeningScreen> createState() => _WhenItHappeningScreenState();
+  final bool showProgress;
 }
 
 class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
@@ -47,13 +48,13 @@ class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
                 SizedBox(height: 24.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child:   CreateEventHeader(),
+                  child: CreateEventHeader(),
                 ),
                 SizedBox(height: 24.h),
                 Center(
                   child: TopSectionCard(
                     iconPath: "assets/icons/event/when_it_happening.svg",
-                    progress: "Step 4/6",
+                    progress: widget.showProgress ? "Step 4/6" : null,
                     title: "When’s It Happening?",
                     description: "Pick the date and time for your event",
                   ),
