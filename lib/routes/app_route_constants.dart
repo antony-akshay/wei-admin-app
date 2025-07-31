@@ -34,4 +34,9 @@ class AppRouteNames {
   static const String addOnEventsYesOrNo = "add_on_events_yes_or_no";
   static const String addOnEventsManaging = "add_on_events_managing";
   static const String ticketDetailsAdding = "ticket_details_adding";
+  static const String twofactorotp = "twofactorotp";
+  static const String SaveLoginInfo = "save_login_info";
+  static const String LoginHistory = "login_history";
+  static const String LoginAlert = "login_alert";
+  static const String secQuestions = "sec_questions";
 }

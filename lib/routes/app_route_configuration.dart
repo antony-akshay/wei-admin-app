@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
@@ -10,9 +9,13 @@ import 'package:wei_admin/features/create_event/presentation/screens/ticket_deta
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
+import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dart';
+import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
+import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
+import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
@@ -25,6 +28,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/guest_detai
 import 'package:wei_admin/features/create_event/presentation/screens/guest_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/pin_the_place_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/when_it_happening_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_otp_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -41,7 +45,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/add_on_events_managing",
+    initialLocation: "/sec_questions",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -288,6 +292,36 @@ class AppRouteConfiguration {
             ),
           );
         },
+        
+      GoRoute(
+        name: AppRouteNames.twofactorotp,
+        path: '/OTPInputScreen',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorOtpScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.SaveLoginInfo,
+        path: '/save_login_info',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SaveLoginInfoScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.LoginHistory,
+        path: '/login_history',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LoginHistoryScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.LoginAlert,
+        path: '/login_alert',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LoginAlertsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.secQuestions,
+        path: '/sec_questions',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SecurityQuestionsScreen()),
       ),
     ],
   );
