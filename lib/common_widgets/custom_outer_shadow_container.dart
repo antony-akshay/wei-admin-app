@@ -24,7 +24,7 @@ class CustomOuterShadowContainer extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      // margin: EdgeInsets.symmetric(horizontal: 20.w),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         borderRadius: BorderRadius.circular(radius ?? 10.r),
@@ -52,10 +52,7 @@ class CustomOuterShadowContainer extends StatelessWidget {
         ],
       ),
       alignment: Alignment.center,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 12.w),
-        child: child,
-      ),
+      child: child,
     );
   }
 }

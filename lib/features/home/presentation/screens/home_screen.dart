@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/search_textfield.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/home/presentation/widgets/carousel_tile.dart';
+import 'package:wei_admin/features/home/presentation/widgets/details_listing_carousal_tile.dart';
+import 'package:wei_admin/features/home/presentation/widgets/earning_statistics_tile.dart';
+import 'package:wei_admin/features/home/presentation/widgets/live_events_tile.dart';
+import 'package:wei_admin/features/home/presentation/widgets/single_group_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/welcome_tile.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -77,14 +81,42 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 24.h),
 
           // Carousel
-          CarouselTile(),
-          SizedBox(height: 64.h),
+          // CarouselTile(),
+
+          // Carousal with details
+          DetailsListingCarousalTile(),
 
           // Welcome
+          // SizedBox(height: 64.h),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+          //   child: WelcomeTile(),
+          // ),
+
+          // When only single group
+          // SizedBox(height: 32.h),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+          //   child: SingleGroupTile(),
+          // ),
+
+          // with events and multiple group
+          SizedBox(height: 24.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: WelcomeTile(),
+            child: Column(
+              children: [
+                // Live events
+                LiveEventsTile(),
+              ],
+            ),
           ),
+
+          //Live events statistics
+          SizedBox(height: 24.h),
+          EarningStatisticsTile(),
+
+          SizedBox(height: 10.h),
         ],
       ),
     );
