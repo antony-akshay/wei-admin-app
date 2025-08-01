@@ -76,7 +76,7 @@ class _TicketDetailsAddingScreenState extends State<TicketDetailsAddingScreen> {
                           GestureDetector(
                             onTap: () => GoRouter.of(
                               context,
-                            ).pushNamed(AppRouteNames.editGuest),
+                            ).pushNamed(AppRouteNames.editTicket),
                             child: Container(
                               height: 52.h,
                               decoration: BoxDecoration(

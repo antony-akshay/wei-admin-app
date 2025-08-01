@@ -7,6 +7,7 @@ import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart'
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/ticket_details_adding_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/edit_ticket_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
@@ -288,6 +289,12 @@ class AppRouteConfiguration {
             ),
           );
         },
+      ),
+      GoRoute(
+        name: AppRouteNames.editTicket,
+        path: '/edit_ticket',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EditTicketScreen()),
       ),
     ],
   );

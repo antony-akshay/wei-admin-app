@@ -8,13 +8,14 @@ class CommonFormDropdown extends StatelessWidget {
   final String hint;
   final List<String> items;
   final ValueNotifier<String?> selectedValueNotifier;
-   final String? Function(String?)? validator;
+  final String? Function(String?)? validator;
 
   const CommonFormDropdown({
     super.key,
     required this.hint,
     required this.items,
-    required this.selectedValueNotifier, this.validator,
+    required this.selectedValueNotifier,
+    this.validator,
   });
 
   @override
@@ -40,7 +41,7 @@ class CommonFormDropdown extends StatelessWidget {
               vertical: 16.h,
             ),
             filled: true,
-            fillColor: Color.fromRGBO(33, 36, 38, 1),
+            fillColor: Colors.transparent,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(
@@ -80,12 +81,12 @@ class CommonFormDropdown extends StatelessWidget {
           },
 
           validator:
-          validator ??
-          (value) {
-            if (value == null || value.isEmpty) {
-              return '$hint is required';
-            }
-          },
+              validator ??
+              (value) {
+                if (value == null || value.isEmpty) {
+                  return '$hint is required';
+                }
+              },
 
           style: GoogleFonts.urbanist(
             color: Colors.white,
