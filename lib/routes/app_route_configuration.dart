@@ -12,6 +12,7 @@ import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/notification_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
@@ -45,7 +46,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/sec_questions",
+    initialLocation: "/notification_settings",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -322,6 +323,12 @@ class AppRouteConfiguration {
         path: '/sec_questions',
         pageBuilder: (context, state) =>
             MaterialPage(child: SecurityQuestionsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.notificationSettings,
+        path: '/notification_settings',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: NotificationSettingsScreen()),
       ),
     ],
   );
