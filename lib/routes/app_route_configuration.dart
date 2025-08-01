@@ -9,6 +9,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/ticket_deta
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
+import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
@@ -46,7 +47,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/notification_settings",
+    initialLocation: "/edit_profile",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -329,6 +330,12 @@ class AppRouteConfiguration {
         path: '/notification_settings',
         pageBuilder: (context, state) =>
             MaterialPage(child: NotificationSettingsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.editprofile,
+        path: '/edit_profile',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EditProfileScreen()),
       ),
     ],
   );

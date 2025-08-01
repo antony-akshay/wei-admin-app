@@ -40,4 +40,5 @@ class AppRouteNames {
   static const String LoginAlert = "login_alert";
   static const String secQuestions = "sec_questions";
   static const String notificationSettings = "notification_settings";
+  static const String editprofile = "edit_profile";
 }
