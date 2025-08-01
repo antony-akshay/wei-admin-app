@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
+import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
+import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
 import 'package:wei_admin/features/profile/widgets/grey_button.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
@@ -125,7 +129,10 @@ class _ThirdpartyConnectScreenState extends State<ThirdpartyConnectScreen> {
                             label: 'Disconnect',
                             width: 100.w,
                             height: 32.h,
-                            onTap: () => toggleConnection(index),
+                            onTap: () {
+                              toggleConnection(index);
+                              showCenteredModal(context);
+                            },
                           ),
                         ),
                         GlowingDivider(),
@@ -183,4 +190,69 @@ class _ThirdpartyConnectScreenState extends State<ThirdpartyConnectScreen> {
       ),
     );
   }
+}
+
+
+void showCenteredModal(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: Colors.transparent, // No dark overlay; we blur manually
+    builder: (context) {
+      return Stack(
+        children: [
+          // Blur Background
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.2, sigmaY: 2.2),
+            child: Container(
+              color: Colors.black.withOpacity(0.3), // Optional dark tint
+            ),
+          ),
+          // Centered Modal
+          Center(
+            child: Container(
+              width: 350,
+              height: 250,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(56, 56, 56, 1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Material(
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(text: 'Are you sure?',fontWeight: FontWeight.w600,fontSize: 18,),
+                    const SizedBox(height: 12),
+                    CustomText(text: 'Do you want to disconnect your account?. You can always connect at anytime.',fontWeight: FontWeight.w400,fontSize: 12,textAlign: TextAlign.center,),
+                    const SizedBox(height: 32),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CancelButton(
+                            label: 'Cancel',
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: BuildteamButton(
+                            label: 'Disconnect',
+                            onTap: () {
+                              Navigator.pop(context); // Close modal
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }
