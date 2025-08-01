@@ -41,4 +41,5 @@ class AppRouteNames {
   static const String secQuestions = "sec_questions";
   static const String notificationSettings = "notification_settings";
   static const String editprofile = "edit_profile";
+  static const String thirdpartyconnect = "thirdpartyconnect";
 }

@@ -18,6 +18,7 @@ import 'package:wei_admin/features/settings/presentation/personal_details_screen
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
+import 'package:wei_admin/features/settings/presentation/thirdparty_connect_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
@@ -47,7 +48,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/edit_profile",
+    initialLocation: "/thirdparty_connect",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -336,6 +337,12 @@ class AppRouteConfiguration {
         path: '/edit_profile',
         pageBuilder: (context, state) =>
             MaterialPage(child: EditProfileScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.thirdpartyconnect,
+        path: '/thirdparty_connect',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ThirdpartyConnectScreen()),
       ),
     ],
   );
