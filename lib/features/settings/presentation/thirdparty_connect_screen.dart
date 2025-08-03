@@ -7,9 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
-import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
+import 'package:wei_admin/common_widgets/cancel_button.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
-import 'package:wei_admin/features/profile/widgets/grey_button.dart';
+import 'package:wei_admin/common_widgets/grey_button.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 
 class ThirdpartyConnectScreen extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
-import 'package:wei_admin/features/profile/widgets/grey_button.dart';
+import 'package:wei_admin/common_widgets/grey_button.dart';
 
 class Device {
   final IconData icon;

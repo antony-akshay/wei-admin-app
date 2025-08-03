@@ -14,7 +14,9 @@ import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dar
 import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/notification_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/permissions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/post_everywhere_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
@@ -48,7 +50,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/thirdparty_connect",
+    initialLocation: "/one_post_everywhere",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -343,6 +345,18 @@ class AppRouteConfiguration {
         path: '/thirdparty_connect',
         pageBuilder: (context, state) =>
             MaterialPage(child: ThirdpartyConnectScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.permissionsAndRoles,
+        path: '/permissions_and_roles',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PermissionsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.onePostEverywhere,
+        path: '/one_post_everywhere',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PostEverywhereScreen()),
       ),
     ],
   );

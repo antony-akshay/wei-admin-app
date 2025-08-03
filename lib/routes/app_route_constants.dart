@@ -42,4 +42,6 @@ class AppRouteNames {
   static const String notificationSettings = "notification_settings";
   static const String editprofile = "edit_profile";
   static const String thirdpartyconnect = "thirdpartyconnect";
+  static const String permissionsAndRoles = "permissions_and_roles";
+  static const String onePostEverywhere = "one_post_everywhere";
 }

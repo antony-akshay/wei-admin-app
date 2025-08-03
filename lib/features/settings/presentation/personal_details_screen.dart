@@ -6,7 +6,7 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_dropdown.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
-import 'package:wei_admin/features/profile/widgets/grey_button.dart';
+import 'package:wei_admin/common_widgets/grey_button.dart';
 import 'package:wei_admin/features/settings/widgets/settings_textfield.dart';
 
 class PersonalDetailsScreen extends StatelessWidget {

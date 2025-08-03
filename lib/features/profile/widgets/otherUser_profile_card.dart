@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
-import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
+import 'package:wei_admin/common_widgets/cancel_button.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
-import 'package:wei_admin/features/profile/widgets/grey_button.dart'; // Make sure this has `AppColors.backgroundColor`
+import 'package:wei_admin/common_widgets/grey_button.dart'; // Make sure this has `AppColors.backgroundColor`
 
 class OtheruserProfileCard extends StatelessWidget {
   final String name;

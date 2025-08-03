@@ -286,12 +286,16 @@ class NotificationToggleTile extends StatelessWidget {
   final String title;
   final bool value;
   final ValueChanged<bool> onChanged;
+  final Color? textColor;
+  final double? fontSize;
 
   const NotificationToggleTile({
     super.key,
     required this.title,
     required this.value,
     required this.onChanged,
+    this.textColor,
+    this.fontSize,
   });
 
   @override
@@ -301,7 +305,12 @@ class NotificationToggleTile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText(text: title, fontSize: 14, fontWeight: FontWeight.w600),
+          CustomText(
+            text: title,
+            fontSize: fontSize ?? 14, // Default to 14 if not provided
+            fontWeight: FontWeight.w600,
+            fontColor: textColor ?? Colors.white, // Default to white if not provided
+          ),
           GradientSwitch(value: value, onChanged: onChanged),
         ],
       ),
