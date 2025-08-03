@@ -10,6 +10,7 @@ import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dar
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/language_region_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
@@ -50,7 +51,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/permissions_and_roles",
+    initialLocation: "/language_region",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -357,6 +358,12 @@ class AppRouteConfiguration {
         path: '/one_post_everywhere',
         pageBuilder: (context, state) =>
             MaterialPage(child: PostEverywhereScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.language_region,
+        path: '/language_region',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LanguageRegionScreen()),
       ),
     ],
   );

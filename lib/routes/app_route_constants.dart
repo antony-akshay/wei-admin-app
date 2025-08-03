@@ -44,4 +44,5 @@ class AppRouteNames {
   static const String thirdpartyconnect = "thirdpartyconnect";
   static const String permissionsAndRoles = "permissions_and_roles";
   static const String onePostEverywhere = "one_post_everywhere";
+  static const String language_region = "language_region";
 }

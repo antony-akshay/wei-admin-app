@@ -18,17 +18,10 @@ class PermissionsScreen extends StatefulWidget {
 class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isOff = true;
   List<String> _genderType = ["male", "female"];
-  // Event Controls
   bool isEditEventEnabled = true;
   bool isDeleteEventEnabled = true;
-
-  // Financial Access
   bool isRevenuePermissionEnabled = true;
-
-  // Insights & Analytics
   bool isViewStatisticsEnabled = true;
-
-  // Group Management
   bool isInviteOthersEnabled = true;
   bool isDeleteGroupAndMembersEnabled = true;
   bool isBlockOthersEnabled = true;
