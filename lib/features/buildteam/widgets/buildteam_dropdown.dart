@@ -6,12 +6,18 @@ class BuildteamDropdown extends StatefulWidget {
   final List<String> items;
   final ValueNotifier<String?> selectedValueNotifier;
   final String hint;
+  final Color? fillColor;
+  final Color? borderColor;
+  final bool showBorder;
 
   const BuildteamDropdown({
     super.key,
     required this.items,
     required this.selectedValueNotifier,
-    required this.hint
+    required this.hint,
+    this.fillColor,
+    this.borderColor,
+    this.showBorder = true,
   });
 
   @override
@@ -21,6 +27,10 @@ class BuildteamDropdown extends StatefulWidget {
 class _BuildteamDropdownState extends State<BuildteamDropdown> {
   @override
   Widget build(BuildContext context) {
+    final Color resolvedBorderColor = widget.showBorder
+        ? (widget.borderColor ?? Colors.white)
+        : Colors.transparent;
+
     return ValueListenableBuilder<String?>(
       valueListenable: widget.selectedValueNotifier,
       builder: (context, selectedValue, _) {
@@ -40,18 +50,18 @@ class _BuildteamDropdownState extends State<BuildteamDropdown> {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
             filled: true,
-            fillColor: const Color.fromRGBO(33, 36, 38, 1),
+            fillColor: widget.fillColor ?? const Color.fromRGBO(33, 36, 38, 1),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.white, width: 0.6),
+              borderSide: BorderSide(color: resolvedBorderColor, width: 0.6),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.white, width: 0.2),
+              borderSide: BorderSide(color: resolvedBorderColor, width: 0.2),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: Colors.white, width: 0.6),
+              borderSide: BorderSide(color: resolvedBorderColor, width: 0.6),
             ),
           ),
           items: widget.items.map((item) {
