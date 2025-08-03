@@ -45,4 +45,5 @@ class AppRouteNames {
   static const String permissionsAndRoles = "permissions_and_roles";
   static const String onePostEverywhere = "one_post_everywhere";
   static const String language_region = "language_region";
+  static const String events_hosted = "events_hosted";
 }
