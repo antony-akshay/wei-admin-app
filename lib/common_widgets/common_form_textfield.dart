@@ -8,13 +8,14 @@ class CommonFormTextfield extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffix;
   final int? maxLines;
+  final TextInputType? keyboardType;
 
   const CommonFormTextfield({
     super.key,
     required this.controller,
     required this.hint,
     this.validator,
-    this.suffix, this.maxLines,
+    this.suffix, this.maxLines, this.keyboardType,
   });
 
   @override
@@ -23,6 +24,7 @@ class CommonFormTextfield extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       maxLines: maxLines,
+      keyboardType:keyboardType,
       style: const TextStyle(
         color: Colors.white,
         fontFamily: 'Urbanist',

@@ -63,7 +63,12 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                   ).pushNamed(AppRouteNames.ticketDetailsAdding, extra: false),
                 ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add bank details"),
+                AddOnEventsItemTile(
+                  label: "Add bank details",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.addBankInfo, extra: false),
+                ),
                 SizedBox(height: 24.h),
                 AddOnEventsItemTile(label: "Add guide details"),
                 SizedBox(height: 24.h),

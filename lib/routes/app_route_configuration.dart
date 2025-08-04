@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/add_bank_info_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/reupload_ticket_image_screen.dart';
@@ -302,6 +303,12 @@ class AppRouteConfiguration {
         path: '/reupload_ticket',
         pageBuilder: (context, state) =>
             MaterialPage(child: ReuploadTicketImageScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.addBankInfo,
+        path: '/add_bank_info',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AddBankInfoScreen()),
       ),
     ],
   );

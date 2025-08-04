@@ -36,5 +36,6 @@ class AppRouteNames {
   static const String ticketDetailsAdding = "ticket_details_adding";
   static const String editTicket = "edit_ticket";
   static const String reuploadTicket = "reupload_ticket";
+  static const String addBankInfo = "add_bank_info";
   
 }

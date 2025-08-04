@@ -163,6 +163,7 @@ class _TicketDetailsAddingScreenState extends State<TicketDetailsAddingScreen> {
                             return "Ticket price is required";
                           }
                         },
+                        keyboardType: TextInputType.number,
                       ),
                       SizedBox(height: 32.h),
                       CustomText(
@@ -179,6 +180,7 @@ class _TicketDetailsAddingScreenState extends State<TicketDetailsAddingScreen> {
                             return "Capacity of seating is required";
                           }
                         },
+                        keyboardType: TextInputType.number,
                       ),
                       SizedBox(height: 32.h),
 
