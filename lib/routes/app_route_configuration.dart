@@ -6,6 +6,7 @@ import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/reupload_ticket_image_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/ticket_details_adding_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/edit_ticket_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
@@ -295,6 +296,12 @@ class AppRouteConfiguration {
         path: '/edit_ticket',
         pageBuilder: (context, state) =>
             MaterialPage(child: EditTicketScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.reuploadTicket,
+        path: '/reupload_ticket',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ReuploadTicketImageScreen()),
       ),
     ],
   );
