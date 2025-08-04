@@ -46,4 +46,6 @@ class AppRouteNames {
   static const String onePostEverywhere = "one_post_everywhere";
   static const String language_region = "language_region";
   static const String events_hosted = "events_hosted";
+  static const String events_screen = "events_screen";
+
 }

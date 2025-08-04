@@ -158,3 +158,4 @@ class DetailsListingCarousalTile extends StatelessWidget {
     );
   }
 }
+

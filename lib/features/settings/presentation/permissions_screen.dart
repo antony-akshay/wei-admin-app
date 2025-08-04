@@ -92,7 +92,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                   fontWeight: FontWeight.w600,
                   fontColor: Colors.white, // Default to white if not provided
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 BuildteamDropdown(
                   items: _genderType,
                   selectedValueNotifier: dropdownValue,
@@ -100,14 +100,14 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                   fillColor: Color.fromRGBO(56, 56, 56, 1),
                   borderColor: Color.fromRGBO(56, 56, 56, 1),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 CustomText(
                   text: 'Members',
                   fontSize: 14, // Default to 14 if not provided
                   fontWeight: FontWeight.w600,
                   fontColor: Colors.white, // Default to white if not provided
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 BuildteamDropdown(
                   items: _genderType,
                   selectedValueNotifier: dropdownValue,
@@ -115,14 +115,14 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                   fillColor: Color.fromRGBO(56, 56, 56, 1),
                   borderColor: Color.fromRGBO(56, 56, 56, 1),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomText(
                   text: 'Change role',
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   fontColor: Color.fromRGBO(129, 129, 129, 1),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 10.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
