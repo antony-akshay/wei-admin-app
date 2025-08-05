@@ -19,6 +19,7 @@ import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dar
 import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/notification_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/hide_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/permissions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/post_everywhere_screen.dart';
@@ -56,7 +57,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/sub_payment",
+    initialLocation: "/hide_details",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -398,6 +399,12 @@ class AppRouteConfiguration {
         path: '/sub_payment',
         pageBuilder: (context, state) =>
             MaterialPage(child: SubPaymentScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.hide_details,
+        path: '/hide_details',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: HideDetailsScreen()),
       ),
     ],
   );
