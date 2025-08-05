@@ -52,4 +52,6 @@ class AppRouteNames {
   static const String sub_payment = "sub_payment";
   static const String hide_details = "hide_details";
   static const String blocked_accounts = "blocked_accounts";
+  static const String delete_account = "delete_account";
+
 }
