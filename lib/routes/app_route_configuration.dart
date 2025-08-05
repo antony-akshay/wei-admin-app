@@ -10,6 +10,7 @@ import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dar
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/bank_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/bank_details_selected_screen.dart';
+import 'package:wei_admin/features/settings/presentation/blocked_accounts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/event_screen.dart';
@@ -57,7 +58,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/hide_details",
+    initialLocation: "/blocked_accounts",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -405,6 +406,12 @@ class AppRouteConfiguration {
         path: '/hide_details',
         pageBuilder: (context, state) =>
             MaterialPage(child: HideDetailsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.blocked_accounts,
+        path: '/blocked_accounts',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BlockedAccountsScreen()),
       ),
     ],
   );
