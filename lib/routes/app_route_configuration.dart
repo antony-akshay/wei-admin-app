@@ -25,6 +25,7 @@ import 'package:wei_admin/features/settings/presentation/post_everywhere_screen.
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
+import 'package:wei_admin/features/settings/presentation/sub_payment_screen.dart';
 import 'package:wei_admin/features/settings/presentation/thirdparty_connect_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
@@ -55,7 +56,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/bank_details_selected",
+    initialLocation: "/sub_payment",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -391,6 +392,12 @@ class AppRouteConfiguration {
         path: '/bank_details_selected',
         pageBuilder: (context, state) =>
             MaterialPage(child: BankDetailsSelectedScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.sub_payment,
+        path: '/sub_payment',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SubPaymentScreen()),
       ),
     ],
   );
