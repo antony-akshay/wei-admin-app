@@ -48,5 +48,5 @@ class AppRouteNames {
   static const String events_hosted = "events_hosted";
   static const String events_screen = "events_screen";
   static const String bank_details = "bank_details";
-
+  static const String bank_details_selected = "bank_details_selected";
 }

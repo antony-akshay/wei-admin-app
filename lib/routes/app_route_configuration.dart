@@ -9,6 +9,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/ticket_deta
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/bank_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/bank_details_selected_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/event_screen.dart';
@@ -54,7 +55,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/bank_details",
+    initialLocation: "/bank_details_selected",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -384,6 +385,12 @@ class AppRouteConfiguration {
         path: '/bank_details',
         pageBuilder: (context, state) =>
             MaterialPage(child: BankDetailsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.bank_details_selected,
+        path: '/bank_details_selected',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BankDetailsSelectedScreen()),
       ),
     ],
   );
