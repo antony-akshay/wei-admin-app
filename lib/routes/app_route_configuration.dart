@@ -31,6 +31,7 @@ import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/sub_payment_screen.dart';
+import 'package:wei_admin/features/settings/presentation/temporary_delete_screen.dart';
 import 'package:wei_admin/features/settings/presentation/thirdparty_connect_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
@@ -61,7 +62,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/permanent_delete",
+    initialLocation: "/temporary_delete",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -433,6 +434,12 @@ class AppRouteConfiguration {
         path: '/permanent_delete',
         pageBuilder: (context, state) =>
             MaterialPage(child: PermanentDeleteScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.temporary_delete,
+        path: '/temporary_delete',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TemporaryDeleteScreen()),
       ),
     ],
   );

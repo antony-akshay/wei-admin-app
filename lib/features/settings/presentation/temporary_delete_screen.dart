@@ -3,30 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:intl/intl.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/grey_button.dart';
-import 'package:wei_admin/features/settings/presentation/delete_account_screen.dart';
 
-class PermanentDeleteScreen extends StatefulWidget {
-  const PermanentDeleteScreen({super.key});
-
-  @override
-  State<PermanentDeleteScreen> createState() => _PermanentDeleteScreenState();
-}
-
-class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
-  bool undone = true;
-  bool ack = true;
+class TemporaryDeleteScreen extends StatelessWidget {
+  const TemporaryDeleteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +34,7 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Permanent Deletion',
+                          'Temporary Deletion',
                           style: GoogleFonts.urbanist(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
@@ -52,7 +43,7 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                         ),
                         SizedBox(height: 4.h),
                         Text(
-                          'All your data will be erased. Once deleted, it can’t be recovered.',
+                          'Hide your profile and mute notifications temporarily. Your account will reactivate automatically.',
                           style: GoogleFonts.urbanist(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
@@ -64,15 +55,13 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                   ),
                 ],
               ),
-
-              SizedBox(height: 25.h),
-
-              /// Warning Box
+              SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: double.infinity,
+                    width: 350,
+                    height: 81,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
@@ -82,46 +71,22 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                       color: const Color.fromRGBO(238, 210, 2, 0.1),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(20.w),
-                      child: Row(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SvgPicture.asset(
-                            'assets/icons/settings/warning.svg',
-                            width: 20.w,
-                            height: 20.h,
+                          CustomText(
+                            text: ' Note :',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
                           ),
-                          SizedBox(width: 5.w),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                  text: ' Warning',
-                                  fontColor: const Color.fromRGBO(
-                                    238,
-                                    210,
-                                    2,
-                                    1,
-                                  ),
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                SizedBox(height: 5.h),
-                                CustomText(
-                                  text:
-                                      ' Your account and data will be permanently deleted after a 30-day grace period. This action can’t be undone once the period ends.',
-                                  fontColor: const Color.fromRGBO(
-                                    180,
-                                    180,
-                                    180,
-                                    1,
-                                  ),
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ],
-                            ),
+                          SizedBox(height: 5),
+                          CustomText(
+                            text:
+                                'We’ll keep your data safe while your profile is hidden. Just log in to return.',
+                            fontColor: const Color.fromRGBO(180, 180, 180, 1),
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
                           ),
                         ],
                       ),
@@ -129,39 +94,49 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                   ),
                 ],
               ),
-
-              SizedBox(height: 25.h),
-
-              /// Final Confirmation
-              CustomText(
-                text: ' Final Confirmation',
-                fontColor: Colors.white,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
+              SizedBox(height: 25),
+              CustomDatePickerField(
+                placeholder: 'Start date',
+                onDateSelected: (value) {
+                  print(value);
+                },
               ),
-              SizedBox(height: 10.h),
-              CustomText(
-                text: ' Please confirm your decision before proceeding',
-                fontColor: const Color.fromRGBO(180, 180, 180, 1),
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
+              SizedBox(height: 10),
+              CustomDatePickerField(
+                placeholder: 'End date',
+                onDateSelected: (value) {
+                  print(value);
+                },
               ),
-              SizedBox(height: 10.h),
-
-              /// Checkboxes
-              CheckboxTile(
-                value: undone,
-                label: "I understand that this action cannot be easily undone",
-                onChanged: (value) => setState(() => undone = value),
+              SizedBox(height: 25),
+              Container(
+                width: 350,
+                height: 48,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(
+                    color: const Color.fromRGBO(238, 210, 2, 1),
+                    width: 1.w,
+                  ),
+                  color: const Color.fromRGBO(238, 210, 2, 0.1),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset('assets/icons/settings/about.svg'),
+                      SizedBox(height: 5),
+                      CustomText(
+                        text: '128 Days of temporary account deletion',
+                        fontColor: const Color.fromRGBO(180, 180, 180, 1),
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              SizedBox(height: 5.h),
-              CheckboxTile(
-                value: ack,
-                label:
-                    "I understand the consequences and have saved my data, or I don’t need it.",
-                onChanged: (value) => setState(() => ack = value),
-              ),
-
               const Spacer(),
 
               Padding(
@@ -169,7 +144,7 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GreyButton(label: 'Back', width: 167.w, height: 42.h),
+                    GreyButton(label: 'Back', width: 167.w, height: 42),
                     SizedBox(width: 2),
                     Container(
                       width: 167.w,
@@ -205,7 +180,7 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                       ),
                       child: Center(
                         child: CustomText(
-                          text: 'Delete',
+                          text: 'Schedule suspension',
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           fontColor: Colors.white,
@@ -217,6 +192,75 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomDatePickerField extends StatefulWidget {
+  final String placeholder;
+  final Function(DateTime) onDateSelected;
+  final DateTime? initialDate;
+
+  const CustomDatePickerField({
+    super.key,
+    required this.placeholder,
+    required this.onDateSelected,
+    this.initialDate,
+  });
+
+  @override
+  State<CustomDatePickerField> createState() => _CustomDatePickerFieldState();
+}
+
+class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
+  DateTime? selectedDate;
+
+  Future<void> _pickDate() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? widget.initialDate ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+      });
+      widget.onDateSelected(picked);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _pickDate,
+      child: Container(
+        width: 350,
+        height: 47,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: const Color(0xFF2E2E2E),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              selectedDate != null
+                  ? DateFormat('dd/MM/yyyy').format(selectedDate!)
+                  : widget.placeholder,
+              style: TextStyle(
+                color: selectedDate != null
+                    ? Colors.white
+                    : Colors.grey.shade500,
+                fontSize: 14,
+              ),
+            ),
+            SvgPicture.asset('assets/icons/settings/calendar.svg'),
+          ],
         ),
       ),
     );
