@@ -13,6 +13,7 @@ import 'package:wei_admin/features/settings/presentation/bank_details_selected_s
 import 'package:wei_admin/features/settings/presentation/blocked_accounts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
 import 'package:wei_admin/features/settings/presentation/delete_account_screen.dart';
+import 'package:wei_admin/features/settings/presentation/deletion_typeselection_screen.dart';
 import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/event_screen.dart';
 import 'package:wei_admin/features/settings/presentation/events_hosted_screen.dart';
@@ -59,7 +60,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/delete_account",
+    initialLocation: "/delete_type_selection",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -420,6 +421,14 @@ class AppRouteConfiguration {
         pageBuilder: (context, state) =>
             MaterialPage(child: DeleteAccountScreen()),
       ),
+      GoRoute(
+        name: AppRouteNames.delete_type_selection,
+        path: '/delete_type_selection',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DeletionTypeselectionScreen()),
+      ),
     ],
   );
 }
+
+
