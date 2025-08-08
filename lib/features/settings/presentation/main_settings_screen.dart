@@ -86,6 +86,9 @@ class MainSettingsScreen extends StatelessWidget {
                       leadingIconPath: 'assets/icons/settings/edit.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.notificationSettings);
+                      },
                       title: 'Notifications settings',
                       leadingIconPath:
                           'assets/icons/settings/notifications.svg',
@@ -95,14 +98,23 @@ class MainSettingsScreen extends StatelessWidget {
 
                     sectionHeader('For professional use'),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.thirdpartyconnect);
+                      },
                       title: 'Third party account linking',
                       leadingIconPath: 'assets/icons/settings/3rdpart.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.onePostEverywhere);
+                      },
                       title: 'One post everywhere',
                       leadingIconPath: 'assets/icons/settings/onepost.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.permissionsAndRoles);
+                      },
                       title: 'Role and permissions',
                       leadingIconPath: 'assets/icons/settings/role.svg',
                     ),
@@ -111,6 +123,9 @@ class MainSettingsScreen extends StatelessWidget {
 
                     sectionHeader('What you see'),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.language_region);
+                      },
                       title: 'Languages and region',
                       leadingIconPath: 'assets/icons/settings/language.svg',
                     ),
@@ -119,6 +134,9 @@ class MainSettingsScreen extends StatelessWidget {
 
                     sectionHeader('Your activity'),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.events_hosted);
+                      },
                       title: 'Events hosted',
                       leadingIconPath:
                           'assets/icons/settings/events_hosted.svg',
