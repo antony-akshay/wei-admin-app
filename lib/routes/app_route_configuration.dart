@@ -31,6 +31,7 @@ import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart
 import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
 import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/sub_payment_screen.dart';
+import 'package:wei_admin/features/settings/presentation/temporary_delete_confirm_screen.dart';
 import 'package:wei_admin/features/settings/presentation/temporary_delete_screen.dart';
 import 'package:wei_admin/features/settings/presentation/thirdparty_connect_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
@@ -440,6 +441,12 @@ class AppRouteConfiguration {
         path: '/temporary_delete',
         pageBuilder: (context, state) =>
             MaterialPage(child: TemporaryDeleteScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.temporary_delete_confirm,
+        path: '/temporary_delete_confirm',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TemporaryDeleteConfirmScreen(startDate: '',endDate: '',duration: 0,)),
       ),
     ],
   );

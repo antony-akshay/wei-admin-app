@@ -7,9 +7,17 @@ import 'package:intl/intl.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/grey_button.dart';
+import 'package:wei_admin/features/settings/presentation/temporary_delete_confirm_screen.dart';
 
 class TemporaryDeleteScreen extends StatelessWidget {
-  const TemporaryDeleteScreen({super.key});
+  TemporaryDeleteScreen({super.key});
+
+  DateTime? startDate;
+  DateTime? endDate;
+
+  String formatDate(DateTime date) {
+    return DateFormat('EEEE, MMMM d, y').format(date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +106,7 @@ class TemporaryDeleteScreen extends StatelessWidget {
               CustomDatePickerField(
                 placeholder: 'Start date',
                 onDateSelected: (value) {
+                  startDate = value;
                   print(value);
                 },
               ),
@@ -105,6 +114,7 @@ class TemporaryDeleteScreen extends StatelessWidget {
               CustomDatePickerField(
                 placeholder: 'End date',
                 onDateSelected: (value) {
+                  endDate = value;
                   print(value);
                 },
               ),
@@ -123,10 +133,10 @@ class TemporaryDeleteScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset('assets/icons/settings/about.svg'),
-                      SizedBox(height: 5),
+                      SizedBox(height: 5, width: 5),
                       CustomText(
                         text: '128 Days of temporary account deletion',
                         fontColor: const Color.fromRGBO(180, 180, 180, 1),
@@ -146,44 +156,73 @@ class TemporaryDeleteScreen extends StatelessWidget {
                   children: [
                     GreyButton(label: 'Back', width: 167.w, height: 42),
                     SizedBox(width: 2),
-                    Container(
-                      width: 167.w,
-                      height: 42.h,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 239, 117, 117),
-                            Color.fromARGB(255, 255, 0, 13),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        borderRadius: BorderRadius.circular(33.r),
-                        border: GradientBoxBorder(
+                    GestureDetector(
+                      onTap: () {
+                        String? formattedStartDate;
+                        String? formattedEndDate;
+
+                        if (startDate != null) {
+                          formattedStartDate = formatDate(startDate!);
+                          print(formattedStartDate);
+                        }
+                        if (endDate != null) {
+                          formattedEndDate = formatDate(endDate!);
+                          print(formattedEndDate);
+                        }
+                        int durationInDays = endDate!
+                            .difference(startDate!)
+                            .inDays;
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => TemporaryDeleteConfirmScreen(
+                              startDate: formattedStartDate ?? '',
+                              endDate: formattedEndDate ?? '',
+                              duration: durationInDays,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 167.w,
+                        height: 42.h,
+                        decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFF3E3E3E), Color(0xFF262626)],
+                            colors: [
+                              Color.fromARGB(255, 239, 117, 117),
+                              Color.fromARGB(255, 255, 0, 13),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
                           ),
-                          width: 1.w,
+                          borderRadius: BorderRadius.circular(33.r),
+                          border: GradientBoxBorder(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF3E3E3E), Color(0xFF262626)],
+                            ),
+                            width: 1.w,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(100),
+                              offset: Offset(6.w, 6.h),
+                              blurRadius: 12.r,
+                            ),
+                            BoxShadow(
+                              color: Colors.white.withAlpha(20),
+                              offset: Offset(-6.w, -6.h),
+                              blurRadius: 12.r,
+                            ),
+                          ],
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha(100),
-                            offset: Offset(6.w, 6.h),
-                            blurRadius: 12.r,
+                        child: Center(
+                          child: CustomText(
+                            text: 'Schedule suspension',
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            fontColor: Colors.white,
                           ),
-                          BoxShadow(
-                            color: Colors.white.withAlpha(20),
-                            offset: Offset(-6.w, -6.h),
-                            blurRadius: 12.r,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: CustomText(
-                          text: 'Schedule suspension',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          fontColor: Colors.white,
                         ),
                       ),
                     ),
