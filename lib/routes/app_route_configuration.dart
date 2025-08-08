@@ -23,6 +23,7 @@ import 'package:wei_admin/features/settings/presentation/login_history_screen.da
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/notification_settings_screen.dart';
 import 'package:wei_admin/features/settings/presentation/hide_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/permanent_delete_screen.dart';
 import 'package:wei_admin/features/settings/presentation/permissions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
 import 'package:wei_admin/features/settings/presentation/post_everywhere_screen.dart';
@@ -60,7 +61,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/delete_type_selection",
+    initialLocation: "/permanent_delete",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -426,6 +427,12 @@ class AppRouteConfiguration {
         path: '/delete_type_selection',
         pageBuilder: (context, state) =>
             MaterialPage(child: DeletionTypeselectionScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.permanent_delete,
+        path: '/permanent_delete',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PermanentDeleteScreen()),
       ),
     ],
   );

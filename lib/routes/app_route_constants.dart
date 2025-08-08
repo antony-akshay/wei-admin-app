@@ -54,4 +54,6 @@ class AppRouteNames {
   static const String blocked_accounts = "blocked_accounts";
   static const String delete_account = "delete_account";
   static const String delete_type_selection = "delete_type_selection";
+  static const String permanent_delete="permanent_delete";
+
 }
