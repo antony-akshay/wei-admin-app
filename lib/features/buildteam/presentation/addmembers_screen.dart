@@ -63,6 +63,8 @@ class _AddMembersScreenState extends State<AddmembersScreen> {
     });
   }
 
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,7 +178,7 @@ class _AddMembersScreenState extends State<AddmembersScreen> {
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [SearchField(width: 350)],
+                children: [SearchField(width: 350,hint: 'Search...',searchController: _searchController,)],
               ),
               const SizedBox(height: 20),
 

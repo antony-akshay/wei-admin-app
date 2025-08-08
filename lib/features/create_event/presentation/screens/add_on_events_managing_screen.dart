@@ -72,7 +72,12 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                 SizedBox(height: 24.h),
                 AddOnEventsItemTile(label: "Add guide details"),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add hashtags"),
+                AddOnEventsItemTile(
+                  label: "Add hashtags",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.addHashtags, extra: false),
+                ),
                 SizedBox(height: 24.h),
                 AddOnEventsItemTile(label: "Add event description"),
                 SizedBox(height: 24.h),

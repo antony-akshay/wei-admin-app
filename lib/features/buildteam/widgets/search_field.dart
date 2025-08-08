@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wei_admin/core/app_colors.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key, required this.width});
+  const SearchField({super.key, required this.width, required this.hint, required this.searchController});
   final double width;
+  final String hint;
+  final TextEditingController searchController;
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class SearchField extends StatelessWidget {
                       decoration: InputDecoration(
                         isCollapsed: true,
                         border: InputBorder.none,
-                        hintText: 'Search...',
+                        hintText: hint,
                         hintStyle: TextStyle(
                           color: Colors.white.withOpacity(0.5),
                         ),
