@@ -63,7 +63,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/temporary_delete",
+    initialLocation: "/events_screen",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -386,7 +386,7 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.events_screen,
         path: '/events_screen',
-        pageBuilder: (context, state) => MaterialPage(child: EventScreen()),
+        pageBuilder: (context, state) => MaterialPage(child: EventScreen(isPaid: false,)),
       ),
       GoRoute(
         name: AppRouteNames.bank_details,
