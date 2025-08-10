@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class BankDetailsScreen extends StatelessWidget {
   const BankDetailsScreen({super.key});
@@ -70,63 +72,68 @@ class BankDetailsScreen extends StatelessWidget {
                   itemCount: bankAccounts.length,
                   itemBuilder: (context, index) {
                     final account = bankAccounts[index];
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 12.h),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 6.w,
-                          vertical: 12.h,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Bank Icon
-                                CustomInnerShadowIconButton(
-                                  iconPath: "assets/icons/settings/bank.svg",
-                                  borderRadius: 9.6,
-                                ),
-                                SizedBox(width: 10.w),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      AccountInfoRow(
-                                        label: 'Account type :',
-                                        value: account['type']!,
-                                      ),
-                                      AccountInfoRow(
-                                        label: 'Account holder :',
-                                        value: account['holder']!,
-                                      ),
-                                      AccountInfoRow(
-                                        label: 'Account number :',
-                                        value: account['number']!,
-                                      ),
-                                      AccountInfoRow(
-                                        label: 'IFSC code :',
-                                        value: account['ifsc']!,
-                                      ),
-                                    ],
+                    return GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.bank_details_selected);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 12.h),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 6.w,
+                            vertical: 12.h,
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Bank Icon
+                                  CustomInnerShadowIconButton(
+                                    iconPath: "assets/icons/settings/bank.svg",
+                                    borderRadius: 9.6,
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 32.h),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/settings/right_arrow.svg',
-                                    height: 16.h,
-                                    width: 16.w,
-                                    color: Colors.white,
+                                  SizedBox(width: 10.w),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AccountInfoRow(
+                                          label: 'Account type :',
+                                          value: account['type']!,
+                                        ),
+                                        AccountInfoRow(
+                                          label: 'Account holder :',
+                                          value: account['holder']!,
+                                        ),
+                                        AccountInfoRow(
+                                          label: 'Account number :',
+                                          value: account['number']!,
+                                        ),
+                                        AccountInfoRow(
+                                          label: 'IFSC code :',
+                                          value: account['ifsc']!,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            if (index != bankAccounts.length - 1)
-                              GlowingDivider(),
-                          ],
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 32.h),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/settings/right_arrow.svg',
+                                      height: 16.h,
+                                      width: 16.w,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              if (index != bankAccounts.length - 1)
+                                GlowingDivider(),
+                            ],
+                          ),
                         ),
                       ),
                     );

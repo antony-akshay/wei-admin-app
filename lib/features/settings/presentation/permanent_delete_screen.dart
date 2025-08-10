@@ -1,11 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:wei_admin/common_widgets/cancel_button.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/grey_button.dart';
+import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
 import 'package:wei_admin/features/settings/presentation/delete_account_screen.dart';
 
 class PermanentDeleteScreen extends StatefulWidget {
@@ -72,7 +76,7 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: double.infinity,
+                    width: 350.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
@@ -171,44 +175,49 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
                   children: [
                     GreyButton(label: 'Back', width: 167.w, height: 42.h),
                     SizedBox(width: 2),
-                    Container(
-                      width: 167.w,
-                      height: 42.h,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 239, 117, 117),
-                            Color.fromARGB(255, 255, 0, 13),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        borderRadius: BorderRadius.circular(33.r),
-                        border: GradientBoxBorder(
+                    GestureDetector(
+                      onTap: () {
+                        showCenteredModal(context);
+                      },
+                      child: Container(
+                        width: 167.w,
+                        height: 42.h,
+                        decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFF3E3E3E), Color(0xFF262626)],
+                            colors: [
+                              Color.fromARGB(255, 239, 117, 117),
+                              Color.fromARGB(255, 255, 0, 13),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
                           ),
-                          width: 1.w,
+                          borderRadius: BorderRadius.circular(33.r),
+                          border: GradientBoxBorder(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF3E3E3E), Color(0xFF262626)],
+                            ),
+                            width: 1.w,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(100),
+                              offset: Offset(6.w, 6.h),
+                              blurRadius: 12.r,
+                            ),
+                            BoxShadow(
+                              color: Colors.white.withAlpha(20),
+                              offset: Offset(-6.w, -6.h),
+                              blurRadius: 12.r,
+                            ),
+                          ],
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha(100),
-                            offset: Offset(6.w, 6.h),
-                            blurRadius: 12.r,
+                        child: Center(
+                          child: CustomText(
+                            text: 'Delete',
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            fontColor: Colors.white,
                           ),
-                          BoxShadow(
-                            color: Colors.white.withAlpha(20),
-                            offset: Offset(-6.w, -6.h),
-                            blurRadius: 12.r,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: CustomText(
-                          text: 'Delete',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          fontColor: Colors.white,
                         ),
                       ),
                     ),
@@ -221,4 +230,118 @@ class _PermanentDeleteScreenState extends State<PermanentDeleteScreen> {
       ),
     );
   }
+}
+
+void showCenteredModal(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: Colors.transparent, // No dark overlay; we blur manually
+    builder: (context) {
+      return Stack(
+        children: [
+          // Blur Background
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.2, sigmaY: 2.2),
+            child: Container(
+              color: Colors.black.withOpacity(0.3), // Optional dark tint
+            ),
+          ),
+          // Centered Modal
+          Center(
+            child: Container(
+              width: 350,
+              height: 250,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(56, 56, 56, 1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Material(
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: 'Are you sure?',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
+                    const SizedBox(height: 12),
+                    CustomText(
+                      text: 'This action can not be undone',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: GreyButton(
+                            height: 42,
+                            label: 'Cancel',
+                            onTap: () => Navigator.pop(context), width: 155,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 42.h,
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 239, 117, 117),
+                                    Color.fromARGB(255, 255, 0, 13),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                                borderRadius: BorderRadius.circular(33.r),
+                                border: GradientBoxBorder(
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFF3E3E3E),
+                                      Color(0xFF262626),
+                                    ],
+                                  ),
+                                  width: 1.w,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withAlpha(100),
+                                    offset: Offset(6.w, 6.h),
+                                    blurRadius: 12.r,
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.white.withAlpha(20),
+                                    offset: Offset(-6.w, -6.h),
+                                    blurRadius: 12.r,
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: CustomText(
+                                  text: 'Delete',
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontColor: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

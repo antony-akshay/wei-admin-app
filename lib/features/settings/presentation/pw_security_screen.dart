@@ -79,6 +79,9 @@ class PwSecurityScreen extends StatelessWidget {
                       leadingIconPath: 'assets/icons/settings/2factor.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.SaveLoginInfo);
+                      },
                       title: 'Saved login',
                       leadingIconPath: 'assets/icons/settings/saved_login.svg',
                     ),
@@ -88,14 +91,27 @@ class PwSecurityScreen extends StatelessWidget {
                     sectionHeader('Security checks'),
 
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.LoginHistory);
+                      },
                       title: 'Where you’re logged in',
                       leadingIconPath: 'assets/icons/settings/where.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.LoginAlert);
+                      },
                       title: 'Login alerts',
                       leadingIconPath: 'assets/icons/settings/alert.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.secQuestions);
+                      },
                       title: 'Security questions',
                       leadingIconPath:
                           'assets/icons/settings/sec_questions.svg',

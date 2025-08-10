@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/grey_button.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class DeletionTypeselectionScreen extends StatefulWidget {
   const DeletionTypeselectionScreen({super.key});
@@ -95,7 +97,17 @@ class _DeletionTypeselectionScreenState
                     label: 'Next',
                     width: 167.w,
                     height: 42.h,
-                    onTap: () {},
+                    onTap: () {
+                      if (selectedIndex == 0) {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.temporary_delete);
+                      } else {
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.permanent_delete);
+                      }
+                    },
                   ),
                 ],
               ),
@@ -166,7 +178,9 @@ class RadioOptionTile extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: selected ? Color.fromRGBO(36, 156, 255, 1) : Colors.white,
+                  color: selected
+                      ? Color.fromRGBO(36, 156, 255, 1)
+                      : Colors.white,
                   width: 2,
                 ),
               ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/grey_button.dart';
 import 'package:wei_admin/features/profile/widgets/color_button.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class DeleteAccountScreen extends StatefulWidget {
   DeleteAccountScreen({super.key});
@@ -158,7 +160,9 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                       label: 'Skip',
                       width: 167.w,
                       height: 42.h,
-                      onTap: () => Navigator.pop(context),
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.delete_type_selection);
+                      },
                     ),
                     ColorButton(
                       label: 'Export',

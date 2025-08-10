@@ -82,6 +82,9 @@ class MainSettingsScreen extends StatelessWidget {
 
                     sectionHeader('How to use Wie centre'),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.editprofile);
+                      },
                       title: 'Edit profile',
                       leadingIconPath: 'assets/icons/settings/edit.svg',
                     ),
@@ -142,6 +145,9 @@ class MainSettingsScreen extends StatelessWidget {
                           'assets/icons/settings/events_hosted.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.bank_details);
+                      },
                       title: 'Bank accounts',
                       leadingIconPath: 'assets/icons/settings/bank.svg',
                     ),
@@ -158,37 +164,48 @@ class MainSettingsScreen extends StatelessWidget {
                       leadingIconPath: 'assets/icons/settings/privacy.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.hide_details);
+                      },
                       title: 'Hide details',
                       leadingIconPath: 'assets/icons/settings/hide.svg',
                     ),
                     SettingsTile(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.blocked_accounts);
+                      },
                       title: 'Blocked accounts',
                       leadingIconPath: 'assets/icons/settings/block.svg',
                     ),
                     GlowingDivider(),
                     SizedBox(height: 16.h),
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: SizedBox(
-                        width: 25,
-                        height: 25,
-                        child: SvgPicture.asset(
-                          'assets/icons/settings/delete.svg',
-                          color: Colors.red,
+                    GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(AppRouteNames.delete_account);
+                      },
+                      child: ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: SvgPicture.asset(
+                            'assets/icons/settings/delete.svg',
+                            color: Colors.red,
+                          ),
                         ),
-                      ),
-                      title: CustomText(
-                        text: 'Delete account',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        fontColor: Colors.red,
-                      ),
-                      trailing: SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: SvgPicture.asset(
-                          'assets/icons/common/right_arrow.svg',
-                          color: Colors.red,
+                        title: CustomText(
+                          text: 'Delete account',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          fontColor: Colors.red,
+                        ),
+                        trailing: SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: SvgPicture.asset(
+                            'assets/icons/common/right_arrow.svg',
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),
