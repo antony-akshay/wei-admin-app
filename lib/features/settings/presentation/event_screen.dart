@@ -396,8 +396,8 @@ class _EventCarouselTileState extends State<EventCarouselTile> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 350,
-          height: 167,
+          width: 350.w, // responsive width
+          height: 167.h, // responsive height
           margin: EdgeInsets.symmetric(horizontal: 20.w),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           decoration: BoxDecoration(
@@ -414,12 +414,12 @@ class _EventCarouselTileState extends State<EventCarouselTile> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withAlpha(41),
-                offset: const Offset(8, 8),
+                offset: Offset(8.w, 8.h),
                 blurRadius: 12.w,
               ),
               BoxShadow(
                 color: Colors.white.withAlpha(10),
-                offset: const Offset(-8, -8),
+                offset: Offset(-8.w, -8.h),
                 blurRadius: 12.w,
               ),
             ],
@@ -427,7 +427,7 @@ class _EventCarouselTileState extends State<EventCarouselTile> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(24.r),
             child: AspectRatio(
-              aspectRatio: 16 / 9, // Keeps the image proportional
+              aspectRatio: 16 / 9,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: 3,
@@ -457,4 +457,5 @@ class _EventCarouselTileState extends State<EventCarouselTile> {
         ),
       ],
     );
-  }}
+  }
+}

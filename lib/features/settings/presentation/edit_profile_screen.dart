@@ -11,7 +11,9 @@ class EditProfileScreen extends StatelessWidget {
   EditProfileScreen({super.key});
 
   TextEditingController websiteController = TextEditingController();
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
   String? emptyFieldValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'This field is required';
@@ -65,14 +67,14 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 40,),
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
                     children: [
                       CircleAvatar(radius: 75 / 2),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 10),
                       CustomText(
                         text: 'Change profile photo',
                         fontColor: Colors.blue,
@@ -83,7 +85,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               CustomText(
                 text: 'Website',
                 fontSize: 16,
@@ -96,10 +98,14 @@ class EditProfileScreen extends StatelessWidget {
                 validator: emptyFieldValidator,
               ),
               SizedBox(height: 30.h),
-              CustomText(text: 'Name', fontSize: 16, fontWeight: FontWeight.w400),
+              CustomText(
+                text: 'Name',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
               SizedBox(height: 15.h),
               SettingsTextfield(
-                controller: websiteController,
+                controller: nameController,
                 hintText: '',
                 validator: emptyFieldValidator,
               ),
@@ -111,15 +117,19 @@ class EditProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 15.h),
               SettingsTextfield(
-                controller: websiteController,
+                controller: usernameController,
                 hintText: '',
                 validator: emptyFieldValidator,
               ),
               SizedBox(height: 30.h),
-              CustomText(text: 'Bio', fontSize: 16, fontWeight: FontWeight.w400),
+              CustomText(
+                text: 'Bio',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
               SizedBox(height: 15.h),
               SettingsTextfield(
-                controller: websiteController,
+                controller: bioController,
                 hintText: '',
                 validator: emptyFieldValidator,
               ),
