@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wei_admin/common_widgets/cancel_button.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
+import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class MainSettingsScreen extends StatelessWidget {
@@ -65,14 +69,18 @@ class MainSettingsScreen extends StatelessWidget {
                     sectionHeader('Wie account centre'),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.personlDetails);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.personlDetails);
                       },
                       title: 'Personal details',
                       leadingIconPath: 'assets/icons/authentication/person.svg',
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.pwSecurity);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.pwSecurity);
                       },
                       title: 'Password & security',
                       leadingIconPath: 'assets/icons/settings/security.svg',
@@ -83,14 +91,18 @@ class MainSettingsScreen extends StatelessWidget {
                     sectionHeader('How to use Wie centre'),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.editprofile);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.editprofile);
                       },
                       title: 'Edit profile',
                       leadingIconPath: 'assets/icons/settings/edit.svg',
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.notificationSettings);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.notificationSettings);
                       },
                       title: 'Notifications settings',
                       leadingIconPath:
@@ -102,21 +114,27 @@ class MainSettingsScreen extends StatelessWidget {
                     sectionHeader('For professional use'),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.thirdpartyconnect);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.thirdpartyconnect);
                       },
                       title: 'Third party account linking',
                       leadingIconPath: 'assets/icons/settings/3rdpart.svg',
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.onePostEverywhere);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.onePostEverywhere);
                       },
                       title: 'One post everywhere',
                       leadingIconPath: 'assets/icons/settings/onepost.svg',
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.permissionsAndRoles);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.permissionsAndRoles);
                       },
                       title: 'Role and permissions',
                       leadingIconPath: 'assets/icons/settings/role.svg',
@@ -127,7 +145,9 @@ class MainSettingsScreen extends StatelessWidget {
                     sectionHeader('What you see'),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.language_region);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.language_region);
                       },
                       title: 'Languages and region',
                       leadingIconPath: 'assets/icons/settings/language.svg',
@@ -138,7 +158,9 @@ class MainSettingsScreen extends StatelessWidget {
                     sectionHeader('Your activity'),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.events_hosted);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.events_hosted);
                       },
                       title: 'Events hosted',
                       leadingIconPath:
@@ -146,7 +168,9 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.bank_details);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.bank_details);
                       },
                       title: 'Bank accounts',
                       leadingIconPath: 'assets/icons/settings/bank.svg',
@@ -165,14 +189,18 @@ class MainSettingsScreen extends StatelessWidget {
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.hide_details);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.hide_details);
                       },
                       title: 'Hide details',
                       leadingIconPath: 'assets/icons/settings/hide.svg',
                     ),
                     SettingsTile(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.blocked_accounts);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.blocked_accounts);
                       },
                       title: 'Blocked accounts',
                       leadingIconPath: 'assets/icons/settings/block.svg',
@@ -181,7 +209,9 @@ class MainSettingsScreen extends StatelessWidget {
                     SizedBox(height: 16.h),
                     GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).pushNamed(AppRouteNames.delete_account);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.delete_account);
                       },
                       child: ListTile(
                         contentPadding: EdgeInsets.zero,
@@ -209,21 +239,26 @@ class MainSettingsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: SizedBox(
-                        width: 25,
-                        height: 25,
-                        child: SvgPicture.asset(
-                          'assets/icons/settings/logout.svg',
-                          color: Colors.red,
+                    GestureDetector(
+                      onTap: (){
+                        showCenteredModal(context);
+                      },
+                      child: ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: SvgPicture.asset(
+                            'assets/icons/settings/logout.svg',
+                            color: Colors.red,
+                          ),
                         ),
-                      ),
-                      title: CustomText(
-                        text: 'Logout',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        fontColor: Colors.red,
+                        title: CustomText(
+                          text: 'Logout',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          fontColor: Colors.red,
+                        ),
                       ),
                     ),
                   ],
@@ -309,4 +344,78 @@ class GlowingDivider extends StatelessWidget {
       ),
     );
   }
+}
+
+void showCenteredModal(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: Colors.transparent, // No dark overlay; we blur manually
+    builder: (context) {
+      return Stack(
+        children: [
+          // Blur Background
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.2, sigmaY: 2.2),
+            child: Container(
+              color: Colors.black.withOpacity(0.3), // Optional dark tint
+            ),
+          ),
+          // Centered Modal
+          Center(
+            child: Container(
+              width: 350,
+              height: 250,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(56, 56, 56, 1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Material(
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: 'Are you sure?',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
+                    const SizedBox(height: 12),
+                    CustomText(
+                      text:
+                          'We’ll log you out from this device. You can always come back anytime.',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CancelButton(
+                            label: 'Cancel',
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: BuildteamButton(
+                            label: 'Logout',
+                            onTap: () {
+                              Navigator.pop(context); // Close modal
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }
