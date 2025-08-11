@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/search_textfield.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class EventsHostedScreen extends StatelessWidget {
   EventsHostedScreen({super.key});
@@ -96,6 +98,9 @@ class EventsHostedScreen extends StatelessWidget {
                       concert: dummyConcerts[index],
                       onTap: () {
                         print(dummyConcerts[index].isPaid);
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.events_screen);
                       },
                     );
                   },
@@ -129,11 +134,7 @@ class ConcertListTile extends StatelessWidget {
   final Concert concert;
   final VoidCallback? onTap;
 
-  const ConcertListTile({
-    super.key,
-    required this.concert,
-    this.onTap,
-  });
+  const ConcertListTile({super.key, required this.concert, this.onTap});
 
   @override
   Widget build(BuildContext context) {
