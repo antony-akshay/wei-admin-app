@@ -14,10 +14,10 @@ import 'package:wei_admin/features/create_event/presentation/widgets/top_section
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class DescribeYourEventScreen extends StatelessWidget {
-  DescribeYourEventScreen({super.key});
+  DescribeYourEventScreen({super.key, required this.showProgress});
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _descriptionController = TextEditingController();
-
+  final bool showProgress;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +31,12 @@ class DescribeYourEventScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                    CreateEventHeader(),
+                  CreateEventHeader(),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/describe_event.svg",
-                      progress: "Step 5/6",
+                      progress: showProgress ? "Step 5/6" : null,
                       title: "Describe Your Event",
                       description:
                           "Give a brief overview of your event for attendees.",
@@ -100,9 +100,9 @@ class DescribeYourEventScreen extends StatelessWidget {
                         child: CustomInnerShadowButton(
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
-                                  GoRouter.of(
-                                    context,
-                                  ).pushNamed(AppRouteNames.addVisualsToYourEvent);
+                              GoRouter.of(
+                                context,
+                              ).pushNamed(AppRouteNames.addVisualsToYourEvent);
                             }
                           },
                           label: "Save and continue",

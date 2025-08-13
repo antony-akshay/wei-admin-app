@@ -259,21 +259,33 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.describeYourEvent,
         path: '/describe_your_event',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: DescribeYourEventScreen()),
+        pageBuilder: (context, state) {
+          final bool showProgress = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: DescribeYourEventScreen(showProgress: showProgress),
+          );
+        },
       ),
 
       GoRoute(
         name: AppRouteNames.addVisualsToYourEvent,
         path: '/add_visuals_to_your_event',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: AddVisualsToYourEventScreen()),
+        pageBuilder: (context, state) {
+          final bool showProgress = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: AddVisualsToYourEventScreen(showProgress: showProgress),
+          );
+        },
       ),
       GoRoute(
         name: AppRouteNames.addOnEventsYesOrNo,
         path: '/add_on_events_yes_or_no',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: AddOnEventsYesOrNoScreen()),
+        pageBuilder: (context, state) {
+          final bool isNext = state.extra as bool? ?? false;
+          return MaterialPage(
+            child: AddOnEventsYesOrNoScreen(isAddingNextAddonEvent: isNext),
+          );
+        },
       ),
       GoRoute(
         name: AppRouteNames.addOnEventsManaging,

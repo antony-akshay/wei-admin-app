@@ -79,9 +79,20 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                   ).pushNamed(AppRouteNames.addHashtags, extra: false),
                 ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add event description"),
+                AddOnEventsItemTile(
+                  label: "Add event description",
+                  onTap: () => GoRouter.of(
+                    context,
+                  ).pushNamed(AppRouteNames.describeYourEvent, extra: false),
+                ),
                 SizedBox(height: 24.h),
-                AddOnEventsItemTile(label: "Add event media"),
+                AddOnEventsItemTile(
+                  label: "Add event media",
+                  onTap: () => GoRouter.of(context).pushNamed(
+                    AppRouteNames.addVisualsToYourEvent,
+                    extra: false,
+                  ),
+                ),
                 SizedBox(height: 84.h),
                 Row(
                   children: [
@@ -94,11 +105,10 @@ class AddOnEventsManagingScreen extends StatelessWidget {
                     SizedBox(width: 16.w),
                     Expanded(
                       child: CustomInnerShadowButton(
-                        ontap: () {
-                          // GoRouter.of(
-                          //   context,
-                          // ).pushNamed(AppRouteNames.addOnEventsYesOrNo);
-                        },
+                        ontap: () => GoRouter.of(context).pushNamed(
+                          AppRouteNames.addOnEventsYesOrNo,
+                          extra: true,
+                        ),
                         label: "Save and continue",
                         backgroundColor: AppColors.secondaryButtonColor,
                       ),

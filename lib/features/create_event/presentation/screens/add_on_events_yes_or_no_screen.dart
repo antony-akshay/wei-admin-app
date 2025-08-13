@@ -8,8 +8,11 @@ import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class AddOnEventsYesOrNoScreen extends StatelessWidget {
-  const AddOnEventsYesOrNoScreen({super.key});
-
+  const AddOnEventsYesOrNoScreen({
+    super.key,
+    required this.isAddingNextAddonEvent,
+  });
+  final bool isAddingNextAddonEvent;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +49,9 @@ class AddOnEventsYesOrNoScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomText(
-                      text: "Any extra events planned?",
+                      text: isAddingNextAddonEvent
+                          ? "Do you have any other add-on event?"
+                          : "Any extra events planned?",
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -64,6 +69,9 @@ class AddOnEventsYesOrNoScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomInnerShadowButton(
+                            ontap: () => GoRouter.of(
+                              context,
+                            ).pushNamed(AppRouteNames.ticketDetailsAdding),
                             label: "No",
                             backgroundColor: AppColors.tertiaryButtonColor,
                           ),

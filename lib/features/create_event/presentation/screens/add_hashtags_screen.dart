@@ -57,34 +57,29 @@ class _AddHashtagsScreenState extends State<AddHashtagsScreen> {
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
-                          GestureDetector(
-                            onTap: () => GoRouter.of(
-                              context,
-                            ).pushNamed(AppRouteNames.editGuest),
-                            child: Container(
-                              height: 36.h,
-                              padding: EdgeInsets.fromLTRB(
-                                11.75.w,
-                                6.h,
-                                14.w,
-                                6.h,
-                              ),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF249EFF),
-                                borderRadius: BorderRadius.circular(50.r),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/event/hash.svg",
-                                    height: 12.5.h,
-                                    width: 12.5.h,
-                                  ),
-                                  SizedBox(width: 9.75.w),
-                                  CustomText(text: tag, fontSize: 14.sp),
-                                ],
-                              ),
+                          Container(
+                            height: 36.h,
+                            padding: EdgeInsets.fromLTRB(
+                              11.75.w,
+                              6.h,
+                              14.w,
+                              6.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF249EFF),
+                              borderRadius: BorderRadius.circular(50.r),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/icons/event/hash.svg",
+                                  height: 12.5.h,
+                                  width: 12.5.h,
+                                ),
+                                SizedBox(width: 9.75.w),
+                                CustomText(text: tag, fontSize: 14.sp),
+                              ],
                             ),
                           ),
                           Positioned(

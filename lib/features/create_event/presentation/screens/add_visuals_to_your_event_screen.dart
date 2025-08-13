@@ -15,9 +15,9 @@ import 'package:wei_admin/features/create_event/presentation/widgets/top_section
 import 'package:wei_admin/routes/app_route_constants.dart';
 
 class AddVisualsToYourEventScreen extends StatelessWidget {
-  AddVisualsToYourEventScreen({super.key});
+  AddVisualsToYourEventScreen({super.key, required this.showProgress});
   final _formKey = GlobalKey<FormState>();
-
+final bool showProgress;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class AddVisualsToYourEventScreen extends StatelessWidget {
                   Center(
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/add_visuals.svg",
-                      progress: "Step 6/6",
+                      progress:showProgress? "Step 6/6":null,
                       title: "Add Visuals to Your Event",
                       description: "Upload photos, videos, or banners",
                     ),
