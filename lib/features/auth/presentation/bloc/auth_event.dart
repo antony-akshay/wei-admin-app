@@ -52,3 +52,12 @@ class VerifyOtpButtonClickedEvent extends AuthEvent {
     required this.otp,
   });
 }
+
+
+class ForgotPasswordSendclickedEvent extends AuthEvent {
+  final String identifier;
+
+  ForgotPasswordSendclickedEvent({
+    required this.identifier,
+  });
+}

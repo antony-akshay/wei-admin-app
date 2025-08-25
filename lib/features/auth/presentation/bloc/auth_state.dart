@@ -37,3 +37,22 @@ class TimerCountDownState extends AuthState {
 
   TimerCountDownState(this.remainingTime);
 }
+
+class ForgotPasswordLoadingState extends AuthActionState {}
+
+class OtpSendState extends AuthActionState {}
+
+class OtpSendSuccessState extends AuthActionState {}
+
+class OtpSendFailureState extends AuthActionState {
+  final String error;
+
+  OtpSendFailureState(this.error);
+}
+
+
+//forgot password ->
+    // sendEmail
+    // receiveOtp
+    // validateOtp ->Success / Failure
+    // ResetPassword -> Success / Failure

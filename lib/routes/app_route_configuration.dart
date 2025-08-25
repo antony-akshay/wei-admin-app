@@ -63,7 +63,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/admin_profile",
+    initialLocation: "/admin_signup",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,

@@ -85,4 +85,22 @@ class AuthRepo {
       log(e.response.toString());
     }
   }
+
+  static forgotPWSendIdentifer(String identifier) async{
+    try{
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        "$baseUrl${ApiEndpoints.forgotPasswordSendEmail}",
+        data: {"email": identifier},
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      }
+    } on DioException catch(e){
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
 }
