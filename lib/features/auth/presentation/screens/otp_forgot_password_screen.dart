@@ -58,11 +58,12 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                       children: [
                         OtpPinField(
                           key: _otpFormKey,
-                          maxLength: 4,
+                          maxLength: 6,
                           autoFillEnable: true,
                           textInputAction: TextInputAction.done,
                           onSubmit: (text) {
                             debugPrint('Entered pin is $text');
+                            //bloc
                           },
                           onChange: (text) {
                             debugPrint('Changed: $text');

@@ -15,6 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     on<StartTimerEvent>(startTimer);
     on<VerifyOtpButtonClickedEvent>(verifyOtpButtonClickedEvent);
+    on<ForgotPasswordSendclickedEvent>(ForgotPasswordSendclicked);
   }
 
   FutureOr<void> adminSignupButtonClickedEvent(

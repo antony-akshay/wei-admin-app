@@ -67,6 +67,9 @@ class ForgotPassword extends StatelessWidget {
                         BlocConsumer<AuthBloc, AuthState>(
                           listener: (context, state) {
                             if (state is OtpSendSuccessState) {
+                              ScaffoldMessenger.of(
+                                context,
+                              ).showSnackBar(SnackBar(content: Text("OTP send successfully")));
                               GoRouter.of(
                                 context,
                               ).pushNamed(AppRouteNames.otpForgotPassword);

@@ -90,7 +90,7 @@ class AuthRepo {
     try{
       log("forgotPassword:email sending...");
       final response = await _dio.post(
-        "$baseUrl${ApiEndpoints.forgotPasswordSendEmail}",
+        ApiEndpoints.forgotPasswordSendEmail,
         data: {"email": identifier},
       );
       final data = response.data;
