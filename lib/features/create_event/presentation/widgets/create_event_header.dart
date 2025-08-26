@@ -5,8 +5,8 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 
 class CreateEventHeader extends StatelessWidget {
-  const CreateEventHeader({super.key});
-
+  const CreateEventHeader({super.key, this.title});
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +17,7 @@ class CreateEventHeader extends StatelessWidget {
         ),
         SizedBox(width: 8.w),
         CustomText(
-          text: "Create event",
+          text: title ?? "Create event",
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
         ),

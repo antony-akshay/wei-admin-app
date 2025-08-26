@@ -46,7 +46,7 @@ class _TicketDetailsAddingScreenState extends State<TicketDetailsAddingScreen> {
               SizedBox(height: 24.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: CreateEventHeader(),
+                child: CreateEventHeader(title: "Ticket details"),
               ),
               SizedBox(height: 24.h),
               TopSectionCard(
@@ -249,9 +249,7 @@ class _TicketDetailsAddingScreenState extends State<TicketDetailsAddingScreen> {
                             child: CustomInnerShadowButton(
                               ontap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  // GoRouter.of(
-                                  //   context,
-                                  // ).pushNamed(AppRouteNames.pinThePlace);
+                                  GoRouter.of(context).pop();
                                 }
                               },
                               label: "Save and continue",

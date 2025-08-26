@@ -49,8 +49,8 @@ class _AddHashtagsScreenState extends State<AddHashtagsScreen> {
                     height: 42.h,
                   ), // dont have to show empty space when no list is there
                 Wrap(
-                  spacing: 8.0,
-                  runSpacing: 8.0,
+                  spacing: 9.w,
+                  runSpacing: 8.h,
                   children: tags.map((tag) {
                     return SizedBox(
                       height: tags.isEmpty ? 0 : 58.h,
@@ -166,9 +166,7 @@ class _AddHashtagsScreenState extends State<AddHashtagsScreen> {
                     Expanded(
                       child: CustomInnerShadowButton(
                         ontap: () {
-                          GoRouter.of(
-                            context,
-                          ).pushNamed(AppRouteNames.guestYesOrNo);
+                          GoRouter.of(context).pop();
                         },
                         label: "Save and continue",
                         backgroundColor: AppColors.secondaryButtonColor,

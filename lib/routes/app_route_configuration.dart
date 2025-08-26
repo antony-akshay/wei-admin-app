@@ -8,6 +8,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/add_bank_in
 import 'package:wei_admin/features/create_event/presentation/screens/add_hashtags_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
+import 'package:wei_admin/features/create_event/presentation/screens/event_preview_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/reupload_ticket_image_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/ticket_details_adding_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/edit_ticket_screen.dart';
@@ -45,7 +46,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     // initialLocation: "/navbar_control",
-    initialLocation: "/add_on_events_managing",
+    initialLocation: "/event_preview",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -328,6 +329,12 @@ class AppRouteConfiguration {
         path: '/add_hashtags',
         pageBuilder: (context, state) =>
             MaterialPage(child: AddHashtagsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.eventPreview,
+        path: '/event_preview',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventPreviewScreen()),
       ),
     ],
   );

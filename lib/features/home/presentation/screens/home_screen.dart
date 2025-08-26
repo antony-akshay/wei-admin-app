@@ -81,17 +81,17 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 24.h),
 
           // Carousel
-          // CarouselTile(),
+          CarouselTile(),
 
           // Carousal with details
-          DetailsListingCarousalTile(),
+          // DetailsListingCarousalTile(),
 
           // Welcome
-          // SizedBox(height: 64.h),
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-          //   child: WelcomeTile(),
-          // ),
+          SizedBox(height: 64.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: WelcomeTile(),
+          ),
 
           // When only single group
           // SizedBox(height: 32.h),
@@ -101,22 +101,22 @@ class HomeScreen extends StatelessWidget {
           // ),
 
           // with events and multiple group
-          SizedBox(height: 24.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              children: [
-                // Live events
-                LiveEventsTile(),
-              ],
-            ),
-          ),
+          // SizedBox(height: 24.h),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+          //   child: Column(
+          //     children: [
+          //       // Live events
+          //       LiveEventsTile(),
+          //     ],
+          //   ),
+          // ),
 
-          //Live events statistics
-          SizedBox(height: 24.h),
-          EarningStatisticsTile(),
+          // //Live events statistics
+          // SizedBox(height: 24.h),
+          // EarningStatisticsTile(),
 
-          SizedBox(height: 10.h),
+          // SizedBox(height: 10.h),
         ],
       ),
     );

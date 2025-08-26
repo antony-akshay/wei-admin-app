@@ -38,4 +38,5 @@ class AppRouteNames {
   static const String reuploadTicket = "reupload_ticket";
   static const String addBankInfo = "add_bank_info";
   static const String addHashtags = "add_hashtags";
+  static const String eventPreview = "event_preview";
 }

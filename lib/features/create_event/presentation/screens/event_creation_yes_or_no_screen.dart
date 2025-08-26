@@ -54,7 +54,7 @@ class EventCreationYesOrNoScreen extends StatelessWidget {
                         child: CustomInnerShadowButton(
                           ontap: () => GoRouter.of(
                             context,
-                          ).pushNamed(AppRouteNames.eventBasics),
+                          ).pushNamed(AppRouteNames.eventBasics, extra: true),
                           label: "Create now",
                           backgroundColor: AppColors.secondaryButtonColor,
                         ),

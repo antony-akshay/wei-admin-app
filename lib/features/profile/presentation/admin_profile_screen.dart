@@ -50,7 +50,9 @@ class AdminProfileScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () => {
-                        GoRouter.of(context).pushNamed(AppRouteNames.mainSettings),
+                        GoRouter.of(
+                          context,
+                        ).pushNamed(AppRouteNames.mainSettings),
                       },
                       child: CustomInnerShadowIconButton(
                         iconPath: "assets/icons/common/settings.svg",
@@ -155,7 +157,7 @@ class AdminProfileScreen extends StatelessWidget {
                   mainAxisSpacing: 20.h,
                   crossAxisSpacing: 10.w,
                   childAspectRatio:
-                      0.65, // 👈 Lowered the ratio (was probably too high before)
+                      0.64,
                 ),
                 itemCount: 8,
                 itemBuilder: (context, index) => const EventCard(),

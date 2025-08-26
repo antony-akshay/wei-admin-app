@@ -17,7 +17,7 @@ import 'package:wei_admin/routes/app_route_constants.dart';
 class AddVisualsToYourEventScreen extends StatelessWidget {
   AddVisualsToYourEventScreen({super.key, required this.showProgress});
   final _formKey = GlobalKey<FormState>();
-final bool showProgress;
+  final bool showProgress;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +31,14 @@ final bool showProgress;
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                   CreateEventHeader(),
+                  CreateEventHeader(
+                    title: showProgress ? null : "Add event media",
+                  ),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
                       iconPath: "assets/icons/event/add_visuals.svg",
-                      progress:showProgress? "Step 6/6":null,
+                      progress: showProgress ? "Step 6/6" : null,
                       title: "Add Visuals to Your Event",
                       description: "Upload photos, videos, or banners",
                     ),
@@ -65,9 +67,13 @@ final bool showProgress;
                         child: CustomInnerShadowButton(
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteNames.addOnEventsYesOrNo);
+                              if (showProgress) {
+                                GoRouter.of(
+                                  context,
+                                ).pushNamed(AppRouteNames.addOnEventsYesOrNo,extra: true);
+                              } else {
+                                GoRouter.of(context).pop();
+                              }
                             }
                           },
                           label: "Save and continue",

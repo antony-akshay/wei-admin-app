@@ -36,7 +36,7 @@ class AddBankInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                  CreateEventHeader(),
+                  CreateEventHeader(title: "Add bank details"),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
@@ -143,9 +143,7 @@ class AddBankInfoScreen extends StatelessWidget {
                         child: CustomInnerShadowButton(
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteNames.guestYesOrNo);
+                              GoRouter.of(context).pop();
                             }
                           },
                           label: "Save and continue",

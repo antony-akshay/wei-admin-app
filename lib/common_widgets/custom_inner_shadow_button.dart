@@ -12,6 +12,7 @@ class CustomInnerShadowButton extends StatelessWidget {
     required this.label,
     required this.backgroundColor,
     this.iconPath,
+    this.suffixIconPath,
     this.height,
     this.width,
     this.borderRadius,
@@ -20,6 +21,7 @@ class CustomInnerShadowButton extends StatelessWidget {
   final String label;
   final Color backgroundColor;
   final String? iconPath;
+  final String? suffixIconPath;
   final double? height, width, borderRadius;
   final Function()? ontap;
   @override
@@ -77,6 +79,10 @@ class CustomInnerShadowButton extends StatelessWidget {
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),
+                if (suffixIconPath != null) ...[
+                  SizedBox(width: 10.w),
+                  SvgPicture.asset(suffixIconPath!),
+                ],
               ],
             ),
           ),

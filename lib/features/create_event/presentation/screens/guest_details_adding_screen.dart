@@ -43,7 +43,7 @@ class _GuestDetailsAddingScreenState extends State<GuestDetailsAddingScreen> {
               SizedBox(height: 24.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child:   CreateEventHeader(),
+                child: CreateEventHeader(),
               ),
               SizedBox(height: 24.h),
               TopSectionCard(
@@ -208,9 +208,10 @@ class _GuestDetailsAddingScreenState extends State<GuestDetailsAddingScreen> {
                             child: CustomInnerShadowButton(
                               ontap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  // GoRouter.of(
-                                  //   context,
-                                  // ).pushNamed(AppRouteNames.pinThePlace);
+                                  GoRouter.of(context).pushNamed(
+                                    AppRouteNames.whenItHappening,
+                                    extra: true,
+                                  );
                                 }
                               },
                               label: "Save and continue",

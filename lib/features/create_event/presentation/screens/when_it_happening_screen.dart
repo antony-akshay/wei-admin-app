@@ -48,7 +48,9 @@ class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
                 SizedBox(height: 24.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: CreateEventHeader(),
+                  child: CreateEventHeader(
+                    title: widget.showProgress ? null : "Add date and time",
+                  ),
                 ),
                 SizedBox(height: 24.h),
                 Center(
@@ -343,9 +345,14 @@ class _WhenItHappeningScreenState extends State<WhenItHappeningScreen> {
                             child: CustomInnerShadowButton(
                               ontap: () {
                                 if (_formKey.currentState!.validate()) {
-                                  GoRouter.of(
-                                    context,
-                                  ).pushNamed(AppRouteNames.describeYourEvent);
+                                  if (widget.showProgress) {
+                                    GoRouter.of(context).pushNamed(
+                                      AppRouteNames.describeYourEvent,
+                                      extra: true,
+                                    );
+                                  } else {
+                                    GoRouter.of(context).pop();
+                                  }
                                 }
                               },
                               label: "Save and continue",

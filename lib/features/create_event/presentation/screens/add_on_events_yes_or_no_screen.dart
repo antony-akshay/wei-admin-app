@@ -69,9 +69,12 @@ class AddOnEventsYesOrNoScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomInnerShadowButton(
+                            // ontap: () => GoRouter.of(
+                            //   context,
+                            // ).pushNamed(AppRouteNames.ticketDetailsAdding),
                             ontap: () => GoRouter.of(
                               context,
-                            ).pushNamed(AppRouteNames.ticketDetailsAdding),
+                            ).pushNamed(AppRouteNames.eventPreview),
                             label: "No",
                             backgroundColor: AppColors.tertiaryButtonColor,
                           ),

@@ -31,7 +31,9 @@ class DescribeYourEventScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                  CreateEventHeader(),
+                  CreateEventHeader(
+                    title: showProgress ? null : "Add event description",
+                  ),
                   SizedBox(height: 24.h),
                   Center(
                     child: TopSectionCard(
@@ -100,9 +102,13 @@ class DescribeYourEventScreen extends StatelessWidget {
                         child: CustomInnerShadowButton(
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteNames.addVisualsToYourEvent);
+                              if (showProgress) {
+                                GoRouter.of(context).pushNamed(
+                                  AppRouteNames.addVisualsToYourEvent,extra: true
+                                );
+                              } else {
+                                GoRouter.of(context).pop();
+                              }
                             }
                           },
                           label: "Save and continue",
