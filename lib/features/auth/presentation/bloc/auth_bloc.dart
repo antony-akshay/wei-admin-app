@@ -115,4 +115,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
 
   }
+
+  Future<void> verifyOtp(
+    OtpVerifyButtonClickedEvent event,
+    Emitter<AuthState> emit
+  )async{
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? otpsendSuccess = await AuthRepo.verifyForgotPasswordOTP(
+      event.email,
+      event.pin
+    );
+    if (otpsendSuccess == true) {
+      emit(OtpVerificationSuccessState());
+    } else {
+      emit(OtpVerificationFailureState("otp did not send!"));
+    }
+  }
 }

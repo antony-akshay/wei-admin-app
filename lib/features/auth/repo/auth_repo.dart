@@ -103,4 +103,30 @@ class AuthRepo {
       log(e.response.toString());
     }
   }
+
+  static verifyForgotPasswordOTP(String otp,String email) async{
+    try{
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        ApiEndpoints.verifyForgotPasswordOTP,
+        data: {"email": email,"pin":otp},
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      }else if(response.statusCode == 400){
+        if(data['message'] == "Invalid OTP"){
+          log("invalid otp");
+        }
+        if(data['message'] == "User not found"){
+          log("invalid otp");
+        }
+        return false;
+      }
+    } on DioException catch(e){
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
 }

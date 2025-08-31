@@ -62,12 +62,13 @@ class ForgotPasswordSendclickedEvent extends AuthEvent {
   });
 }
 
-class OtpSendButtonClickedEvent extends AuthEvent{
+class OtpVerifyButtonClickedEvent extends AuthEvent{
   final String pin;
+  final String email;
 
-  OtpSendButtonClickedEvent({
+  OtpVerifyButtonClickedEvent({
     //contact?
-    //email?
+    required this.email,
     required this.pin,
   });
 }

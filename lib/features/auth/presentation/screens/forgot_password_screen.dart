@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:wei_admin/features/auth/presentation/screens/otp_forgot_password_screen.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_textfield.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_textfield.dart';
@@ -67,16 +68,25 @@ class ForgotPassword extends StatelessWidget {
                         BlocConsumer<AuthBloc, AuthState>(
                           listener: (context, state) {
                             if (state is OtpSendSuccessState) {
-                              ScaffoldMessenger.of(
-                                context,
-                              ).showSnackBar(SnackBar(content: Text("OTP send successfully")));
-                              GoRouter.of(
-                                context,
-                              ).pushNamed(AppRouteNames.otpForgotPassword);
-                            } else if(state is OtpSendFailureState){
-                              ScaffoldMessenger.of(
-                                context,
-                              ).showSnackBar(SnackBar(content: Text("OTP did not send")));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("OTP send successfully"),
+                                ),
+                              );
+                              // GoRouter.of(
+                              //   context,
+                              // ).pushNamed(AppRouteNames.otpForgotPassword);
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => OtpForgotPasswordScreen(
+                                    email: _emailOrContactController.text,
+                                  ),
+                                ),
+                              );
+                            } else if (state is OtpSendFailureState) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text("OTP did not send")),
+                              );
                             }
                           },
                           builder: (context, state) {

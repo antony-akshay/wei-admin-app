@@ -148,7 +148,7 @@ class AppRouteConfiguration {
         name: AppRouteNames.otpForgotPassword,
         path: "/otp_forgot_password",
         pageBuilder: (context, state) =>
-            MaterialPage(child: OtpForgotPasswordScreen()),
+            MaterialPage(child: OtpForgotPasswordScreen(email: '',)),
       ),
       GoRoute(
         name: AppRouteNames.resetPassword,
