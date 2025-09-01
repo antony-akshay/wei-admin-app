@@ -72,3 +72,14 @@ class OtpVerifyButtonClickedEvent extends AuthEvent{
     required this.pin,
   });
 }
+
+class resetPasswordButtonClickedEvent extends AuthEvent{
+  final String pw;
+  final String userId;
+
+  resetPasswordButtonClickedEvent({
+    //contact?
+    required this.pw,
+    required this.userId,
+  });
+}

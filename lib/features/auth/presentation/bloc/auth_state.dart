@@ -50,6 +50,14 @@ class OtpSendFailureState extends AuthActionState {
   OtpSendFailureState(this.error);
 }
 
+class PassswordResetSuccessState extends AuthActionState {}
+
+class PassswordResetFailureState extends AuthActionState {
+  final String error;
+
+  PassswordResetFailureState(this.error);
+}
+
 
 
 

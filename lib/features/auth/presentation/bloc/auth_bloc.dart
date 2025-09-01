@@ -132,4 +132,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(OtpVerificationFailureState("otp did not send!"));
     }
   }
+
+  Future<void> resetPassword(
+    resetPasswordButtonClickedEvent event,
+    Emitter<AuthState> emit
+  )async{
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? passwordReset = await AuthRepo.passwordReset(
+      event.pw,
+      event.userId
+    );
+    if (passwordReset == true) {
+      emit(PassswordResetSuccessState());
+    } else {
+      emit(PassswordResetFailureState("Reset failed"));
+    }
+  }
 }

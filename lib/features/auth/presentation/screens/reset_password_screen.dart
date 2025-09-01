@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_textfield.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
@@ -70,12 +72,37 @@ class ResetPasswordScreen extends StatelessWidget {
                           obscureText: true,
                         ),
                         SizedBox(height: 44.h),
-                        AuthButton(
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {}
-                            GoRouter.of(context).pushNamed(AppRouteNames.login);
+                        BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            // TODO: implement listener
+                            if (state is PassswordResetSuccessState) {
+                              GoRouter.of(
+                                context,
+                              ).pushNamed(AppRouteNames.login);
+                            } else if (state is PassswordResetFailureState) {
+                              ScaffoldMessenger.of(
+                                context,
+                              ).showSnackBar(SnackBar(content: Text('data')));
+                            }
                           },
-                          label: "Save",
+                          builder: (context, state) {
+                            return AuthButton(
+                              onTap: () {
+                                if (_formKey.currentState!.validate()) {}
+                                // GoRouter.of(
+                                //   context,
+                                // ).pushNamed(AppRouteNames.login);
+                                BlocProvider.of<AuthBloc>(context).add(
+                                  resetPasswordButtonClickedEvent(
+                                    pw: _confirmNewPasswordController.text,
+                                    userId: 'userId',
+                                  ),
+                                );
+                              },
+                              label: "Save",
+                              isLoading: state is AuthLoadingState,
+                            );
+                          },
                         ),
                         SizedBox(height: 12.h),
                       ],
