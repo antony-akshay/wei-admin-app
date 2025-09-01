@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wei_admin/core/api_endpoints.dart';
 import 'package:wei_admin/core/constants.dart';
 
@@ -104,16 +105,27 @@ class AuthRepo {
     }
   }
 
-  static verifyForgotPasswordOTP(String otp, String email) async {
+  static verifyForgotPasswordOTP(String email, String otp) async {
+    print("verify i=otp api");
+    print("otp:${otp} email:${email}");
     try {
       log("forgotPassword:email sending...");
       final response = await _dio.post(
         ApiEndpoints.verifyForgotPasswordOTP,
-        data: {"email": email, "pin": otp},
+        data: {
+          "input": {"email": email},
+          "otp": otp,
+        },
       );
+      print(response);
       final data = response.data;
+      print(data);
       log(data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
+        final prefs = await SharedPreferences.getInstance();
+        final userid = await prefs.setString("userId", data["userId"]);
+        await prefs.setString("token", data["token"]);
+        print(userid);
         return true;
       } else if (response.statusCode == 400) {
         if (data['message'] == "Invalid OTP") {
@@ -133,13 +145,16 @@ class AuthRepo {
   static passwordReset(String pw, String userId) async {
     try {
       log("forgotPassword:email sending...");
+      print("pw:$pw userid:$userId");
       final response = await _dio.post(
-        ApiEndpoints.verifyForgotPasswordOTP,
+        ApiEndpoints.resetPassword,
         data: {"userId": userId, "newPassword": pw},
       );
       final data = response.data;
+      print("data is $data");
       log(data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
+        print("success : $response");
         return true;
       } else if (response.statusCode == 400) {
         return false;

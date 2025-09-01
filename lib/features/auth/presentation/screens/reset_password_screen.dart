@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
@@ -87,18 +88,32 @@ class ResetPasswordScreen extends StatelessWidget {
                           },
                           builder: (context, state) {
                             return AuthButton(
-                              onTap: () {
-                                if (_formKey.currentState!.validate()) {}
-                                // GoRouter.of(
-                                //   context,
-                                // ).pushNamed(AppRouteNames.login);
-                                BlocProvider.of<AuthBloc>(context).add(
-                                  resetPasswordButtonClickedEvent(
-                                    pw: _confirmNewPasswordController.text,
-                                    userId: 'userId',
-                                  ),
-                                );
+                              onTap: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  final prefs =
+                                      await SharedPreferences.getInstance();
+                                  final userId = prefs.getString("userId");
+
+                                  if (userId == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          "User not found. Please try again.",
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
+
+                                  BlocProvider.of<AuthBloc>(context).add(
+                                    resetPasswordButtonClickedEvent(
+                                      pw: _confirmNewPasswordController.text,
+                                      userId: userId,
+                                    ),
+                                  );
+                                }
                               },
+
                               label: "Save",
                               isLoading: state is AuthLoadingState,
                             );
