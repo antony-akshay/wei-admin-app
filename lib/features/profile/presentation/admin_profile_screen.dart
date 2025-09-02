@@ -37,8 +37,11 @@ class AdminProfileScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 3.0),
-                          child: CustomInnerShadowIconButton(
-                            iconPath: "assets/icons/common/arrow_back.svg",
+                          child: GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: CustomInnerShadowIconButton(
+                              iconPath: "assets/icons/common/arrow_back.svg",
+                            ),
                           ),
                         ),
                         CustomText(

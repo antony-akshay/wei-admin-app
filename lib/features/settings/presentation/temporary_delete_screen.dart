@@ -68,8 +68,8 @@ class TemporaryDeleteScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 350,
-                    height: 81,
+                    width: 350.w,
+                    height: 81.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
@@ -154,7 +154,7 @@ class TemporaryDeleteScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GreyButton(label: 'Back', width: 167.w, height: 42),
+                    GreyButton(label: 'Back', width: 167, height: 42,onTap: () => Navigator.pop(context),),
                     SizedBox(width: 2),
                     GestureDetector(
                       onTap: () {

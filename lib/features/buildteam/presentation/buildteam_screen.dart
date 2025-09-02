@@ -64,8 +64,13 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
               children: [
                 Row(
                   children: [
-                    CustomInnerShadowIconButton(
-                      iconPath: "assets/icons/common/arrow_back.svg",
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).pop();
+                      },
+                      child: CustomInnerShadowIconButton(
+                        iconPath: "assets/icons/common/arrow_back.svg",
+                      ),
                     ),
                     SizedBox(width: 10.w),
                     Column(

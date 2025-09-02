@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/common_widgets/search_textfield.dart';
@@ -12,6 +13,7 @@ import 'package:wei_admin/features/home/presentation/widgets/earning_statistics_
 import 'package:wei_admin/features/home/presentation/widgets/live_events_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/single_group_tile.dart';
 import 'package:wei_admin/features/home/presentation/widgets/welcome_tile.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,10 +29,15 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 22.5.w,
-                  backgroundImage: NetworkImage(
-                    "https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=1923&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                GestureDetector(
+                  onTap: (){
+                    GoRouter.of(context).pushNamed(AppRouteNames.admin_profile);
+                  },
+                  child: CircleAvatar(
+                    radius: 22.5.w,
+                    backgroundImage: NetworkImage(
+                      "https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=1923&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    ),
                   ),
                 ),
                 SizedBox(width: 6.w),

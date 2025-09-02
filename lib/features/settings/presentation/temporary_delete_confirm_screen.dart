@@ -162,7 +162,7 @@ class TemporaryDeleteConfirmScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        GreyButton(label: 'Back', width: 146.w, height: 42.h),
+                        GreyButton(label: 'Back', width: 146.w, height: 42.h,onTap: () => Navigator.pop(context),),
                         GestureDetector(
                           child: Container(
                             width: 146.w,

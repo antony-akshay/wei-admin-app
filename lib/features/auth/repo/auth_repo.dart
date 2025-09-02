@@ -74,15 +74,17 @@ class AuthRepo {
       log("forgotPassword:email sending...");
       final response = await _dio.post(
         ApiEndpoints.login,
-        data: {
-          "email": identifier,
-          "password": pw,
-        },
+        data: {"identifier": identifier, "password": pw},
       );
       final data = response.data;
       log(data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return true;
+      } else if (response.statusCode == 400) {
+        if (data["message"] == "Invalid password") {
+          print("invalid login credentials");
+        }
+        return false;
       }
     } on DioException catch (e) {
       log(e.toString());

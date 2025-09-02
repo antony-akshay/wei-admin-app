@@ -158,16 +158,16 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                   children: [
                     GreyButton(
                       label: 'Skip',
-                      width: 167.w,
-                      height: 42.h,
+                      width: 167,
+                      height: 42,
                       onTap: () {
                         GoRouter.of(context).pushNamed(AppRouteNames.delete_type_selection);
                       },
                     ),
                     ColorButton(
                       label: 'Export',
-                      width: 167.w,
-                      height: 42.h,
+                      width: 167,
+                      height: 42,
                       onTap: () {
 
                       },

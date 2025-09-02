@@ -128,7 +128,13 @@ class LoginScreen extends StatelessWidget {
                               GoRouter.of(
                                 context,
                               ).pushNamed(AppRouteNames.navbarControl);
-                            } else if (state is LoginFailureState) {}
+                            } else if (state is LoginFailureState) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('invalid login credentials'),
+                                ),
+                              );
+                            }
                           },
                           builder: (context, state) {
                             return AuthButton(
