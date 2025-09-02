@@ -41,6 +41,13 @@ class StartTimerEvent extends AuthEvent {
   StartTimerEvent({required this.initialDuration});
 }
 
+class LoginButtonClickedEvent extends AuthEvent{
+  final String identifier;
+  final String pw;
+
+  LoginButtonClickedEvent({required this.identifier, required this.pw});
+}
+
 class VerifyOtpButtonClickedEvent extends AuthEvent {
   final String email;
   final String contactNumber;

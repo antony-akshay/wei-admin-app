@@ -69,6 +69,27 @@ class AuthRepo {
     }
   }
 
+  static login(String identifier, String pw) async {
+    try {
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        ApiEndpoints.login,
+        data: {
+          "email": identifier,
+          "password": pw,
+        },
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
   static verifyOtp(String email, String contactNumber, String otp) async {
     try {
       log("Verifying otp");

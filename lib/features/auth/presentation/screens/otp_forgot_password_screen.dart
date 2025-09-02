@@ -178,7 +178,7 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                                             ResetPasswordScreen(),
                                       ),
                                     );
-                                  } else {
+                                  } else if( state is OtpVerificationFailureState){
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text("OTP verification failed"),

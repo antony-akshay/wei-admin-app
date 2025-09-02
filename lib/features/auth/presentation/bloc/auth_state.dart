@@ -21,6 +21,14 @@ class SignupFailureState extends AuthActionState {
   SignupFailureState(this.error);
 }
 
+class LoginSuccessState extends AuthActionState {}
+
+class LoginFailureState extends AuthActionState {
+  final String error;
+
+  LoginFailureState(this.error);
+}
+
 //otp verification
 class OtpVerificationSuccessState extends AuthActionState {}
 

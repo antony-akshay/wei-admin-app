@@ -1,6 +1,7 @@
 abstract class ApiEndpoints {
   static const String adminSignup = "/auth/adminsignup";
   static const String organizationSignup = "/auth/organisationsignup";
+  static const String login = 'http://localhost:5000/api/auth/login';
   static const String verifyOtp = "/auth/verify-otp";
   static const String forgotPasswordSendEmail = "http://localhost:5000/api/auth/forgot-password";
   static const String verifyForgotPasswordOTP = "http://localhost:5000/api/auth/verify-user";
