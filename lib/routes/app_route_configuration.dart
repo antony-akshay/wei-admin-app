@@ -45,8 +45,8 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    // initialLocation: "/navbar_control",
-    initialLocation: "/event_preview",
+    initialLocation: "/navbar_control",
+    // initialLocation: "/event_preview",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,

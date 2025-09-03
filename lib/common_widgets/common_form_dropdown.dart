@@ -78,6 +78,10 @@ class CommonFormDropdown extends StatelessWidget {
 
           onChanged: (value) {
             selectedValueNotifier.value = value;
+            FormState? form = Form.maybeOf(context);
+            form?.validate(); // if (validator != null) {
+            validator!(value);
+            // }
           },
 
           validator:

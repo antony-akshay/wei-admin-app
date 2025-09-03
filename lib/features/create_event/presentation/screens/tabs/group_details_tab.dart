@@ -33,7 +33,7 @@ class GroupDetailsTab extends StatelessWidget {
           CustomInnerShadowButton(
              height: 32.w,
             width: 100.w,
-            ontap: () => GoRouter.of(context).pop(),
+            ontap: () {},
             label: "Edit",
             suffixIconPath: "assets/icons/common/edit_pencil.svg",
             backgroundColor: AppColors.tertiaryButtonColor,

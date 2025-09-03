@@ -39,6 +39,9 @@ class AdminProfileScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 3.0),
                           child: CustomInnerShadowIconButton(
                             iconPath: "assets/icons/common/arrow_back.svg",
+                            ontap: () {
+                              GoRouter.of(context).pop();
+                            },
                           ),
                         ),
                         CustomText(
@@ -156,8 +159,7 @@ class AdminProfileScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 20.h,
                   crossAxisSpacing: 10.w,
-                  childAspectRatio:
-                      0.64,
+                  childAspectRatio: 0.64,
                 ),
                 itemCount: 8,
                 itemBuilder: (context, index) => const EventCard(),

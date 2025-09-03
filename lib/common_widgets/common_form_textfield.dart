@@ -15,7 +15,9 @@ class CommonFormTextfield extends StatelessWidget {
     required this.controller,
     required this.hint,
     this.validator,
-    this.suffix, this.maxLines, this.keyboardType,
+    this.suffix,
+    this.maxLines,
+    this.keyboardType,
   });
 
   @override
@@ -24,7 +26,7 @@ class CommonFormTextfield extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       maxLines: maxLines,
-      keyboardType:keyboardType,
+      keyboardType: keyboardType,
       style: const TextStyle(
         color: Colors.white,
         fontFamily: 'Urbanist',
@@ -61,6 +63,7 @@ class CommonFormTextfield extends StatelessWidget {
         suffixIcon: suffix,
       ),
       validator: validator,
+      onChanged: validator,
     );
   }
 }

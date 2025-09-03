@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_button.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/create_event/presentation/widgets/event_preview_item_tile.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class BasicDetailsTab extends StatelessWidget {
   const BasicDetailsTab({super.key});
@@ -35,7 +36,7 @@ class BasicDetailsTab extends StatelessWidget {
           CustomInnerShadowButton(
              height: 32.w,
             width: 100.w,
-            ontap: () => GoRouter.of(context).pop(),
+            ontap: () => GoRouter.of(context).pushNamed(AppRouteNames.eventBasics),
             label: "Edit",
             suffixIconPath: "assets/icons/common/edit_pencil.svg",
             backgroundColor: AppColors.tertiaryButtonColor,

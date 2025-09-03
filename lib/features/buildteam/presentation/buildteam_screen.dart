@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/features/buildteam/presentation/underOrg_screen.dart';
@@ -7,6 +8,7 @@ import 'package:wei_admin/features/buildteam/presentation/underAdmn_screen.dart'
 import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_customtext.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_textfield.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class BuildTeamScreen1 extends StatefulWidget {
   const BuildTeamScreen1({super.key});
@@ -66,6 +68,7 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                   children: [
                     CustomInnerShadowIconButton(
                       iconPath: "assets/icons/common/arrow_back.svg",
+                      ontap: () => GoRouter.of(context).pop(),
                     ),
                     SizedBox(width: 10.w),
                     Column(
@@ -122,11 +125,17 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                       ),
 
                       SizedBox(height: 20.h),
-                      Requiredtext(text: 'Group created under',fontSize: 16.h,fontWeight: FontWeight.w400,),
+                      Requiredtext(
+                        text: 'Group created under',
+                        fontSize: 16.h,
+                        fontWeight: FontWeight.w400,
+                      ),
                       Row(
                         children: [
                           Theme(
-                            data: Theme.of(context).copyWith(unselectedWidgetColor: Colors.white),
+                            data: Theme.of(
+                              context,
+                            ).copyWith(unselectedWidgetColor: Colors.white),
                             child: Radio(
                               value: 'Admin',
                               groupValue: groupCreatedUnder,
@@ -135,7 +144,7 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                                 setState(() {
                                   groupCreatedUnder = value!;
                                   print(groupCreatedUnder);
-                                }); 
+                                });
                               },
                             ),
                           ),
@@ -145,7 +154,9 @@ class _BuildTeamScreen1State extends State<BuildTeamScreen1> {
                           ),
                           SizedBox(width: 18.w),
                           Theme(
-                            data: Theme.of(context).copyWith(unselectedWidgetColor: Colors.white),
+                            data: Theme.of(
+                              context,
+                            ).copyWith(unselectedWidgetColor: Colors.white),
                             child: Radio(
                               value: 'Organisation',
                               groupValue: groupCreatedUnder,

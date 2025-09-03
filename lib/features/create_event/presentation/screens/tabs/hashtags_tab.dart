@@ -6,6 +6,7 @@ import 'package:wei_admin/common_widgets/custom_inner_shadow_button.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
 import 'package:wei_admin/features/create_event/presentation/widgets/event_preview_item_tile.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class HashtagsTab extends StatelessWidget {
   HashtagsTab({super.key});
@@ -57,9 +58,10 @@ class HashtagsTab extends StatelessWidget {
           SizedBox(height: 64.h),
           Align(
             child: CustomInnerShadowButton(
-               height: 32.w,
+              height: 32.w,
               width: 100.w,
-              ontap: () => GoRouter.of(context).pop(),
+              ontap: () =>
+                  GoRouter.of(context).pushNamed(AppRouteNames.addHashtags),
               label: "Edit",
               suffixIconPath: "assets/icons/common/edit_pencil.svg",
               backgroundColor: AppColors.tertiaryButtonColor,
