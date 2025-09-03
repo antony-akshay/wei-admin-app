@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_textfield.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 
@@ -119,15 +121,37 @@ class LoginScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 24.h),
-                        AuthButton(
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
+                        BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            // TODO: implement listener
+                            if (state is LoginSuccessState) {
                               GoRouter.of(
                                 context,
                               ).pushNamed(AppRouteNames.navbarControl);
+                            } else if (state is LoginFailureState) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('invalid login credentials'),
+                                ),
+                              );
                             }
                           },
-                          label: "Login",
+                          builder: (context, state) {
+                            return AuthButton(
+                              onTap: () {
+                                if (_formKey.currentState!.validate()) {
+                                  BlocProvider.of<AuthBloc>(context).add(
+                                    LoginButtonClickedEvent(
+                                      identifier: _usernameController.text,
+                                      pw: _passwordController.text,
+                                    ),
+                                  );
+                                }
+                              },
+                              label: "Login",
+                              isLoading: state is AuthLoadingState,
+                            );
+                          },
                         ),
                         SizedBox(height: 12.h),
                         Row(

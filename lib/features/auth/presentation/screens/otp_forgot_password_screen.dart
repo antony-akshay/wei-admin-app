@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:wei_admin/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/auth_button.dart';
@@ -12,7 +15,9 @@ import 'package:wei_admin/features/auth/presentation/widgets/form_widget.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 
 class OtpForgotPasswordScreen extends StatelessWidget {
-  OtpForgotPasswordScreen({super.key});
+  OtpForgotPasswordScreen({super.key, required this.email});
+
+  final email;
 
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -58,11 +63,18 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                       children: [
                         OtpPinField(
                           key: _otpFormKey,
-                          maxLength: 4,
+                          maxLength: 6,
                           autoFillEnable: true,
                           textInputAction: TextInputAction.done,
                           onSubmit: (text) {
                             debugPrint('Entered pin is $text');
+                            //bloc
+                            BlocProvider.of<AuthBloc>(context).add(
+                              OtpVerifyButtonClickedEvent(
+                                email: email,
+                                pin: text,
+                              ),
+                            );
                           },
                           onChange: (text) {
                             debugPrint('Changed: $text');
@@ -156,14 +168,36 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 153.w,
-                              child: AuthButton(
-                                onTap: () {
-                                  if (_formKey.currentState!.validate()) {}
-                                  GoRouter.of(
-                                    context,
-                                  ).pushNamed(AppRouteNames.resetPassword);
+                              child: BlocConsumer<AuthBloc, AuthState>(
+                                listener: (context, state) {
+                                  // TODO: implement listener
+                                  if (state is OtpVerificationSuccessState) {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ResetPasswordScreen(),
+                                      ),
+                                    );
+                                  } else if( state is OtpVerificationFailureState){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text("OTP verification failed"),
+                                      ),
+                                    );
+                                  }
                                 },
-                                label: "Verify",
+                                builder: (context, state) {
+                                  return AuthButton(
+                                    onTap: () {
+                                      if (_formKey.currentState!.validate()) {}
+                                      GoRouter.of(
+                                        context,
+                                      ).pushNamed(AppRouteNames.resetPassword);
+                                    },
+                                    label: "Verify",
+                                    isLoading: state is AuthLoadingState,
+                                  );
+                                },
                               ),
                             ),
                           ],

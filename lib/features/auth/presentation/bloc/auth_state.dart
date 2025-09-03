@@ -21,6 +21,14 @@ class SignupFailureState extends AuthActionState {
   SignupFailureState(this.error);
 }
 
+class LoginSuccessState extends AuthActionState {}
+
+class LoginFailureState extends AuthActionState {
+  final String error;
+
+  LoginFailureState(this.error);
+}
+
 //otp verification
 class OtpVerificationSuccessState extends AuthActionState {}
 
@@ -37,3 +45,32 @@ class TimerCountDownState extends AuthState {
 
   TimerCountDownState(this.remainingTime);
 }
+
+class ForgotPasswordLoadingState extends AuthActionState {}
+
+class OtpSendState extends AuthActionState {}
+
+class OtpSendSuccessState extends AuthActionState {}
+
+class OtpSendFailureState extends AuthActionState {
+  final String error;
+
+  OtpSendFailureState(this.error);
+}
+
+class PassswordResetSuccessState extends AuthActionState {}
+
+class PassswordResetFailureState extends AuthActionState {
+  final String error;
+
+  PassswordResetFailureState(this.error);
+}
+
+
+
+
+//forgot password ->
+    // sendEmail
+    // receiveOtp
+    // validateOtp ->Success / Failure
+    // ResetPassword -> Success / Failure

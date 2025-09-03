@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wei_admin/core/api_endpoints.dart';
 import 'package:wei_admin/core/constants.dart';
 
@@ -68,6 +69,29 @@ class AuthRepo {
     }
   }
 
+  static login(String identifier, String pw) async {
+    try {
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        ApiEndpoints.login,
+        data: {"identifier": identifier, "password": pw},
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      } else if (response.statusCode == 400) {
+        if (data["message"] == "Invalid password") {
+          print("invalid login credentials");
+        }
+        return false;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
   static verifyOtp(String email, String contactNumber, String otp) async {
     try {
       log("Verifying otp");
@@ -79,6 +103,84 @@ class AuthRepo {
       log(data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return true;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
+  static forgotPWSendIdentifer(String identifier) async {
+    try {
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        ApiEndpoints.forgotPasswordSendEmail,
+        data: {"email": identifier},
+      );
+      final data = response.data;
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
+  static verifyForgotPasswordOTP(String email, String otp) async {
+    print("verify i=otp api");
+    print("otp:${otp} email:${email}");
+    try {
+      log("forgotPassword:email sending...");
+      final response = await _dio.post(
+        ApiEndpoints.verifyForgotPasswordOTP,
+        data: {
+          "input": {"email": email},
+          "otp": otp,
+        },
+      );
+      print(response);
+      final data = response.data;
+      print(data);
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final prefs = await SharedPreferences.getInstance();
+        final userid = await prefs.setString("userId", data["userId"]);
+        await prefs.setString("token", data["token"]);
+        print(userid);
+        return true;
+      } else if (response.statusCode == 400) {
+        if (data['message'] == "Invalid OTP") {
+          log("invalid otp");
+        }
+        if (data['message'] == "User not found") {
+          log("invalid otp");
+        }
+        return false;
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+      log(e.response.toString());
+    }
+  }
+
+  static passwordReset(String pw, String userId) async {
+    try {
+      log("forgotPassword:email sending...");
+      print("pw:$pw userid:$userId");
+      final response = await _dio.post(
+        ApiEndpoints.resetPassword,
+        data: {"userId": userId, "newPassword": pw},
+      );
+      final data = response.data;
+      print("data is $data");
+      log(data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print("success : $response");
+        return true;
+      } else if (response.statusCode == 400) {
+        return false;
       }
     } on DioException catch (e) {
       log(e.toString());

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
@@ -14,10 +13,32 @@ import 'package:wei_admin/features/create_event/presentation/screens/ticket_deta
 import 'package:wei_admin/features/create_event/presentation/screens/edit_ticket_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/bank_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/bank_details_selected_screen.dart';
+import 'package:wei_admin/features/settings/presentation/blocked_accounts_screen.dart';
 import 'package:wei_admin/features/settings/presentation/change_pw_screen.dart';
+import 'package:wei_admin/features/settings/presentation/delete_account_screen.dart';
+import 'package:wei_admin/features/settings/presentation/deletion_typeselection_screen.dart';
+import 'package:wei_admin/features/settings/presentation/edit_profile_screen.dart';
+import 'package:wei_admin/features/settings/presentation/event_screen.dart';
+import 'package:wei_admin/features/settings/presentation/events_hosted_screen.dart';
+import 'package:wei_admin/features/settings/presentation/language_region_screen.dart';
+import 'package:wei_admin/features/settings/presentation/login_alerts_screen.dart';
+import 'package:wei_admin/features/settings/presentation/login_history_screen.dart';
 import 'package:wei_admin/features/settings/presentation/main_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/notification_settings_screen.dart';
+import 'package:wei_admin/features/settings/presentation/hide_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/permanent_delete_screen.dart';
+import 'package:wei_admin/features/settings/presentation/permissions_screen.dart';
 import 'package:wei_admin/features/settings/presentation/personal_details_screen.dart';
+import 'package:wei_admin/features/settings/presentation/post_everywhere_screen.dart';
 import 'package:wei_admin/features/settings/presentation/pw_security_screen.dart';
+import 'package:wei_admin/features/settings/presentation/save_login_info_screen.dart';
+import 'package:wei_admin/features/settings/presentation/security_questions_screen.dart';
+import 'package:wei_admin/features/settings/presentation/sub_payment_screen.dart';
+import 'package:wei_admin/features/settings/presentation/temporary_delete_confirm_screen.dart';
+import 'package:wei_admin/features/settings/presentation/temporary_delete_screen.dart';
+import 'package:wei_admin/features/settings/presentation/thirdparty_connect_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_auth_screen.dart';
 import 'package:wei_admin/features/settings/presentation/two_factor_code_screen.dart';
 import 'package:wei_admin/features/chat/presentation/screens/view_contact_screen.dart';
@@ -30,6 +51,7 @@ import 'package:wei_admin/features/create_event/presentation/screens/guest_detai
 import 'package:wei_admin/features/create_event/presentation/screens/guest_yes_or_no_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/pin_the_place_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/when_it_happening_screen.dart';
+import 'package:wei_admin/features/settings/presentation/two_factor_otp_screen.dart';
 import 'package:wei_admin/routes/app_route_constants.dart';
 import 'package:wei_admin/features/auth/presentation/screens/admin_signup_screen.dart';
 import 'package:wei_admin/features/auth/presentation/screens/login_screen.dart';
@@ -46,6 +68,7 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
     initialLocation: "/navbar_control",
+
     // initialLocation: "/event_preview",
     routes: [
       GoRoute(
@@ -131,7 +154,7 @@ class AppRouteConfiguration {
         name: AppRouteNames.otpForgotPassword,
         path: "/otp_forgot_password",
         pageBuilder: (context, state) =>
-            MaterialPage(child: OtpForgotPasswordScreen()),
+            MaterialPage(child: OtpForgotPasswordScreen(email: '')),
       ),
       GoRoute(
         name: AppRouteNames.resetPassword,
@@ -335,6 +358,149 @@ class AppRouteConfiguration {
         path: '/event_preview',
         pageBuilder: (context, state) =>
             MaterialPage(child: EventPreviewScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.twofactorotp,
+        path: '/OTPInputScreen',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TwoFactorOtpScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.SaveLoginInfo,
+        path: '/save_login_info',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SaveLoginInfoScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.LoginHistory,
+        path: '/login_history',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LoginHistoryScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.LoginAlert,
+        path: '/login_alert',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LoginAlertsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.secQuestions,
+        path: '/sec_questions',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SecurityQuestionsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.notificationSettings,
+        path: '/notification_settings',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: NotificationSettingsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.editprofile,
+        path: '/edit_profile',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EditProfileScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.thirdpartyconnect,
+        path: '/thirdparty_connect',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: ThirdpartyConnectScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.permissionsAndRoles,
+        path: '/permissions_and_roles',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PermissionsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.onePostEverywhere,
+        path: '/one_post_everywhere',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PostEverywhereScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.language_region,
+        path: '/language_region',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: LanguageRegionScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.events_hosted,
+        path: '/events_hosted',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventsHostedScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.events_screen,
+        path: '/events_screen',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: EventScreen(isPaid: true)),
+      ),
+      GoRoute(
+        name: AppRouteNames.bank_details,
+        path: '/bank_details',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BankDetailsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.bank_details_selected,
+        path: '/bank_details_selected',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BankDetailsSelectedScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.sub_payment,
+        path: '/sub_payment',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: SubPaymentScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.hide_details,
+        path: '/hide_details',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: HideDetailsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.blocked_accounts,
+        path: '/blocked_accounts',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: BlockedAccountsScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.delete_account,
+        path: '/delete_account',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DeleteAccountScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.delete_type_selection,
+        path: '/delete_type_selection',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DeletionTypeselectionScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.permanent_delete,
+        path: '/permanent_delete',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: PermanentDeleteScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.temporary_delete,
+        path: '/temporary_delete',
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TemporaryDeleteScreen()),
+      ),
+      GoRoute(
+        name: AppRouteNames.temporary_delete_confirm,
+        path: '/temporary_delete_confirm',
+        pageBuilder: (context, state) => MaterialPage(
+          child: TemporaryDeleteConfirmScreen(
+            startDate: '',
+            endDate: '',
+            duration: 0,
+          ),
+        ),
       ),
     ],
   );

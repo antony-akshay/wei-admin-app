@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
-import 'package:wei_admin/features/buildteam/widgets/cancel_button.dart';
-import 'package:wei_admin/features/profile/widgets/grey_button.dart'; // Make sure this has `AppColors.backgroundColor`
+import 'package:wei_admin/common_widgets/cancel_button.dart';
+import 'package:wei_admin/common_widgets/grey_button.dart';
+import 'package:wei_admin/routes/app_route_constants.dart'; // Make sure this has `AppColors.backgroundColor`
 
 class AdminProfileCardTile extends StatelessWidget {
   final String name;
@@ -109,7 +111,9 @@ class AdminProfileCardTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              GreyButton(label: 'Edit Profile', width: 100, height: 32),
+              GreyButton(label: 'Edit Profile', width: 100, height: 32,onTap: (){
+                GoRouter.of(context).pushNamed(AppRouteNames.editprofile);
+              },),
               GreyButton(label: 'Share profile', width: 100, height: 32),
               GreyButton(label: 'Insight profile', width: 100, height: 32),
             ],

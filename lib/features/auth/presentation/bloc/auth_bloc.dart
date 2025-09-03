@@ -13,8 +13,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<OrganizationSignupButtonClickedEvent>(
       organizationSignupButtonClickedEvent,
     );
+    on<LoginButtonClickedEvent>(loginButtonClickedEvent);
     on<StartTimerEvent>(startTimer);
     on<VerifyOtpButtonClickedEvent>(verifyOtpButtonClickedEvent);
+    on<ForgotPasswordSendclickedEvent>(ForgotPasswordSendclicked);
+    on<OtpVerifyButtonClickedEvent>(verifyOtp);
+    on<resetPasswordButtonClickedEvent>(resetPassword);
   }
 
   FutureOr<void> adminSignupButtonClickedEvent(
@@ -57,6 +61,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
+  FutureOr<void> loginButtonClickedEvent(
+    LoginButtonClickedEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? loginSuccess = await AuthRepo.login(event.identifier, event.pw);
+    if (loginSuccess == true) {
+      emit(LoginSuccessState());
+    } else {
+      emit(LoginFailureState("Signup failed!"));
+    }
+  }
+
   Future<void> startTimer(
     StartTimerEvent event,
     Emitter<AuthState> emit,
@@ -95,6 +113,56 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(OtpVerificationSuccessState());
     } else {
       emit(OtpVerificationFailureState("Verification failed!"));
+    }
+  }
+
+  Future<void> ForgotPasswordSendclicked(
+    ForgotPasswordSendclickedEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(ForgotPasswordLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? otpsendSuccess = await AuthRepo.forgotPWSendIdentifer(
+      event.identifier,
+    );
+    if (otpsendSuccess == true) {
+      emit(OtpSendSuccessState());
+    } else {
+      emit(OtpSendFailureState("otp did not send!"));
+    }
+  }
+
+  Future<void> verifyOtp(
+    OtpVerifyButtonClickedEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? otpsendSuccess = await AuthRepo.verifyForgotPasswordOTP(
+      event.email,
+      event.pin,
+    );
+    if (otpsendSuccess == true) {
+      emit(OtpVerificationSuccessState());
+    } else {
+      emit(OtpVerificationFailureState("otp did not send!"));
+    }
+  }
+
+  Future<void> resetPassword(
+    resetPasswordButtonClickedEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoadingState());
+    await Future.delayed(Duration(seconds: 2), () {});
+    final bool? passwordReset = await AuthRepo.passwordReset(
+      event.pw,
+      event.userId,
+    );
+    if (passwordReset == true) {
+      emit(PassswordResetSuccessState());
+    } else {
+      emit(PassswordResetFailureState("Reset failed"));
     }
   }
 }

@@ -30,9 +30,10 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               children: [
                 GestureDetector(
-                  onTap: () => GoRouter.of(
-                    context,
-                  ).pushNamed(AppRouteNames.admin_profile),
+
+                  onTap: (){
+                    GoRouter.of(context).pushNamed(AppRouteNames.admin_profile);
+                  },
                   child: CircleAvatar(
                     radius: 22.5.w,
                     backgroundImage: NetworkImage(

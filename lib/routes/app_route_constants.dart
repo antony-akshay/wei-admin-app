@@ -34,9 +34,34 @@ class AppRouteNames {
   static const String addOnEventsYesOrNo = "add_on_events_yes_or_no";
   static const String addOnEventsManaging = "add_on_events_managing";
   static const String ticketDetailsAdding = "ticket_details_adding";
+
   static const String editTicket = "edit_ticket";
   static const String reuploadTicket = "reupload_ticket";
   static const String addBankInfo = "add_bank_info";
   static const String addHashtags = "add_hashtags";
   static const String eventPreview = "event_preview";
+
+  static const String twofactorotp = "twofactorotp";
+  static const String SaveLoginInfo = "save_login_info";
+  static const String LoginHistory = "login_history";
+  static const String LoginAlert = "login_alert";
+  static const String secQuestions = "sec_questions";
+  static const String notificationSettings = "notification_settings";
+  static const String editprofile = "edit_profile";
+  static const String thirdpartyconnect = "thirdpartyconnect";
+  static const String permissionsAndRoles = "permissions_and_roles";
+  static const String onePostEverywhere = "one_post_everywhere";
+  static const String language_region = "language_region";
+  static const String events_hosted = "events_hosted";
+  static const String events_screen = "events_screen";
+  static const String bank_details = "bank_details";
+  static const String bank_details_selected = "bank_details_selected";
+  static const String sub_payment = "sub_payment";
+  static const String hide_details = "hide_details";
+  static const String blocked_accounts = "blocked_accounts";
+  static const String delete_account = "delete_account";
+  static const String delete_type_selection = "delete_type_selection";
+  static const String permanent_delete = "permanent_delete";
+  static const String temporary_delete = "temporary_delete";
+  static const String temporary_delete_confirm = "temporary_delete_confirm";
 }

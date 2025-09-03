@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:wei_admin/common_widgets/custom_text.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
+import 'package:wei_admin/routes/app_route_constants.dart';
 
 class GroupItem {
   final String image;
@@ -106,14 +109,17 @@ class ProfileGroups extends StatelessWidget {
                   // Optional "New group" item
                   Column(
                     children: [
-                      Container(
-                        height: 66.r,
-                        width: 66.r,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.5),
+                      GestureDetector(
+                        onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BuildTeamScreen1())),
+                        child: Container(
+                          height: 66.r,
+                          width: 66.r,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 1.5),
+                          ),
+                          child: Icon(Icons.add, color: Colors.white, size: 30.r),
                         ),
-                        child: Icon(Icons.add, color: Colors.white, size: 30.r),
                       ),
                       SizedBox(height: 8.h),
                       SizedBox(
