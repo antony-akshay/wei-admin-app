@@ -5,10 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wei_admin/common_widgets/custom_inner_shadow_icon_button.dart';
 import 'package:wei_admin/features/buildteam/presentation/underOrg_screen.dart';
 import 'package:wei_admin/features/buildteam/presentation/underAdmn_screen.dart';
-import 'package:wei_admin/features/buildteam/widgets/buildteam_button.dart';
 import 'package:wei_admin/features/buildteam/widgets/buildteam_customtext.dart';
-import 'package:wei_admin/features/buildteam/widgets/buildteam_textfield.dart';
-import 'package:wei_admin/routes/app_route_constants.dart';
+
 
 class BuildTeamScreen1 extends StatefulWidget {
   const BuildTeamScreen1({super.key});

@@ -3,14 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wei_admin/features/buildteam/presentation/addmembers_screen.dart';
 import 'package:wei_admin/features/buildteam/presentation/buildteam_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/add_bank_info_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/add_hashtags_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_managing_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/add_on_events_yes_or_no_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/event_preview_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/reupload_ticket_image_screen.dart';
 import 'package:wei_admin/features/create_event/presentation/screens/ticket_details_adding_screen.dart';
-import 'package:wei_admin/features/create_event/presentation/screens/edit_ticket_screen.dart';
 import 'package:wei_admin/features/profile/presentation/admin_profile_screen.dart';
 import 'package:wei_admin/features/profile/presentation/others_profile_screen.dart';
 import 'package:wei_admin/features/settings/presentation/bank_details_screen.dart';
@@ -67,9 +62,8 @@ import 'package:wei_admin/features/auth/presentation/screens/signup_type_selecti
 
 class AppRouteConfiguration {
   static final GoRouter router = GoRouter(
-    initialLocation: "/navbar_control",
-
-    // initialLocation: "/event_preview",
+    // initialLocation: "/navbar_control",
+    initialLocation: "/build_team_screen1",
     routes: [
       GoRoute(
         name: AppRouteNames.onboard,
@@ -154,7 +148,7 @@ class AppRouteConfiguration {
         name: AppRouteNames.otpForgotPassword,
         path: "/otp_forgot_password",
         pageBuilder: (context, state) =>
-            MaterialPage(child: OtpForgotPasswordScreen(email: '')),
+            MaterialPage(child: OtpForgotPasswordScreen(email: '',)),
       ),
       GoRoute(
         name: AppRouteNames.resetPassword,
@@ -283,33 +277,21 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.describeYourEvent,
         path: '/describe_your_event',
-        pageBuilder: (context, state) {
-          final bool showProgress = state.extra as bool? ?? false;
-          return MaterialPage(
-            child: DescribeYourEventScreen(showProgress: showProgress),
-          );
-        },
+        pageBuilder: (context, state) =>
+            MaterialPage(child: DescribeYourEventScreen(showProgress: true,)),
       ),
 
       GoRoute(
         name: AppRouteNames.addVisualsToYourEvent,
         path: '/add_visuals_to_your_event',
-        pageBuilder: (context, state) {
-          final bool showProgress = state.extra as bool? ?? false;
-          return MaterialPage(
-            child: AddVisualsToYourEventScreen(showProgress: showProgress),
-          );
-        },
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AddVisualsToYourEventScreen(showProgress: true,)),
       ),
       GoRoute(
         name: AppRouteNames.addOnEventsYesOrNo,
         path: '/add_on_events_yes_or_no',
-        pageBuilder: (context, state) {
-          final bool isNext = state.extra as bool? ?? false;
-          return MaterialPage(
-            child: AddOnEventsYesOrNoScreen(isAddingNextAddonEvent: isNext),
-          );
-        },
+        pageBuilder: (context, state) =>
+            MaterialPage(child: AddOnEventsYesOrNoScreen(isAddingNextAddonEvent: true,)),
       ),
       GoRoute(
         name: AppRouteNames.addOnEventsManaging,
@@ -328,36 +310,6 @@ class AppRouteConfiguration {
             ),
           );
         },
-      ),
-      GoRoute(
-        name: AppRouteNames.editTicket,
-        path: '/edit_ticket',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: EditTicketScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.reuploadTicket,
-        path: '/reupload_ticket',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: ReuploadTicketImageScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.addBankInfo,
-        path: '/add_bank_info',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: AddBankInfoScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.addHashtags,
-        path: '/add_hashtags',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: AddHashtagsScreen()),
-      ),
-      GoRoute(
-        name: AppRouteNames.eventPreview,
-        path: '/event_preview',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: EventPreviewScreen()),
       ),
       GoRoute(
         name: AppRouteNames.twofactorotp,
@@ -434,8 +386,7 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.events_screen,
         path: '/events_screen',
-        pageBuilder: (context, state) =>
-            MaterialPage(child: EventScreen(isPaid: true)),
+        pageBuilder: (context, state) => MaterialPage(child: EventScreen(isPaid: true,)),
       ),
       GoRoute(
         name: AppRouteNames.bank_details,
@@ -494,14 +445,11 @@ class AppRouteConfiguration {
       GoRoute(
         name: AppRouteNames.temporary_delete_confirm,
         path: '/temporary_delete_confirm',
-        pageBuilder: (context, state) => MaterialPage(
-          child: TemporaryDeleteConfirmScreen(
-            startDate: '',
-            endDate: '',
-            duration: 0,
-          ),
-        ),
+        pageBuilder: (context, state) =>
+            MaterialPage(child: TemporaryDeleteConfirmScreen(startDate: '',endDate: '',duration: 0,)),
       ),
     ],
   );
 }
+
+
