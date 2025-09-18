@@ -33,7 +33,7 @@ class OtpVerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AuthBloc>().add(StartTimerEvent(initialDuration: 30));
+    context.read<AuthBloc>().add(StartTimerEvent(initialDuration: 60));
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       resizeToAvoidBottomInset: false,
@@ -195,6 +195,7 @@ class OtpVerificationScreen extends StatelessWidget {
                                   return SizedBox.shrink();
                                 }
                               },
+                              
                             ),
                             SizedBox(height: 16.h),
                             Row(
@@ -215,7 +216,7 @@ class OtpVerificationScreen extends StatelessWidget {
                                         if (_formKey.currentState!.validate()) {
                                           context.read<AuthBloc>().add(
                                             StartTimerEvent(
-                                              initialDuration: 30,
+                                              initialDuration: 60,
                                             ),
                                           );
                                           context.read<AuthBloc>().add(

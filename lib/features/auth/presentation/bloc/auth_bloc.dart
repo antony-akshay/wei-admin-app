@@ -33,6 +33,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       event.contactNumber,
       event.password,
     );
+    print("signupSuccess:$signupSuccess");
     if (signupSuccess == true) {
       emit(SignupSuccessState());
     } else {
@@ -54,6 +55,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       event.organizationType,
       event.address,
     );
+    print("signup:$signupSuccess");
     if (signupSuccess == true) {
       emit(SignupSuccessState());
     } else {

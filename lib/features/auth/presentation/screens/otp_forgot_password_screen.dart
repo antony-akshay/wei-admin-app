@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wei_admin/common_widgets/logo_widget.dart';
 import 'package:wei_admin/core/app_colors.dart';
+import 'package:wei_admin/core/helpers/app_toast.dart';
 import 'package:wei_admin/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:wei_admin/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:wei_admin/features/auth/presentation/widgets/background_gradient.dart';
@@ -17,16 +17,17 @@ import 'package:wei_admin/common_widgets/custom_text.dart';
 class OtpForgotPasswordScreen extends StatelessWidget {
   OtpForgotPasswordScreen({super.key, required this.email});
 
-  final email;
+  final String email;
 
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _otpFormKey = GlobalKey<FormState>();
-  ValueNotifier isAgreedNotifier = ValueNotifier(false);
+  String _otp = "";
 
   @override
   Widget build(BuildContext context) {
+    // start the countdown immediately when screen opens
+    context.read<AuthBloc>().add(StartTimerEvent(initialDuration: 10));
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       resizeToAvoidBottomInset: false,
@@ -35,14 +36,14 @@ class OtpForgotPasswordScreen extends StatelessWidget {
           Container(
             height: double.infinity,
             width: double.infinity,
-            child: Image(
+            child: const Image(
               image: AssetImage("assets/images/authentication_background.png"),
               fit: BoxFit.cover,
             ),
           ),
           BackgroundGradient(),
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Center(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -67,8 +68,7 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                           autoFillEnable: true,
                           textInputAction: TextInputAction.done,
                           onSubmit: (text) {
-                            debugPrint('Entered pin is $text');
-                            //bloc
+                            _otp = text;
                             BlocProvider.of<AuthBloc>(context).add(
                               OtpVerifyButtonClickedEvent(
                                 email: email,
@@ -77,17 +77,14 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                             );
                           },
                           onChange: (text) {
-                            debugPrint('Changed: $text');
-                          },
-                          onCodeChanged: (code) {
-                            debugPrint('Code changed: $code');
+                            _otp = text;
                           },
                           otpPinFieldStyle: OtpPinFieldStyle(
                             showHintText: true,
                             hintText: "-",
                             hintTextColor: Colors.white,
                             fieldBorderRadius: 8,
-                            fieldPadding: 16, // controls size and spacing
+                            fieldPadding: 16,
                             fieldBorderWidth: 2,
                             defaultFieldBackgroundColor: AppColors
                                 .authScreenTextfieldBackgroundColor
@@ -107,23 +104,55 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-
                           showCursor: true,
                           cursorColor: Colors.white,
                           cursorWidth: 2,
-                          upperChild: const Column(
-                            children: [
-                              SizedBox(height: 30),
-                              Icon(Icons.flutter_dash_outlined, size: 150),
-                              SizedBox(height: 20),
-                            ],
-                          ),
-
                           mainAxisAlignment: MainAxisAlignment.center,
                           otpPinFieldDecoration: OtpPinFieldDecoration.custom,
                         ),
 
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 16.h),
+
+                        // Countdown Timer + Expiry Toast
+                        // Countdown Timer + Expiry Toast
+                        BlocListener<AuthBloc, AuthState>(
+                          listenWhen: (previous, current) =>
+                              current is TimerCountDownState,
+                          listener: (context, state) {
+                            if (state is TimerCountDownState &&
+                                state.remainingTime == 0) {
+                              print(
+                                "state.remainingTime:${state.remainingTime}",
+                              );
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("otp expired try resending..."),
+                                ),
+                              );
+                            }
+                          },
+                          child: BlocBuilder<AuthBloc, AuthState>(
+                            buildWhen: (previous, current) =>
+                                current is TimerCountDownState,
+                            builder: (context, state) {
+                              if (state is TimerCountDownState &&
+                                  state.remainingTime != 0) {
+                                return CustomText(
+                                  text: "${state.remainingTime}s",
+                                  fontSize: 14.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                );
+                              } else {
+                                return const SizedBox.shrink();
+                              }
+                            },
+                          ),
+                        ),
+
+                        SizedBox(height: 16.h),
+
+                        // Resend OTP
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -132,16 +161,50 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                               fontSize: 14.sp,
                               overflow: TextOverflow.ellipsis,
                             ),
-
-                            CustomText(
-                              text: "Resend",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              overflow: TextOverflow.ellipsis,
+                            BlocBuilder<AuthBloc, AuthState>(
+                              buildWhen: (previous, current) =>
+                                  current is TimerCountDownState,
+                              builder: (context, state) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    if (state is TimerCountDownState &&
+                                        state.remainingTime == 0) {
+                                      // restart timer
+                                      context.read<AuthBloc>().add(
+                                        StartTimerEvent(initialDuration: 30),
+                                      );
+                                      // resend OTP event
+                                      // context.read<AuthBloc>().add(
+                                      //   OtpResendButtonClickedEvent(
+                                      //     email: email,
+                                      //   ),
+                                      // );
+                                    }
+                                  },
+                                  child: CustomText(
+                                    text: "Resend",
+                                    fontSize: 14.sp,
+                                    fontWeight:
+                                        (state is TimerCountDownState &&
+                                            state.remainingTime == 0)
+                                        ? FontWeight.w500
+                                        : FontWeight.w400,
+                                    overflow: TextOverflow.ellipsis,
+                                    fontColor:
+                                        (state is TimerCountDownState &&
+                                            state.remainingTime == 0)
+                                        ? AppColors.mainFontColor
+                                        : AppColors.authScreenTextGrey,
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
+
                         SizedBox(height: 24.h),
+
+                        // Buttons
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -169,8 +232,9 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                             SizedBox(
                               width: 153.w,
                               child: BlocConsumer<AuthBloc, AuthState>(
+                                buildWhen: (previous, current) =>
+                                    current is! TimerCountDownState,
                                 listener: (context, state) {
-                                  // TODO: implement listener
                                   if (state is OtpVerificationSuccessState) {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
@@ -178,10 +242,13 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                                             ResetPasswordScreen(),
                                       ),
                                     );
-                                  } else if( state is OtpVerificationFailureState){
+                                  } else if (state
+                                      is OtpVerificationFailureState) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text("OTP verification failed"),
+                                      const SnackBar(
+                                        content: Text(
+                                          "OTP verification failed",
+                                        ),
                                       ),
                                     );
                                   }
@@ -189,10 +256,14 @@ class OtpForgotPasswordScreen extends StatelessWidget {
                                 builder: (context, state) {
                                   return AuthButton(
                                     onTap: () {
-                                      if (_formKey.currentState!.validate()) {}
-                                      GoRouter.of(
-                                        context,
-                                      ).pushNamed(AppRouteNames.resetPassword);
+                                      if (_formKey.currentState!.validate()) {
+                                        context.read<AuthBloc>().add(
+                                          OtpVerifyButtonClickedEvent(
+                                            email: email,
+                                            pin: _otp,
+                                          ),
+                                        );
+                                      }
                                     },
                                     label: "Verify",
                                     isLoading: state is AuthLoadingState,

@@ -203,7 +203,7 @@ class SignupTypeSelectionScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 16.h),
                           ),
                            child: Text(
-                            'Send',
+                            'Organisation',
                             style: TextStyle(color: Colors.white, fontSize: 16.sp),
                           ),
                         ),

@@ -53,9 +53,10 @@ class AuthRepo {
           "name": organisationName,
           "email": email,
           "contact_no": contactNumber,
-          "password": password,
           "organisation_type": organisationType,
           "address": address,
+          "role":"organisation",
+          "password": password,
         },
       );
       final data = response.data;
